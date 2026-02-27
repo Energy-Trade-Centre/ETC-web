@@ -1,125 +1,130 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import {
-  ArrowRight,
-  Globe,
-  Lightbulb,
-  Shield,
-  Target,
-  Users,
-  Zap,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About Us',
+  title: 'About | Company',
   description:
-    'Energy Trade Centre is accelerating the global energy transition by making renewable energy trading transparent, efficient, and accessible to every market participant.',
+    'ETC is building the operating system for the energy transition. Headquartered in London with teams across Europe and North America.',
   alternates: { canonical: 'https://energytradecentre.com/about' },
 };
 
-const values = [
+const team = [
   {
-    icon: Shield,
-    title: 'Transparency',
-    description: 'Every price, every risk score, every data point is visible. We believe hidden information has no place in energy markets.',
+    role: 'Renewable Energy Advisory',
+    description: 'Former utility procurement leads, PPA structurers, and energy traders with 15+ years of deal-making experience across European and US markets.',
   },
   {
-    icon: Zap,
-    title: 'Speed',
-    description: 'From Lightning PPA to automated settlements, we obsess over removing friction from every step of the energy trading lifecycle.',
+    role: 'Quantitative Analytics',
+    description: 'Financial engineers from investment banking and commodity trading houses, building the Monte Carlo, IFRS 9, and valuation models that power the platform.',
   },
   {
-    icon: Globe,
-    title: 'Global Access',
-    description: 'Energy markets are global. Our platform spans 28 countries and 12 electricity markets so our users can trade wherever the opportunity is.',
+    role: 'Grid & Infrastructure',
+    description: 'Power systems engineers with deep expertise in grid constraints, DNO capacity, generation forecasting, and the physics that underpin energy markets.',
   },
   {
-    icon: Lightbulb,
-    title: 'Innovation',
-    description: 'From 24/7 CFE matching to Asset+PPA bundling to integrated BESS exchange — we build what the market needs next, not what it already has.',
+    role: 'Platform Engineering',
+    description: 'Engineers from Bloomberg, Refinitiv, and fintech, building institutional-grade infrastructure designed for the speed and reliability that energy trading demands.',
   },
 ];
 
 const milestones = [
-  { year: '2022', event: 'Founded with a mission to digitise global energy trading' },
-  { year: '2023', event: 'Launched PPA Marketplace covering North America and Europe' },
-  { year: '2024', event: 'Introduced Asset Exchange, BESS Marketplace, and 24/7 CFE engine' },
-  { year: '2025', event: 'Expanded to 28 countries with 4,500+ live PPA offers' },
-  { year: '2026', event: 'Continuing to build the operating system for the energy transition' },
+  { year: '2022', event: 'Founded with the thesis that energy trading infrastructure was a decade behind financial markets' },
+  { year: '2023', event: 'Launched PPA Marketplace covering North American and European markets' },
+  { year: '2024', event: 'Shipped Asset Exchange, BESS Exchange, Analytics Engine, and 24/7 CFE matching' },
+  { year: '2025', event: 'Expanded to 12+ markets, 4,500+ live offers, and 50+ institutional counterparties' },
+  { year: '2026', event: 'Continuing to build the operating system the energy transition runs on' },
 ];
 
 export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="hero-gradient pt-20 pb-16 lg:pt-28 lg:pb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 grid-bg" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 lg:pt-32 lg:pb-24">
           <div className="max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight">
-              Powering the Global<br />
-              <span className="gradient-text">Energy Transition</span>
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-[1.05] tracking-tight">
+              Building the rails<br />
+              for the <span className="etc-gradient">energy transition</span>
             </h1>
-            <p className="mt-6 text-lg text-gray-300 leading-relaxed">
-              Energy Trade Centre exists to make renewable energy trading transparent, efficient, and
-              accessible to every market participant — from corporate buyers to infrastructure investors.
+            <p className="mt-6 text-lg text-etc-400 leading-relaxed">
+              The energy transition is constrained not by technology, but by transaction
+              infrastructure. We built ETC to fix that.
             </p>
           </div>
         </div>
       </section>
 
       {/* Mission */}
-      <section className="py-20 lg:py-28 bg-white">
+      <section className="border-t border-subtle py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-16">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-navy-950 mb-6">Our Mission</h2>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                The energy transition is the defining challenge of our time. Yet the infrastructure
-                for trading renewable energy remains fragmented, opaque, and inaccessible.
+              <h2 className="text-2xl font-bold text-white mb-6">The problem</h2>
+              <p className="text-[14px] text-etc-400 leading-relaxed mb-4">
+                Energy markets trade $2 trillion annually, yet the infrastructure for
+                renewable energy transactions remains fragmented across brokers, spreadsheets,
+                email chains, and phone calls.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                We built Energy Trade Centre to change that. Our platform brings together PPA trading,
-                asset exchange, battery storage, financial analytics, and grid intelligence into one
-                unified system — giving every participant the tools they need to trade with confidence.
+              <p className="text-[14px] text-etc-400 leading-relaxed mb-4">
+                A corporate buyer seeking a PPA has no transparent way to see the full market.
+                A developer listing an asset has no efficient way to reach institutional buyers.
+                An investor modelling a portfolio has no integrated tool for IFRS 9 compliance.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                We believe that when energy trading is transparent, efficient, and data-driven,
-                the transition to clean energy accelerates for everyone.
+              <p className="text-[14px] text-etc-400 leading-relaxed">
+                The result: slower deals, higher costs, and less capital flowing into clean
+                energy than the market demands.
               </p>
             </div>
-            <div className="bg-gray-50 rounded-2xl p-8 lg:p-12">
-              <div className="grid grid-cols-2 gap-8">
-                {[
-                  { value: '28', label: 'Countries' },
-                  { value: '4,500+', label: 'Live PPA offers' },
-                  { value: '12+', label: 'Electricity markets' },
-                  { value: '50+', label: 'Active counterparties' },
-                ].map((stat) => (
-                  <div key={stat.label}>
-                    <div className="text-3xl font-bold text-navy-950">{stat.value}</div>
-                    <div className="text-sm text-gray-500 mt-1">{stat.label}</div>
-                  </div>
-                ))}
+            <div>
+              <h2 className="text-2xl font-bold text-white mb-6">Our thesis</h2>
+              <p className="text-[14px] text-etc-400 leading-relaxed mb-4">
+                Energy trading infrastructure is a decade behind financial markets. When we
+                built ETC, we didn&apos;t start with what energy trading looks like today — we
+                started with what it needs to look like to support a net-zero grid.
+              </p>
+              <p className="text-[14px] text-etc-400 leading-relaxed">
+                That means transparent pricing, integrated analytics, real-time market data,
+                and execution speed that matches the pace of the transition. Not a marketplace.
+                Not a broker. An operating system.
+              </p>
+            </div>
+          </div>
+
+          {/* Stats */}
+          <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle">
+            {[
+              { value: '12+', label: 'Electricity markets' },
+              { value: '28', label: 'Countries' },
+              { value: '4,500+', label: 'Live PPA offers' },
+              { value: '50+', label: 'Institutional counterparties' },
+            ].map((s) => (
+              <div key={s.label} className="surface-2 p-6">
+                <div className="mono text-2xl font-bold text-white">{s.value}</div>
+                <div className="text-[12px] text-etc-500 mt-1">{s.label}</div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-20 lg:py-28 bg-gray-50">
+      {/* Team - humanized, showing expertise domains */}
+      <section className="surface-2 border-t border-subtle py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy-950 text-center mb-16">
-            What Drives Us
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value) => (
-              <div key={value.title} className="text-center">
-                <div className="w-14 h-14 rounded-2xl bg-green-500/10 flex items-center justify-center mx-auto mb-4">
-                  <value.icon className="w-7 h-7 text-green-600" />
-                </div>
-                <h3 className="text-lg font-semibold text-navy-950 mb-2">{value.title}</h3>
-                <p className="text-gray-500 leading-relaxed">{value.description}</p>
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold text-white">The team behind ETC</h2>
+            <p className="mt-2 text-[13px] text-etc-500">
+              Energy professionals, quantitative analysts, and infrastructure engineers building
+              the platform the industry needs.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle">
+            {team.map((t) => (
+              <div key={t.role} className="surface-1 p-8">
+                <h3 className="text-base font-semibold text-white mb-3">{t.role}</h3>
+                <p className="text-[13px] text-etc-500 leading-relaxed">{t.description}</p>
               </div>
             ))}
           </div>
@@ -127,33 +132,33 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section className="py-20 lg:py-28 bg-white">
+      <section className="border-t border-subtle py-20 lg:py-28">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy-950 text-center mb-16">
-            Our Journey
-          </h2>
+          <h2 className="text-2xl font-bold text-white mb-12">Timeline</h2>
           <div className="space-y-8">
             {milestones.map((m) => (
-              <div key={m.year} className="flex gap-6">
-                <div className="text-2xl font-bold text-green-500 w-16 shrink-0">{m.year}</div>
-                <div className="text-gray-600 pt-1">{m.event}</div>
+              <div key={m.year} className="flex gap-8">
+                <div className="mono text-xl font-bold text-signal w-16 shrink-0">{m.year}</div>
+                <div className="text-[14px] text-etc-400 pt-0.5 leading-relaxed">{m.event}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Locations */}
-      <section className="py-20 lg:py-28 bg-gray-50">
+      {/* Offices */}
+      <section className="surface-2 border-t border-subtle py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy-950 mb-4">Global Presence</h2>
-          <p className="text-lg text-gray-500 mb-12">
-            Headquartered in London with teams across Europe and North America.
-          </p>
-          <div className="flex flex-wrap justify-center gap-8">
-            {['London', 'Amsterdam', 'Houston'].map((city) => (
-              <div key={city} className="bg-white border border-gray-200 rounded-xl px-8 py-5">
-                <span className="text-lg font-semibold text-navy-950">{city}</span>
+          <h2 className="text-2xl font-bold text-white mb-8">Global presence</h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            {[
+              { city: 'London', role: 'Headquarters' },
+              { city: 'Amsterdam', role: 'European Operations' },
+              { city: 'Houston', role: 'North American Markets' },
+            ].map((office) => (
+              <div key={office.city} className="card px-8 py-5 text-center">
+                <div className="text-base font-semibold text-white">{office.city}</div>
+                <div className="text-[11px] text-etc-600 mt-1">{office.role}</div>
               </div>
             ))}
           </div>
@@ -161,21 +166,16 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="hero-gradient py-20 lg:py-28">
+      <section className="border-t border-subtle py-20 lg:py-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white">
-            Join the Energy Transition
-          </h2>
-          <p className="mt-4 text-lg text-gray-300">
-            Whether you&apos;re buying, selling, or investing — Energy Trade Centre gives you the
-            tools to participate in the world&apos;s largest market transformation.
+          <h2 className="text-3xl font-bold text-white">Join the transition</h2>
+          <p className="mt-4 text-etc-400">
+            Whether you&apos;re buying, selling, or investing — ETC gives you the infrastructure
+            to participate in the world&apos;s largest market transformation.
           </p>
           <div className="mt-8">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-green-500 hover:bg-green-600 rounded-xl transition-colors"
-            >
-              Get in Touch <ArrowRight className="w-5 h-5" />
+            <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors">
+              Get in touch <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

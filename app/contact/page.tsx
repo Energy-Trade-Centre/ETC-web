@@ -1,24 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import type { Metadata } from 'next';
-import {
-  Mail,
-  MapPin,
-  ArrowRight,
-  CheckCircle2,
-  Building2,
-  Zap,
-} from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRight, CheckCircle2, Mail, MapPin, Building2 } from 'lucide-react';
 
-const interests = [
-  'PPA Marketplace',
-  'Asset Exchange',
-  'BESS Marketplace',
-  'Analytics & Modelling',
-  '24/7 CFE Matching',
-  'Grid Intelligence',
-  'General Enquiry',
+const roles = [
+  'Energy Buyer / Procurement',
+  'Developer / Asset Owner',
+  'Investor / Fund Manager',
+  'Utility / Offtaker',
+  'Consultant / Advisor',
+  'Other',
 ];
 
 export default function ContactPage() {
@@ -27,32 +19,33 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="hero-gradient pt-20 pb-16 lg:pt-28 lg:pb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 grid-bg" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 lg:pt-28 lg:pb-20">
           <div className="max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight">
-              Get in Touch
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-[1.05] tracking-tight">
+              Get access to ETC
             </h1>
-            <p className="mt-6 text-lg text-gray-300 leading-relaxed">
-              Request a personalised demo, ask a question, or learn how Energy Trade Centre can
-              accelerate your renewable energy strategy.
+            <p className="mt-6 text-lg text-etc-400 leading-relaxed">
+              Request a personalised walkthrough of the platform. We&apos;ll tailor the demo
+              to your workflow — whether that&apos;s procurement, origination, or portfolio management.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Contact Form + Info */}
-      <section className="py-20 lg:py-28 bg-white">
+      {/* Form + Info */}
+      <section className="border-t border-subtle py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-5 gap-12 lg:gap-20">
             {/* Form */}
             <div className="lg:col-span-3">
               {submitted ? (
                 <div className="text-center py-16">
-                  <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-6" />
-                  <h2 className="text-2xl font-bold text-navy-950 mb-4">Thank You</h2>
-                  <p className="text-gray-500 text-lg">
-                    We&apos;ve received your request. A member of our team will be in touch within 24 hours.
+                  <CheckCircle2 className="w-12 h-12 text-signal mx-auto mb-6" />
+                  <h2 className="text-2xl font-bold text-white mb-3">Request received</h2>
+                  <p className="text-etc-400">
+                    A member of our team will be in touch within 24 hours to schedule your demo.
                   </p>
                 </div>
               ) : (
@@ -63,156 +56,143 @@ export default function ContactPage() {
                   }}
                   className="space-y-6"
                 >
-                  <h2 className="text-2xl font-bold text-navy-950 mb-8">Request a Demo</h2>
-
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-                        First Name *
+                      <label htmlFor="firstName" className="block text-[11px] font-semibold text-etc-500 uppercase tracking-wider mb-2">
+                        First name
                       </label>
                       <input
                         id="firstName"
                         name="firstName"
                         type="text"
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors"
+                        className="w-full px-4 py-3 surface-3 border border-subtle rounded-lg text-[14px] text-white placeholder-etc-600 focus:border-signal/40 focus:ring-1 focus:ring-signal/20 outline-none transition-colors"
                       />
                     </div>
                     <div>
-                      <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-                        Last Name *
+                      <label htmlFor="lastName" className="block text-[11px] font-semibold text-etc-500 uppercase tracking-wider mb-2">
+                        Last name
                       </label>
                       <input
                         id="lastName"
                         name="lastName"
                         type="text"
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors"
+                        className="w-full px-4 py-3 surface-3 border border-subtle rounded-lg text-[14px] text-white placeholder-etc-600 focus:border-signal/40 focus:ring-1 focus:ring-signal/20 outline-none transition-colors"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Work Email *
+                    <label htmlFor="email" className="block text-[11px] font-semibold text-etc-500 uppercase tracking-wider mb-2">
+                      Work email
                     </label>
                     <input
                       id="email"
                       name="email"
                       type="email"
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors"
+                      className="w-full px-4 py-3 surface-3 border border-subtle rounded-lg text-[14px] text-white placeholder-etc-600 focus:border-signal/40 focus:ring-1 focus:ring-signal/20 outline-none transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                      Company *
+                    <label htmlFor="company" className="block text-[11px] font-semibold text-etc-500 uppercase tracking-wider mb-2">
+                      Company
                     </label>
                     <input
                       id="company"
                       name="company"
                       type="text"
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors"
+                      className="w-full px-4 py-3 surface-3 border border-subtle rounded-lg text-[14px] text-white placeholder-etc-600 focus:border-signal/40 focus:ring-1 focus:ring-signal/20 outline-none transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">
-                      Your Role
+                    <label htmlFor="role" className="block text-[11px] font-semibold text-etc-500 uppercase tracking-wider mb-2">
+                      Role
                     </label>
                     <select
                       id="role"
                       name="role"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors bg-white"
+                      className="w-full px-4 py-3 surface-3 border border-subtle rounded-lg text-[14px] text-etc-300 focus:border-signal/40 focus:ring-1 focus:ring-signal/20 outline-none transition-colors bg-transparent"
                     >
-                      <option value="">Select your role</option>
-                      <option>Energy Buyer / Procurement</option>
-                      <option>Developer / Asset Owner</option>
-                      <option>Investor / Fund Manager</option>
-                      <option>Utility / Offtaker</option>
-                      <option>Consultant / Advisor</option>
-                      <option>Other</option>
+                      <option value="" className="bg-etc-900">Select your role</option>
+                      {roles.map((r) => (
+                        <option key={r} value={r} className="bg-etc-900">{r}</option>
+                      ))}
                     </select>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-3">
-                      I&apos;m interested in
-                    </label>
-                    <div className="flex flex-wrap gap-2">
-                      {interests.map((interest) => (
-                        <label
-                          key={interest}
-                          className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg cursor-pointer hover:border-green-500 hover:bg-green-50 transition-colors has-[:checked]:border-green-500 has-[:checked]:bg-green-50"
-                        >
-                          <input type="checkbox" name="interests" value={interest} className="sr-only" />
-                          <span className="text-sm text-gray-700">{interest}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                      Message
+                    <label htmlFor="message" className="block text-[11px] font-semibold text-etc-500 uppercase tracking-wider mb-2">
+                      Tell us about your needs
                     </label>
                     <textarea
                       id="message"
                       name="message"
                       rows={4}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors resize-none"
-                      placeholder="Tell us about your requirements..."
+                      className="w-full px-4 py-3 surface-3 border border-subtle rounded-lg text-[14px] text-white placeholder-etc-600 focus:border-signal/40 focus:ring-1 focus:ring-signal/20 outline-none transition-colors resize-none"
+                      placeholder="What markets, volumes, or features are most relevant to you?"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-green-500 hover:bg-green-600 rounded-lg transition-colors"
+                    className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
                   >
-                    Submit Request
-                    <ArrowRight className="w-5 h-5" />
+                    Submit request
+                    <ArrowRight className="w-4 h-4" />
                   </button>
                 </form>
               )}
             </div>
 
             {/* Contact Info */}
-            <div className="lg:col-span-2 space-y-8">
-              <div className="bg-gray-50 rounded-2xl p-8">
-                <h3 className="text-lg font-semibold text-navy-950 mb-6">Contact Information</h3>
+            <div className="lg:col-span-2 space-y-6">
+              <div className="card p-8">
+                <h3 className="text-[11px] font-semibold text-etc-600 uppercase tracking-widest mb-6">Contact</h3>
                 <div className="space-y-5">
                   <div className="flex items-start gap-4">
-                    <Mail className="w-5 h-5 text-green-500 mt-1" />
+                    <Mail className="w-4 h-4 text-signal mt-1" />
                     <div>
-                      <div className="font-medium text-navy-950">Email</div>
-                      <div className="text-gray-500">info@energytradecentre.com</div>
+                      <div className="text-[13px] font-medium text-white">Email</div>
+                      <div className="text-[13px] text-etc-500">info@energytradecentre.com</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <MapPin className="w-5 h-5 text-green-500 mt-1" />
+                    <MapPin className="w-4 h-4 text-signal mt-1" />
                     <div>
-                      <div className="font-medium text-navy-950">Headquarters</div>
-                      <div className="text-gray-500">London, United Kingdom</div>
+                      <div className="text-[13px] font-medium text-white">Headquarters</div>
+                      <div className="text-[13px] text-etc-500">London, United Kingdom</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <Building2 className="w-5 h-5 text-green-500 mt-1" />
+                    <Building2 className="w-4 h-4 text-signal mt-1" />
                     <div>
-                      <div className="font-medium text-navy-950">Additional Offices</div>
-                      <div className="text-gray-500">Amsterdam &bull; Houston</div>
+                      <div className="text-[13px] font-medium text-white">Offices</div>
+                      <div className="text-[13px] text-etc-500">Amsterdam &bull; Houston</div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-navy-950 rounded-2xl p-8">
-                <Zap className="w-8 h-8 text-green-400 mb-4" />
-                <h3 className="text-lg font-semibold text-white mb-2">Quick Response</h3>
-                <p className="text-gray-400 leading-relaxed">
-                  Our team typically responds within 24 hours. For demo requests,
-                  we&apos;ll schedule a personalised walkthrough at a time that suits you.
+              <div className="card-elevated p-8">
+                <div className="w-6 h-px bg-signal mb-4" />
+                <h3 className="text-base font-semibold text-white mb-2">Typical response: under 24 hours</h3>
+                <p className="text-[13px] text-etc-500 leading-relaxed">
+                  For demo requests, we&apos;ll schedule a personalised walkthrough with a
+                  member of our team who understands your specific workflow and market.
+                </p>
+              </div>
+
+              <div className="card-elevated p-8">
+                <div className="w-6 h-px bg-accent mb-4" />
+                <h3 className="text-base font-semibold text-white mb-2">Existing users</h3>
+                <p className="text-[13px] text-etc-500 leading-relaxed">
+                  Already on the platform? Sign in to your command centre to access support,
+                  documentation, and your dedicated account team.
                 </p>
               </div>
             </div>

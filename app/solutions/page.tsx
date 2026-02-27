@@ -1,90 +1,79 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import {
-  ArrowRight,
-  Building2,
-  Sun,
-  TrendingUp,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Solutions | For Buyers, Sellers & Investors',
+  title: 'Solutions | Procurement, Origination & Investment',
   description:
-    'Energy Trade Centre serves corporate buyers, renewable energy developers, and infrastructure investors with tailored tools for PPA trading, asset exchange, and portfolio management.',
+    'ETC serves corporate buyers, renewable energy developers, and infrastructure investors with institutional-grade tools for PPA trading, asset exchange, and portfolio management.',
   alternates: { canonical: 'https://energytradecentre.com/solutions' },
 };
 
 const solutions = [
   {
-    icon: Building2,
-    title: 'For Corporate Buyers',
-    description:
-      'Procure renewable energy with full transparency. Compare 4,500+ PPA offers, model financials with Monte Carlo simulation, and execute deals — all on one platform. No hidden broker commissions.',
+    tag: 'PROCUREMENT',
+    title: 'For corporate buyers & utilities',
+    description: 'Your CFO doesn\'t want a PPA. They want a risk-adjusted position with transparent downside. ETC gives procurement teams the liquidity, analytics, and execution speed to deliver certainty.',
     href: '/solutions/buyers',
-    features: ['4,500+ live PPA offers', 'CFO-ready financial modelling', '24/7 CFE matching', 'Lightning PPA execution'],
+    points: ['4,500+ live PPA offers across 12 markets', 'Monte Carlo NPV modelling for board presentations', '24/7 CFE hourly matching and verification', 'Lightning PPA: 14-day close on standardised terms'],
   },
   {
-    icon: Sun,
-    title: 'For Developers & Sellers',
-    description:
-      'List your PPA offers and renewable energy projects to the largest pool of qualified buyers. From greenfield to operational, reach the right counterparties faster and maximise transaction value.',
+    tag: 'ORIGINATION',
+    title: 'For developers & asset owners',
+    description: 'Stop relying on three brokers and a Rolodex. ETC gives your development team direct access to the widest institutional buyer network — with deal structures that maximise your transaction value.',
     href: '/solutions/sellers',
-    features: ['Global buyer reach', 'Asset+PPA bundling', 'Auction & bilateral structures', 'Every development stage'],
+    points: ['Direct access to institutional buyer network', 'Asset+PPA bundling for 25-35% premium', 'Auction and bilateral deal structures', 'Global reach across 28 countries'],
   },
   {
-    icon: TrendingUp,
-    title: 'For Investors & Funds',
-    description:
-      'Institutional-grade portfolio management, deal pipeline tracking, IFRS 9 analytics, and asset valuation tools built for the way energy infrastructure investors actually work.',
+    tag: 'INVESTMENT',
+    title: 'For infrastructure funds & portfolio managers',
+    description: 'From deal sourcing to IFRS 9 compliance, ETC is the platform energy infrastructure investors actually need — built for investment committees, not retrofitted from a consumer tool.',
     href: '/solutions/investors',
-    features: ['Monte Carlo NPV modelling', 'IFRS 9 credit risk', '7-factor asset valuations', 'Portfolio benchmarking'],
+    points: ['Monte Carlo simulation across 40+ scenarios', 'IFRS 9 credit risk classification', '7-factor proprietary asset valuations', 'Portfolio performance benchmarking'],
   },
 ];
 
 export default function SolutionsPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="hero-gradient pt-20 pb-16 lg:pt-28 lg:pb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 grid-bg" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 lg:pt-32 lg:pb-24">
           <div className="max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight">
-              Solutions for Every<br />
-              <span className="gradient-text">Market Participant</span>
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-[1.05] tracking-tight">
+              Built for every<br />
+              <span className="text-etc-500">side of the trade.</span>
             </h1>
-            <p className="mt-6 text-lg text-gray-300 leading-relaxed">
-              Whether you&apos;re buying, selling, or investing in renewable energy — Energy Trade Centre gives
-              you the tools to move faster and trade smarter.
+            <p className="mt-6 text-lg text-etc-400 leading-relaxed">
+              Whether you&apos;re buying certainty, originating offtake, or managing a portfolio —
+              ETC replaces fragmented tools with unified market infrastructure.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Solutions */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          {solutions.map((solution) => (
+      <section className="border-t border-subtle py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-px">
+          {solutions.map((s) => (
             <Link
-              key={solution.title}
-              href={solution.href}
-              className="group grid lg:grid-cols-2 gap-8 bg-white border border-gray-200 rounded-2xl p-8 lg:p-12 card-hover"
+              key={s.tag}
+              href={s.href}
+              className="group grid lg:grid-cols-2 gap-8 card p-8 lg:p-12 hover:bg-etc-850"
             >
               <div>
-                <solution.icon className="w-10 h-10 text-green-500 mb-4" />
-                <h2 className="text-2xl sm:text-3xl font-bold text-navy-950 group-hover:text-green-600 transition-colors">
-                  {solution.title}
-                </h2>
-                <p className="mt-4 text-gray-500 leading-relaxed">{solution.description}</p>
-                <div className="mt-6 inline-flex items-center text-base font-medium text-green-600 gap-2">
-                  Learn more <ArrowRight className="w-5 h-5" />
+                <div className="text-[10px] font-semibold text-etc-600 uppercase tracking-widest mb-3 mono">{s.tag}</div>
+                <h2 className="text-2xl font-bold text-white group-hover:text-signal transition-colors">{s.title}</h2>
+                <p className="mt-3 text-[14px] text-etc-500 leading-relaxed">{s.description}</p>
+                <div className="mt-5 inline-flex items-center text-[13px] font-medium text-etc-600 group-hover:text-signal gap-1.5 transition-colors">
+                  Learn more <ArrowRight className="w-3.5 h-3.5" />
                 </div>
               </div>
               <div className="flex items-center">
                 <ul className="space-y-3">
-                  {solution.features.map((f) => (
-                    <li key={f} className="flex items-center gap-3 text-gray-700">
-                      <div className="w-2 h-2 rounded-full bg-green-500 shrink-0" />
-                      {f}
+                  {s.points.map((p) => (
+                    <li key={p} className="flex items-center gap-3 text-[13px] text-etc-400">
+                      <div className="w-1.5 h-1.5 rounded-full bg-signal shrink-0" />
+                      {p}
                     </li>
                   ))}
                 </ul>
