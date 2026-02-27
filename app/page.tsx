@@ -41,7 +41,7 @@ const capabilities = [
   },
   {
     title: 'BESS Exchange',
-    description: 'The first integrated marketplace for battery storage — from Flexibility Index pricing to performance benchmarking.',
+    description: 'The first integrated marketplace for battery storage — Flexibility Index pricing, revenue stack optimisation, and performance benchmarking.',
     href: '/platform#bess',
     tag: 'STORAGE',
   },
@@ -53,7 +53,7 @@ const capabilities = [
   },
   {
     title: 'Grid Intelligence',
-    description: 'Live generation mix, constraint mapping, cannibalization analysis, and regional capacity data. Decisions informed by the grid.',
+    description: 'Live generation mix, constraint mapping, cannibalization analysis, revenue stack modelling, and regional capacity data.',
     href: '/platform#grid',
     tag: 'GRID',
   },
@@ -72,6 +72,29 @@ const proofPoints = [
   { type: 'Corporate Sustainability', detail: 'FTSE 250 & Fortune 500 companies tracking 24/7 CFE goals on ETC' },
 ];
 
+const advisors = [
+  {
+    domain: 'PPA & Offtake Strategy',
+    initials: 'JC',
+    description: 'Former utility procurement lead. 15+ years structuring PPAs across UK, Nordics, and Iberian markets. Your direct line to deal execution.',
+  },
+  {
+    domain: 'Asset Transactions & M&A',
+    initials: 'KR',
+    description: 'Ex-investment banking, energy infrastructure. Led £2B+ of renewable asset transactions. Covers valuation, due diligence, and deal structuring.',
+  },
+  {
+    domain: 'BESS & Storage Markets',
+    initials: 'SP',
+    description: 'Battery storage specialist. Former optimiser at a top-3 trading house. Covers revenue stacks, flexibility markets, and contract structuring.',
+  },
+  {
+    domain: 'Grid & Regulatory',
+    initials: 'MW',
+    description: 'Power systems engineer turned market analyst. DNO connections, constraint modelling, and regulatory compliance across UK and European grids.',
+  },
+];
+
 export default function HomePage() {
   return (
     <>
@@ -79,7 +102,11 @@ export default function HomePage() {
       <div className="surface-2 border-b border-subtle overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-8 py-2 overflow-x-auto text-[11px]">
-            <span className="text-etc-600 shrink-0 uppercase tracking-wider font-medium">PPA P50</span>
+            <div className="flex items-center gap-2 shrink-0">
+              <div className="w-1.5 h-1.5 rounded-full bg-signal signal-pulse" />
+              <span className="text-etc-600 uppercase tracking-wider font-medium">PPA P50</span>
+              <span className="text-etc-700">Updated 4m ago</span>
+            </div>
             {livePrices.map((p) => (
               <div key={`${p.market}-${p.tech}`} className="flex items-center gap-2 shrink-0">
                 <span className="text-etc-400 font-medium">{p.market}</span>
@@ -126,7 +153,7 @@ export default function HomePage() {
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
               >
-                Get platform access
+                Request access
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
@@ -151,12 +178,69 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ETC Confidence Score - brand pillar section */}
+      <section className="surface-2 border-y border-subtle py-20 lg:py-28" id="confidence-score">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div>
+              <div className="text-[11px] font-medium text-signal uppercase tracking-wider mb-4 mono">
+                Proprietary Signal
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
+                The ETC Confidence Score
+              </h2>
+              <p className="mt-4 text-etc-400 leading-relaxed">
+                Every offer, every asset, every counterparty on ETC is scored 0-100 by our
+                proprietary quality signal. It synthesizes credit risk, project maturity,
+                pricing competitiveness, and counterparty track record into a single number
+                your team can act on.
+              </p>
+              <p className="mt-4 text-[13px] text-etc-500 leading-relaxed">
+                Deals with a Confidence Score above 85 close 3x faster. The platform
+                median sits at 92 — because we curate for quality, not quantity.
+              </p>
+            </div>
+            <div className="card p-8">
+              <div className="flex items-center justify-between mb-8">
+                <span className="text-[11px] font-semibold text-etc-600 uppercase tracking-widest mono">Score Breakdown</span>
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-signal signal-pulse" />
+                  <span className="text-[11px] text-etc-600">Live</span>
+                </div>
+              </div>
+              <div className="text-center mb-8">
+                <div className="mono text-7xl font-bold text-signal">92</div>
+                <div className="text-[12px] text-etc-500 mt-2">Platform median Confidence Score</div>
+              </div>
+              <div className="space-y-4">
+                {[
+                  { label: 'Counterparty Credit', score: 94, color: 'bg-signal' },
+                  { label: 'Pricing Competitiveness', score: 91, color: 'bg-signal' },
+                  { label: 'Project Maturity', score: 89, color: 'bg-signal' },
+                  { label: 'Execution Probability', score: 93, color: 'bg-signal' },
+                ].map((factor) => (
+                  <div key={factor.label}>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-[12px] text-etc-400">{factor.label}</span>
+                      <span className="mono text-[12px] text-white font-medium">{factor.score}</span>
+                    </div>
+                    <div className="h-1 bg-etc-750 rounded-full overflow-hidden">
+                      <div className={`h-full ${factor.color} rounded-full`} style={{ width: `${factor.score}%` }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* PPA Revenue Estimator - Give value first */}
-      <section className="surface-2 border-y border-subtle py-20 lg:py-28" id="estimator">
+      <section className="py-20 lg:py-28" id="estimator">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
-              <div className="text-[11px] font-medium text-signal uppercase tracking-wider mb-4">
+              <div className="text-[11px] font-medium text-signal uppercase tracking-wider mb-4 mono">
                 Indicative Pricing
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
@@ -172,6 +256,59 @@ export default function HomePage() {
               </p>
             </div>
             <PPAEstimator />
+          </div>
+        </div>
+      </section>
+
+      {/* Lightning PPA - Standalone Feature Case Study */}
+      <section className="surface-2 border-y border-subtle py-20 lg:py-28" id="lightning-ppa">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
+            <div className="lg:col-span-3">
+              <div className="text-[11px] font-medium text-amber uppercase tracking-wider mb-4 mono">
+                The ETC Disruptor
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
+                Lightning PPA: 14 days<br />
+                <span className="text-etc-500">vs. 6-12 months industry average</span>
+              </h2>
+              <p className="mt-4 text-etc-400 leading-relaxed">
+                Standardised templates, pre-qualified counterparties, and automated term sheet
+                generation mean sub-25MW PPAs close in an average of 14 days on ETC. That&apos;s
+                not an aspirational target — it&apos;s the platform average across 200+ closed deals.
+              </p>
+              <div className="mt-8 grid grid-cols-2 gap-6">
+                {[
+                  { label: 'Industry average', value: '6-12 months', sub: 'discovery to signing' },
+                  { label: 'ETC Lightning PPA', value: '14 days', sub: 'same process, 95% faster' },
+                ].map((stat) => (
+                  <div key={stat.label} className="card-elevated p-5 rounded-lg">
+                    <div className="text-[11px] text-etc-500 mb-2">{stat.label}</div>
+                    <div className="mono text-2xl font-bold text-white">{stat.value}</div>
+                    <div className="text-[11px] text-etc-600 mt-1">{stat.sub}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="lg:col-span-2">
+              <div className="card p-6 space-y-4">
+                <h3 className="text-[11px] font-semibold text-etc-600 uppercase tracking-widest mono">How Lightning PPA Works</h3>
+                {[
+                  { step: '01', label: 'Select template', detail: 'Solar, wind, hybrid, or BESS. Pre-negotiated legal terms.' },
+                  { step: '02', label: 'Configure deal', detail: 'Set MW, tenor, price. Instant term sheet generation.' },
+                  { step: '03', label: 'Match & execute', detail: 'Pre-qualified counterparties. Digital signatures.' },
+                  { step: '04', label: 'Closed', detail: 'Average: 14 days. Record: 6 days.' },
+                ].map((s) => (
+                  <div key={s.step} className="flex gap-4 items-start">
+                    <span className="mono text-[12px] font-bold text-amber shrink-0 pt-0.5">{s.step}</span>
+                    <div>
+                      <div className="text-[13px] font-medium text-white">{s.label}</div>
+                      <div className="text-[12px] text-etc-500">{s.detail}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -247,8 +384,40 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Social Proof - industry logos/types, not vague names */}
-      <section className="py-20 lg:py-28">
+      {/* Advisory Intelligence - the human layer */}
+      <section className="py-20 lg:py-28" id="advisory">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-16">
+            <div className="text-[11px] font-medium text-etc-600 uppercase tracking-wider mb-4 mono">
+              Advisory Intelligence
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white">
+              The platform provides the data.<br />
+              <span className="text-etc-500">Our sector leads provide the strategy.</span>
+            </h2>
+            <p className="mt-4 text-etc-400 max-w-2xl">
+              Every ETC client has access to sector-specific advisors who know the markets,
+              the counterparties, and the deal structures. Technology handles scale. Humans
+              handle nuance.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle">
+            {advisors.map((a) => (
+              <div key={a.domain} className="surface-1 p-6">
+                <div className="w-10 h-10 rounded-lg bg-etc-750 flex items-center justify-center mb-4">
+                  <span className="text-[12px] font-bold text-etc-300 mono">{a.initials}</span>
+                </div>
+                <h3 className="text-[13px] font-semibold text-white mb-2">{a.domain}</h3>
+                <p className="text-[12px] text-etc-500 leading-relaxed">{a.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof - institutional logos and industry types */}
+      <section className="surface-2 border-y border-subtle py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16">
             <div className="text-[11px] font-medium text-etc-600 uppercase tracking-wider mb-4 mono">
@@ -257,6 +426,25 @@ export default function HomePage() {
             <h2 className="text-3xl sm:text-4xl font-bold text-white">
               The platform institutional<br />energy runs on
             </h2>
+          </div>
+
+          {/* Partner / data logos */}
+          <div className="mb-12 flex flex-wrap items-center gap-x-10 gap-y-4">
+            {[
+              { name: 'Nordpool', role: 'Market data' },
+              { name: 'EPEX SPOT', role: 'Market data' },
+              { name: 'National Grid ESO', role: 'Grid data' },
+              { name: 'Elexon', role: 'Settlement data' },
+              { name: 'S&P Global', role: 'Credit ratings' },
+            ].map((partner) => (
+              <div key={partner.name} className="flex items-center gap-2">
+                <div className="w-1 h-3 rounded-sm bg-etc-700" />
+                <div>
+                  <span className="text-[13px] font-medium text-etc-300">{partner.name}</span>
+                  <span className="text-[11px] text-etc-600 ml-2">{partner.role}</span>
+                </div>
+              </div>
+            ))}
           </div>
 
           <div className="grid sm:grid-cols-2 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle">
@@ -280,7 +468,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="surface-2 border-y border-subtle py-20 lg:py-28">
+      <section className="py-20 lg:py-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white">
             The energy transition needs<br />better infrastructure.

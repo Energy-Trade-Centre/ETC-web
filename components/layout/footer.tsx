@@ -22,6 +22,7 @@ const footerLinks = {
   Company: [
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
+    { name: 'Transition Services', href: '/contact' },
     { name: 'Privacy', href: '/privacy' },
     { name: 'Terms', href: '/terms' },
   ],
