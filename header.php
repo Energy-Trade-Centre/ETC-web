@@ -26,11 +26,10 @@ $signin_url = get_theme_mod( 'etc_signin_url', '/dashboard' );
 	<nav class="nav-inner">
 		<!-- Logo -->
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav-logo">
-			<div class="nav-logo-bars">
-				<div class="nav-logo-bar"></div>
-				<div class="nav-logo-bar nav-logo-bar--60"></div>
-				<div class="nav-logo-bar nav-logo-bar--30"></div>
-			</div>
+			<svg class="nav-logo-icon" width="28" height="28" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M34 7 H19 C10.7 7 4 13.7 4 22 C4 30.3 10.7 37 19 37 H34" stroke="#00E676" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+				<line x1="19" y1="22" x2="30" y2="22" stroke="#00E676" stroke-width="5.5" stroke-linecap="round"/>
+			</svg>
 			<span class="nav-logo-text">ETC</span>
 		</a>
 

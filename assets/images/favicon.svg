@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
   <rect width="32" height="32" rx="6" fill="#09090B"/>
-  <rect x="7" y="6" width="5" height="20" rx="1.5" fill="#00E676"/>
-  <rect x="14" y="10" width="5" height="16" rx="1.5" fill="#00E676" opacity="0.6"/>
-  <rect x="21" y="14" width="5" height="12" rx="1.5" fill="#00E676" opacity="0.3"/>
+  <!-- Stylised E: curved left + 3 horizontal bars -->
+  <path d="M24 6 H14 C8.5 6 4 10.5 4 16 C4 21.5 8.5 26 14 26 H24" stroke="#00E676" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <line x1="14" y1="16" x2="22" y2="16" stroke="#00E676" stroke-width="4" stroke-linecap="round"/>
 </svg>
