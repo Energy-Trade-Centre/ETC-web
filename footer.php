@@ -35,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<a href="<?php echo esc_url( home_url( '/platform/#bess' ) ); ?>" class="footer-link">BESS Exchange</a>
 					<a href="<?php echo esc_url( home_url( '/platform/#analytics' ) ); ?>" class="footer-link">Analytics Engine</a>
 					<a href="<?php echo esc_url( home_url( '/platform/#grid' ) ); ?>" class="footer-link">Grid Intelligence</a>
-					<a href="<?php echo esc_url( home_url( '/platform/#lightning' ) ); ?>" class="footer-link">Lightning PPA</a>
+					<a href="<?php echo esc_url( home_url( '/platform/#fasttrack' ) ); ?>" class="footer-link">FastTrack PPA</a>
 				</div>
 			</div>
 
@@ -75,11 +75,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="footer-bottom">
 			<p class="footer-copy">&copy; <?php echo esc_html( date( 'Y' ) ); ?> Energy Trade Centre Ltd. All rights reserved.</p>
 			<div class="footer-offices">
-				<span>London</span>
+				<span>London, UK</span>
 				<span class="footer-offices-dot">&bull;</span>
-				<span>Amsterdam</span>
-				<span class="footer-offices-dot">&bull;</span>
-				<span>Houston</span>
+				<span>European &amp; Asia-Pacific offices opening 2026</span>
 			</div>
 		</div>
 	</div>
