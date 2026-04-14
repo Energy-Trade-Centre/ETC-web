@@ -9,7 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$signin_url = get_theme_mod( 'etc_signin_url', '/dashboard' );
+$signin_url = get_theme_mod( 'etc_signin_url', '/contact' );
+// TODO: Replace with actual auth URL once platform login is live (e.g., app.energytradecentre.com/login)
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -43,7 +44,7 @@ $signin_url = get_theme_mod( 'etc_signin_url', '/dashboard' );
 				<div class="nav-dropdown">
 					<a href="<?php echo esc_url( home_url( '/platform/#marketplace' ) ); ?>" class="nav-dropdown-item">
 						<div class="nav-dropdown-item-title">PPA Marketplace</div>
-						<div class="nav-dropdown-item-desc">4,500+ live offers. 12 markets. Real-time pricing.</div>
+						<div class="nav-dropdown-item-desc">Live offers. 12+ markets. Real-time pricing.</div>
 					</a>
 					<a href="<?php echo esc_url( home_url( '/platform/#assets' ) ); ?>" class="nav-dropdown-item">
 						<div class="nav-dropdown-item-title">Asset Exchange</div>
