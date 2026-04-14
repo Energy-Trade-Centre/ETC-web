@@ -37,8 +37,9 @@ function etc_scripts() {
 
 	wp_enqueue_script( 'etc-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), ETC_VERSION, true );
 
-	// Only load PPA estimator on pages that need it
+	// Live price ticker on homepage
 	if ( is_front_page() ) {
+		wp_enqueue_script( 'etc-live-prices', get_template_directory_uri() . '/assets/js/live-prices.js', array(), ETC_VERSION, true );
 		wp_enqueue_script( 'etc-ppa-estimator', get_template_directory_uri() . '/assets/js/ppa-estimator.js', array(), ETC_VERSION, true );
 	}
 }
@@ -83,7 +84,7 @@ function etc_schema_output() {
 		'contactPoint' => array(
 			'@type'       => 'ContactPoint',
 			'contactType' => 'sales',
-			'email'       => 'info@energytradecentre.com',
+			'email'       => 'jsouthall@atomenergygroup.com',
 		),
 	);
 
@@ -107,8 +108,8 @@ function etc_meta_tags() {
 		return;
 	}
 
-	$description = 'ETC is the institutional-grade platform for PPA trading, renewable asset exchange, battery storage, and energy market intelligence. 4,500+ live offers. 12 markets. Full transparency.';
-	$keywords = 'PPA marketplace, power purchase agreement, renewable energy trading, energy asset exchange, battery storage marketplace, BESS trading, corporate PPA, renewable energy procurement, energy analytics, grid intelligence, carbon free energy, 24/7 CFE matching, PPA pricing, renewable energy platform, energy market intelligence, solar PPA, wind PPA, energy trade centre, ETC platform, PPA revenue estimator, lightning PPA';
+	$description = 'ETC is the institutional-grade platform for PPA trading, renewable asset exchange, battery storage, and energy market intelligence. 12+ markets. Full transparency.';
+	$keywords = 'PPA marketplace, power purchase agreement, renewable energy trading, energy asset exchange, battery storage marketplace, BESS trading, corporate PPA, renewable energy procurement, energy analytics, grid intelligence, carbon free energy, 24/7 CFE matching, PPA pricing, renewable energy platform, energy market intelligence, solar PPA, wind PPA, energy trade centre, ETC platform, PPA revenue estimator, FastTrack PPA';
 
 	echo '<meta name="description" content="' . esc_attr( $description ) . '">' . "\n";
 	echo '<meta name="keywords" content="' . esc_attr( $keywords ) . '">' . "\n";
@@ -218,6 +219,42 @@ function etc_icon_menu() {
 function etc_icon_x() {
 	return '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>';
 }
+
+/**
+ * Handle built-in contact form submission
+ */
+function etc_handle_contact_form() {
+	if ( ! isset( $_POST['etc_nonce'] ) || ! wp_verify_nonce( $_POST['etc_nonce'], 'etc_contact_form' ) ) {
+		wp_die( 'Security check failed.' );
+	}
+
+	$to      = 'jsouthall@atomenergygroup.com';
+	$name    = sanitize_text_field( $_POST['firstName'] . ' ' . $_POST['lastName'] );
+	$email   = sanitize_email( $_POST['email'] );
+	$company = sanitize_text_field( $_POST['company'] );
+	$role    = sanitize_text_field( $_POST['role'] );
+	$message = sanitize_textarea_field( $_POST['message'] );
+
+	$subject = 'ETC Access Request: ' . $name . ' (' . $company . ')';
+	$body    = "New access request from ETC website:\n\n";
+	$body   .= "Name: {$name}\n";
+	$body   .= "Email: {$email}\n";
+	$body   .= "Company: {$company}\n";
+	$body   .= "Role: {$role}\n";
+	$body   .= "Message: {$message}\n";
+
+	$headers = array(
+		'Content-Type: text/plain; charset=UTF-8',
+		'Reply-To: ' . $name . ' <' . $email . '>',
+	);
+
+	wp_mail( $to, $subject, $body, $headers );
+
+	wp_redirect( home_url( '/contact/?submitted=1' ) );
+	exit;
+}
+add_action( 'admin_post_etc_contact_submit', 'etc_handle_contact_form' );
+add_action( 'admin_post_nopriv_etc_contact_submit', 'etc_handle_contact_form' );
 
 /**
  * Disable WordPress emoji scripts for performance
