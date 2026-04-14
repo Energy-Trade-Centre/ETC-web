@@ -8,35 +8,33 @@
 get_header();
 ?>
 
-<!-- Live Price Ticker -->
+<!-- Live Price Ticker — powered by market APIs -->
 <div class="ticker">
 	<div class="container">
 		<div class="ticker-inner">
 			<div class="flex items-center gap-2 shrink-0">
 				<div class="ticker-dot signal-pulse"></div>
-				<span class="ticker-label">PPA P50</span>
-				<span style="color:var(--etc-700);font-size:11px">Updated 4m ago</span>
+				<span class="ticker-label">Day-Ahead Prices</span>
+				<span id="ticker-timestamp" style="color:var(--etc-700);font-size:11px"></span>
 			</div>
-			<?php
-			$live_prices = array(
-				array( 'market' => 'ERCOT', 'tech' => 'Solar', 'price' => 24.50, 'change' => 2.3 ),
-				array( 'market' => 'PJM', 'tech' => 'Wind', 'price' => 28.90, 'change' => -1.1 ),
-				array( 'market' => 'Nordpool', 'tech' => 'Solar', 'price' => 38.60, 'change' => 3.1 ),
-				array( 'market' => 'EPEX', 'tech' => 'Wind', 'price' => 36.80, 'change' => 1.7 ),
-				array( 'market' => 'N2EX', 'tech' => 'Solar', 'price' => 48.90, 'change' => -2.0 ),
-				array( 'market' => 'CAISO', 'tech' => 'Wind', 'price' => 32.50, 'change' => -0.4 ),
-			);
-			foreach ( $live_prices as $p ) :
-			?>
-			<div class="ticker-item">
-				<span style="color:var(--etc-400);font-weight:500"><?php echo esc_html( $p['market'] ); ?></span>
-				<span style="color:var(--etc-500)"><?php echo esc_html( $p['tech'] ); ?></span>
-				<span class="mono" style="color:#fff;font-weight:500">$<?php echo number_format( $p['price'], 2 ); ?></span>
-				<span class="mono" style="font-weight:500;color:<?php echo $p['change'] > 0 ? 'var(--signal)' : 'var(--red)'; ?>">
-					<?php echo $p['change'] > 0 ? '+' : ''; ?><?php echo number_format( $p['change'], 1 ); ?>%
-				</span>
+			<div id="ticker-prices">
+				<?php
+				// Fallback static prices shown while JS loads live data
+				$fallback_prices = array(
+					array( 'market' => 'Nordpool', 'currency' => '€', 'label' => 'Nordic' ),
+					array( 'market' => 'EPEX', 'currency' => '€', 'label' => 'Germany' ),
+					array( 'market' => 'N2EX', 'currency' => '£', 'label' => 'GB' ),
+					array( 'market' => 'AEMO', 'currency' => 'A$', 'label' => 'Australia' ),
+				);
+				foreach ( $fallback_prices as $p ) :
+				?>
+				<div class="ticker-item">
+					<span style="color:var(--etc-400);font-weight:500"><?php echo esc_html( $p['market'] ); ?></span>
+					<span style="color:var(--etc-500)"><?php echo esc_html( $p['label'] ); ?></span>
+					<span class="mono" style="color:var(--etc-600);font-weight:500">&mdash;</span>
+				</div>
+				<?php endforeach; ?>
 			</div>
-			<?php endforeach; ?>
 		</div>
 	</div>
 </div>
@@ -79,10 +77,10 @@ get_header();
 			<div class="metrics-grid">
 				<?php
 				$metrics = array(
-					array( 'value' => '4,523', 'label' => 'Live PPA offers', 'sub' => 'across 12 markets' ),
-					array( 'value' => '1,425', 'label' => 'MW in assets', 'sub' => 'listed for exchange' ),
-					array( 'value' => '14d', 'label' => 'Lightning PPA', 'sub' => 'avg. time to close' ),
-					array( 'value' => '92', 'label' => 'Confidence Score', 'sub' => 'platform median' ),
+					array( 'value' => '12+', 'label' => 'Electricity markets', 'sub' => 'solar, wind, BESS, hybrid' ),
+					array( 'value' => 'GW-scale', 'label' => 'Deal pipeline', 'sub' => 'across 28 countries' ),
+					array( 'value' => '14d', 'label' => 'FastTrack PPA', 'sub' => 'avg. time to close' ),
+					array( 'value' => 'Live', 'label' => 'Market Intelligence', 'sub' => 'PPA pricing &amp; BESS benchmarks' ),
 				);
 				foreach ( $metrics as $m ) :
 				?>
@@ -174,14 +172,14 @@ get_header();
 	</div>
 </section>
 
-<!-- Lightning PPA — Feature Case Study -->
-<section class="section section--alt section--border-y" id="lightning-ppa">
+<!-- FastTrack PPA — Feature Case Study -->
+<section class="section section--alt section--border-y" id="fasttrack-ppa">
 	<div class="container">
 		<div class="grid-5-asym">
 			<div>
 				<div class="text-11 font-semibold text-amber uppercase tracking-wider mono mb-4">The ETC Disruptor</div>
 				<h2 class="text-3xl font-bold" style="line-height:1.25">
-					Lightning PPA: 14 days<br>
+					FastTrack PPA: 14 days<br>
 					<span class="text-etc-500">vs. 6-12 months industry average</span>
 				</h2>
 				<p class="mt-4 text-etc-400 leading-relaxed">
@@ -196,14 +194,14 @@ get_header();
 						<div class="text-11 text-etc-600 mt-1">discovery to signing</div>
 					</div>
 					<div class="card-elevated p-5 rounded-lg">
-						<div class="text-11 text-etc-500 mb-2">ETC Lightning PPA</div>
+						<div class="text-11 text-etc-500 mb-2">ETC FastTrack PPA</div>
 						<div class="mono text-2xl font-bold text-white">14 days</div>
 						<div class="text-11 text-etc-600 mt-1">same process, 95% faster</div>
 					</div>
 				</div>
 			</div>
 			<div class="card p-6">
-				<h3 class="text-11 font-semibold text-etc-600 uppercase tracking-widest mono mb-4">How Lightning PPA Works</h3>
+				<h3 class="text-11 font-semibold text-etc-600 uppercase tracking-widest mono mb-4">How FastTrack PPA Works</h3>
 				<?php
 				$steps = array(
 					array( 'num' => '01', 'label' => 'Select template', 'detail' => 'Solar, wind, hybrid, or BESS. Pre-negotiated legal terms.' ),
@@ -273,8 +271,8 @@ get_header();
 		<div class="grid md-grid-3" style="gap:2rem">
 			<?php
 			$diffs = array(
-				array( 'title' => 'Liquidity, not listings', 'desc' => 'Brokers show you their book. ETC shows you the market. 4,500+ live offers with transparent pricing, risk scores, and real-time P50 benchmarks.' ),
-				array( 'title' => 'Certainty, not complexity', 'desc' => 'Lightning PPA closes in 14 days. Monte Carlo models your downside. IFRS 9 classifies your risk. Every tool built to reduce time-to-certainty.' ),
+				array( 'title' => 'Liquidity, not listings', 'desc' => 'Brokers show you their book. ETC shows you the market. Transparent pricing, risk scores, and real-time benchmarks across 12+ electricity markets.' ),
+				array( 'title' => 'Certainty, not complexity', 'desc' => 'FastTrack PPA closes in 14 days. Monte Carlo models your downside. IFRS 9 classifies your risk. Every tool built to reduce time-to-certainty.' ),
 				array( 'title' => 'Intelligence, not information', 'desc' => "Cannibalization analysis. Flexibility Index. Confidence Scores. ETC doesn't just aggregate data — it synthesizes the signal from the noise." ),
 			);
 			foreach ( $diffs as $d ) :
@@ -329,7 +327,7 @@ get_header();
 <section class="section section--alt section--border-y">
 	<div class="container">
 		<div class="mb-16">
-			<div class="text-11 font-medium text-etc-600 uppercase tracking-wider mono mb-4">Trusted by</div>
+			<div class="text-11 font-medium text-etc-600 uppercase tracking-wider mono mb-4">Data Partners</div>
 			<h2 class="text-3xl font-bold">
 				The platform institutional<br>energy runs on
 			</h2>
