@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<a href="<?php echo esc_url( home_url( '/platform/#marketplace' ) ); ?>" class="footer-link">PPA Marketplace</a>
 					<a href="<?php echo esc_url( home_url( '/platform/#assets' ) ); ?>" class="footer-link">Asset Exchange</a>
 					<a href="<?php echo esc_url( home_url( '/platform/#bess' ) ); ?>" class="footer-link">BESS Exchange</a>
-					<a href="<?php echo esc_url( home_url( '/platform/#analytics' ) ); ?>" class="footer-link">Analytics Engine</a>
+					<a href="<?php echo esc_url( home_url( '/platform/#analytics' ) ); ?>" class="footer-link">Analytics Engine</a><!--ETC-DEPLOY-MARKER-1-->
 					<a href="<?php echo esc_url( home_url( '/platform/#grid' ) ); ?>" class="footer-link">Grid Intelligence</a>
 				</div>
 			</div>
