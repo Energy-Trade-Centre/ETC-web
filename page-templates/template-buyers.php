@@ -10,7 +10,6 @@ get_header();
 $pillars = array(
 	array( 'title' => 'Market access, not broker access', 'desc' => 'See 4,500+ offers across 12 markets. Not a curated shortlist from a single broker — the full market with transparent P50 pricing and ETC Confidence Scores.' ),
 	array( 'title' => 'CFO-ready risk modelling', 'desc' => 'Every deal comes with Monte Carlo NPV bands, IFRS 9 credit classification, and counterparty exposure analysis. Present to your board with confidence, not caveats.' ),
-	array( 'title' => '14-day execution via Fast PPA', 'desc' => 'Standardised terms on sub-25MW deals mean you can move from discovery to signed contract in under two weeks. No more 11-week procurement cycles.' ),
 	array( 'title' => '24/7 CFE verification', 'desc' => 'Go beyond annual RECs. Track your true hourly carbon-free energy score, identify gap hours, and model the cost to reach your 24/7 targets.' ),
 	array( 'title' => 'Portfolio-level intelligence', 'desc' => 'Monitor generation vs forecast, settlements, compliance deadlines, and RE100 progress across your entire PPA book from a single dashboard.' ),
 	array( 'title' => 'Counterparty transparency', 'desc' => "Credit ratings, risk scores, deal history, and NDA tracking on every counterparty. Know who you're trading with before you start negotiating." ),
@@ -19,7 +18,7 @@ $pillars = array(
 $workflow = array(
 	array( 'step' => '01', 'title' => 'Discover', 'desc' => 'Browse the marketplace or publish an RFP to 4,500+ sellers. Filter by technology, geography, risk, and price.' ),
 	array( 'step' => '02', 'title' => 'Model', 'desc' => 'Run Monte Carlo simulations, benchmark against market P50, and stress-test your downside. Build your investment case.' ),
-	array( 'step' => '03', 'title' => 'Execute', 'desc' => 'Negotiate in the Deal Room or close instantly via Fast PPA. Average time from first offer to signing: 58 days.' ),
+	array( 'step' => '03', 'title' => 'Execute', 'desc' => 'Negotiate in the Deal Room. Average time from first offer to signing: 58 days.' ),
 	array( 'step' => '04', 'title' => 'Manage', 'desc' => 'Track portfolio performance, settlements, 24/7 CFE scores, and compliance — all in real time from your command centre.' ),
 );
 ?>

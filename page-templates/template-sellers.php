@@ -11,7 +11,6 @@ $pillars = array(
 	array( 'title' => 'Institutional buyer network', 'desc' => "Direct access to corporates, utilities, infrastructure funds, and pension funds actively seeking offtake. Not a cold outreach list — a live market." ),
 	array( 'title' => 'Asset+PPA bundling', 'desc' => 'Bundle asset sales with negotiated PPA offtake for 25-35% higher transaction value. A deal structure unique to ETC that maximises your exit multiples.' ),
 	array( 'title' => 'Fair price discovery', 'desc' => 'Auction mechanics and transparent market data ensure best execution. No opaque broker margins. Your price is set by the market, not by an intermediary.' ),
-	array( 'title' => 'Fast PPA for speed', 'desc' => 'Standardised templates close sub-25MW deals in 14 days. Remove the procurement bottleneck from your pipeline and accelerate time-to-revenue.' ),
 	array( 'title' => 'Global reach', 'desc' => "List in any of 28 countries across 12 electricity markets. Access buyer pools in markets your existing broker network can't reach." ),
 	array( 'title' => 'Every development stage', 'desc' => 'Greenfield, ready-to-build, NTP, construction, operational, secondary sale. ETC matches you with the right buyers at every stage of your project lifecycle.' ),
 );

@@ -22,8 +22,6 @@ $modules = array(
 			'RFP creation with automated response aggregation',
 			'Integrated due diligence documentation',
 		),
-		'metric_value' => '4,523',
-		'metric_label' => 'live offers',
 	),
 	array(
 		'id' => 'assets',
@@ -39,8 +37,6 @@ $modules = array(
 			'Auction and bilateral deal structures',
 			'Every development stage: greenfield through secondary sale',
 		),
-		'metric_value' => '1,425',
-		'metric_label' => 'MW listed',
 	),
 	array(
 		'id' => 'bess',
@@ -113,7 +109,6 @@ $modules = array(
 );
 
 $execution = array(
-	array( 'title' => 'Fast PPA', 'desc' => '200+ deals closed. 6 pre-built templates. Sub-25MW PPAs from discovery to signed contract in 14 days — vs. 6-12 months industry average.', 'metric' => '14d avg.' ),
 	array( 'title' => 'Deal Room', 'desc' => '7-stage pipeline from discovery to signing. Full document management, negotiation tracking, milestone alerts.', 'metric' => '58d avg.' ),
 	array( 'title' => 'Settlements', 'desc' => 'Automated payment tracking, reconciliation, and dispute management. Average settlement: 1.2 days.', 'metric' => '1.2d avg.' ),
 	array( 'title' => 'Compliance', 'desc' => 'FERC filings, REC reporting, regulatory tracking, audit trails. Complete documentation.', 'metric' => 'Automated' ),
@@ -154,10 +149,12 @@ $execution = array(
 				<h2 class="text-3xl font-bold"><?php echo esc_html( $mod['title'] ); ?></h2>
 				<p class="mt-2 text-lg text-etc-400 font-medium"><?php echo esc_html( $mod['lead'] ); ?></p>
 				<p class="mt-4 text-14 text-etc-500 leading-relaxed"><?php echo esc_html( $mod['desc'] ); ?></p>
+				<?php if ( ! empty( $mod['metric_value'] ) ) : ?>
 				<div class="module-metric">
 					<span class="module-metric-value"><?php echo esc_html( $mod['metric_value'] ); ?></span>
 					<span class="module-metric-label"><?php echo esc_html( $mod['metric_label'] ); ?></span>
 				</div>
+				<?php endif; ?>
 			</div>
 			<div class="card p-8">
 				<h3 class="text-11 font-semibold text-etc-600 uppercase tracking-widest mb-6">Key Capabilities</h3>

@@ -77,60 +77,6 @@ get_header();
 	</div>
 </section>
 
-<!-- ETC Confidence Score — Brand Pillar -->
-<section class="section section--alt section--border-y" id="confidence-score">
-	<div class="container">
-		<div class="grid-2-asym" style="align-items:center">
-			<div>
-				<div class="text-11 font-semibold text-signal uppercase tracking-wider mono mb-4">Proprietary Signal</div>
-				<h2 class="text-3xl font-bold" style="line-height:1.25">The ETC Confidence Score</h2>
-				<p class="mt-4 text-etc-400 leading-relaxed">
-					Every offer, every asset, every counterparty on ETC is scored 0-100 by our
-					proprietary quality signal. It synthesizes credit risk, project maturity,
-					pricing competitiveness, and counterparty track record into a single number
-					your team can act on.
-				</p>
-				<p class="mt-4 text-13 text-etc-500 leading-relaxed">
-					Deals with a Confidence Score above 85 close 3x faster. The platform
-					median sits at 92 — because we curate for quality, not quantity.
-				</p>
-			</div>
-			<div class="card p-8">
-				<div class="flex items-center justify-between mb-8">
-					<span class="text-11 font-semibold text-etc-600 uppercase tracking-widest mono">Score Breakdown</span>
-					<div class="flex items-center gap-2">
-						<div class="live-dot signal-pulse" style="width:6px;height:6px"></div>
-						<span class="text-11 text-etc-600">Live</span>
-					</div>
-				</div>
-				<div class="text-center mb-8">
-					<div class="mono text-7xl font-bold text-signal">92</div>
-					<div class="text-12 text-etc-500 mt-2">Platform median Confidence Score</div>
-				</div>
-				<?php
-				$factors = array(
-					array( 'label' => 'Counterparty Credit', 'score' => 94 ),
-					array( 'label' => 'Pricing Competitiveness', 'score' => 91 ),
-					array( 'label' => 'Project Maturity', 'score' => 89 ),
-					array( 'label' => 'Execution Probability', 'score' => 93 ),
-				);
-				foreach ( $factors as $f ) :
-				?>
-				<div style="margin-bottom:1rem">
-					<div class="flex items-center justify-between" style="margin-bottom:6px">
-						<span class="text-12 text-etc-400"><?php echo esc_html( $f['label'] ); ?></span>
-						<span class="mono text-12 text-white font-medium"><?php echo esc_html( $f['score'] ); ?></span>
-					</div>
-					<div class="score-bar-track">
-						<div class="score-bar-fill" style="width:<?php echo esc_attr( $f['score'] ); ?>%"></div>
-					</div>
-				</div>
-				<?php endforeach; ?>
-			</div>
-		</div>
-	</div>
-</section>
-
 <!-- PPA Revenue Estimator -->
 <section class="section" id="estimator">
 	<div class="container">
@@ -149,58 +95,6 @@ get_header();
 			</div>
 			<div class="card p-8" id="ppa-estimator">
 				<!-- PPA Estimator rendered by JS -->
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- FastTrack PPA — Feature Case Study -->
-<section class="section section--alt section--border-y" id="fasttrack-ppa">
-	<div class="container">
-		<div class="grid-5-asym">
-			<div>
-				<div class="text-11 font-semibold text-amber uppercase tracking-wider mono mb-4">The ETC Disruptor</div>
-				<h2 class="text-3xl font-bold" style="line-height:1.25">
-					FastTrack PPA: 14 days<br>
-					<span class="text-etc-500">vs. 6-12 months industry average</span>
-				</h2>
-				<p class="mt-4 text-etc-400 leading-relaxed">
-					Standardised templates, pre-qualified counterparties, and automated term sheet
-					generation mean sub-25MW PPAs close in an average of 14 days on ETC. That&rsquo;s
-					not an aspirational target &mdash; it&rsquo;s the platform average across 200+ closed deals.
-				</p>
-				<div class="grid" style="grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem">
-					<div class="card-elevated p-5 rounded-lg">
-						<div class="text-11 text-etc-500 mb-2">Industry average</div>
-						<div class="mono text-2xl font-bold text-white">6-12 months</div>
-						<div class="text-11 text-etc-600 mt-1">discovery to signing</div>
-					</div>
-					<div class="card-elevated p-5 rounded-lg">
-						<div class="text-11 text-etc-500 mb-2">ETC FastTrack PPA</div>
-						<div class="mono text-2xl font-bold text-white">14 days</div>
-						<div class="text-11 text-etc-600 mt-1">same process, 95% faster</div>
-					</div>
-				</div>
-			</div>
-			<div class="card p-6">
-				<h3 class="text-11 font-semibold text-etc-600 uppercase tracking-widest mono mb-4">How FastTrack PPA Works</h3>
-				<?php
-				$steps = array(
-					array( 'num' => '01', 'label' => 'Select template', 'detail' => 'Solar, wind, hybrid, or BESS. Pre-negotiated legal terms.' ),
-					array( 'num' => '02', 'label' => 'Configure deal', 'detail' => 'Set MW, tenor, price. Instant term sheet generation.' ),
-					array( 'num' => '03', 'label' => 'Match & execute', 'detail' => 'Pre-qualified counterparties. Digital signatures.' ),
-					array( 'num' => '04', 'label' => 'Closed', 'detail' => 'Average: 14 days. Record: 6 days.' ),
-				);
-				foreach ( $steps as $s ) :
-				?>
-				<div class="flex gap-4 items-start" style="margin-bottom:1rem">
-					<span class="mono text-12 font-bold text-amber shrink-0 pt-05"><?php echo esc_html( $s['num'] ); ?></span>
-					<div>
-						<div class="text-13 font-medium text-white"><?php echo esc_html( $s['label'] ); ?></div>
-						<div class="text-12 text-etc-500"><?php echo esc_html( $s['detail'] ); ?></div>
-					</div>
-				</div>
-				<?php endforeach; ?>
 			</div>
 		</div>
 	</div>
@@ -254,7 +148,7 @@ get_header();
 			<?php
 			$diffs = array(
 				array( 'title' => 'Liquidity, not listings', 'desc' => 'Brokers show you their book. ETC shows you the market. Transparent pricing, risk scores, and real-time benchmarks across 12+ electricity markets.' ),
-				array( 'title' => 'Certainty, not complexity', 'desc' => 'FastTrack PPA closes in 14 days. Monte Carlo models your downside. IFRS 9 classifies your risk. Every tool built to reduce time-to-certainty.' ),
+				array( 'title' => 'Certainty, not complexity', 'desc' => 'Monte Carlo models your downside. IFRS 9 classifies your risk. Every tool built to reduce time-to-certainty.' ),
 				array( 'title' => 'Intelligence, not information', 'desc' => "Cannibalization analysis. Flexibility Index. Confidence Scores. ETC doesn't just aggregate data — it synthesizes the signal from the noise." ),
 			);
 			foreach ( $diffs as $d ) :

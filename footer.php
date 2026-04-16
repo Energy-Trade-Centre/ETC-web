@@ -35,7 +35,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<a href="<?php echo esc_url( home_url( '/platform/#bess' ) ); ?>" class="footer-link">BESS Exchange</a>
 					<a href="<?php echo esc_url( home_url( '/platform/#analytics' ) ); ?>" class="footer-link">Analytics Engine</a>
 					<a href="<?php echo esc_url( home_url( '/platform/#grid' ) ); ?>" class="footer-link">Grid Intelligence</a>
-					<a href="<?php echo esc_url( home_url( '/platform/#fasttrack' ) ); ?>" class="footer-link">FastTrack PPA</a>
 				</div>
 			</div>
 

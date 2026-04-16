@@ -14,10 +14,9 @@ $solutions = array(
 		'desc' => "Your CFO doesn't want a PPA. They want a risk-adjusted position with transparent downside. ETC gives procurement teams the liquidity, analytics, and execution speed to deliver certainty.",
 		'href' => '/solutions/buyers/',
 		'points' => array(
-			'4,500+ live PPA offers across 12 markets',
+			'Live PPA offers across 12 markets',
 			'Monte Carlo NPV modelling for board presentations',
 			'24/7 CFE hourly matching and verification',
-			'Fast PPA: 14-day close on standardised terms',
 		),
 	),
 	array(

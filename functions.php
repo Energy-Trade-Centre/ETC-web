@@ -109,7 +109,7 @@ function etc_meta_tags() {
 	}
 
 	$description = 'ETC is the institutional-grade platform for PPA trading, renewable asset exchange, battery storage, and energy market intelligence. 12+ markets. Full transparency.';
-	$keywords = 'PPA marketplace, power purchase agreement, renewable energy trading, energy asset exchange, battery storage marketplace, BESS trading, corporate PPA, renewable energy procurement, energy analytics, grid intelligence, carbon free energy, 24/7 CFE matching, PPA pricing, renewable energy platform, energy market intelligence, solar PPA, wind PPA, energy trade centre, ETC platform, PPA revenue estimator, FastTrack PPA';
+	$keywords = 'PPA marketplace, power purchase agreement, renewable energy trading, energy asset exchange, battery storage marketplace, BESS trading, corporate PPA, renewable energy procurement, energy analytics, grid intelligence, carbon free energy, 24/7 CFE matching, PPA pricing, renewable energy platform, energy market intelligence, solar PPA, wind PPA, energy trade centre, ETC platform, PPA revenue estimator';
 
 	echo '<meta name="description" content="' . esc_attr( $description ) . '">' . "\n";
 	echo '<meta name="keywords" content="' . esc_attr( $keywords ) . '">' . "\n";

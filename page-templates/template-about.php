@@ -25,7 +25,6 @@ $milestones = array(
 $stats = array(
 	array( 'value' => '12+', 'label' => 'Electricity markets' ),
 	array( 'value' => '28', 'label' => 'Countries' ),
-	array( 'value' => '4,500+', 'label' => 'Live PPA offers' ),
 	array( 'value' => '50+', 'label' => 'Institutional counterparties' ),
 );
 
