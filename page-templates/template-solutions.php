@@ -17,7 +17,7 @@ $solutions = array(
 			'4,500+ live PPA offers across 12 markets',
 			'Monte Carlo NPV modelling for board presentations',
 			'24/7 CFE hourly matching and verification',
-			'Lightning PPA: 14-day close on standardised terms',
+			'Fast PPA: 14-day close on standardised terms',
 		),
 	),
 	array(

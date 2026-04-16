@@ -73,24 +73,6 @@ get_header();
 				</a>
 			</div>
 
-			<!-- Metrics strip -->
-			<div class="metrics-grid">
-				<?php
-				$metrics = array(
-					array( 'value' => '12+', 'label' => 'Electricity markets', 'sub' => 'solar, wind, BESS, hybrid' ),
-					array( 'value' => 'GW-scale', 'label' => 'Deal pipeline', 'sub' => 'across 28 countries' ),
-					array( 'value' => '14d', 'label' => 'FastTrack PPA', 'sub' => 'avg. time to close' ),
-					array( 'value' => 'Live', 'label' => 'Market Intelligence', 'sub' => 'PPA pricing &amp; BESS benchmarks' ),
-				);
-				foreach ( $metrics as $m ) :
-				?>
-				<div class="metric-cell">
-					<div class="metric-value"><?php echo esc_html( $m['value'] ); ?></div>
-					<div class="metric-label"><?php echo esc_html( $m['label'] ); ?></div>
-					<div class="metric-sub"><?php echo esc_html( $m['sub'] ); ?></div>
-				</div>
-				<?php endforeach; ?>
-			</div>
 		</div>
 	</div>
 </section>

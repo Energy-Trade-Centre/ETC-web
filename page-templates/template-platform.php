@@ -113,7 +113,7 @@ $modules = array(
 );
 
 $execution = array(
-	array( 'title' => 'Lightning PPA', 'desc' => '200+ deals closed. 6 pre-built templates. Sub-25MW PPAs from discovery to signed contract in 14 days — vs. 6-12 months industry average.', 'metric' => '14d avg.' ),
+	array( 'title' => 'Fast PPA', 'desc' => '200+ deals closed. 6 pre-built templates. Sub-25MW PPAs from discovery to signed contract in 14 days — vs. 6-12 months industry average.', 'metric' => '14d avg.' ),
 	array( 'title' => 'Deal Room', 'desc' => '7-stage pipeline from discovery to signing. Full document management, negotiation tracking, milestone alerts.', 'metric' => '58d avg.' ),
 	array( 'title' => 'Settlements', 'desc' => 'Automated payment tracking, reconciliation, and dispute management. Average settlement: 1.2 days.', 'metric' => '1.2d avg.' ),
 	array( 'title' => 'Compliance', 'desc' => 'FERC filings, REC reporting, regulatory tracking, audit trails. Complete documentation.', 'metric' => 'Automated' ),
