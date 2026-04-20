@@ -19,7 +19,7 @@ const pillars = [
     description: 'Every deal comes with Monte Carlo NPV bands, IFRS 9 credit classification, and counterparty exposure analysis. Present to your board with confidence, not caveats.',
   },
   {
-    title: '14-day execution via Lightning PPA',
+    title: 'Accelerated execution via FastTrack PPA',
     description: 'Standardised terms on sub-25MW deals mean you can move from discovery to signed contract in under two weeks. No more 11-week procurement cycles.',
   },
   {
@@ -39,7 +39,7 @@ const pillars = [
 const workflow = [
   { step: '01', title: 'Discover', description: 'Browse the marketplace or publish an RFP to 4,500+ sellers. Filter by technology, geography, risk, and price.' },
   { step: '02', title: 'Model', description: 'Run Monte Carlo simulations, benchmark against market P50, and stress-test your downside. Build your investment case.' },
-  { step: '03', title: 'Execute', description: 'Negotiate in the Deal Room or close instantly via Lightning PPA. Average time from first offer to signing: 58 days.' },
+  { step: '03', title: 'Execute', description: 'Negotiate in the Deal Room or close instantly via FastTrack PPA. Average time from first offer to signing: 58 days.' },
   { step: '04', title: 'Manage', description: 'Track portfolio performance, settlements, 24/7 CFE scores, and compliance — all in real time from your command centre.' },
 ];
 
