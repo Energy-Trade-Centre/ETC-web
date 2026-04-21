@@ -3,116 +3,127 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Platform | The ETC Command Centre',
+  title: 'Platform | PPA, Asset, BESS, Grid and CFE',
   description:
-    'Explore the ETC platform: PPA Marketplace, Asset Exchange, BESS Exchange, Analytics Engine, 24/7 CFE Matching, Grid Intelligence, Lightning PPA, and full deal lifecycle management.',
+    'The ETC platform across GB — PPA Marketplace and ETC Intel live today; Asset Exchange, BESS Exchange, Grid Intelligence and 24/7 CFE Matching on the 2026 roadmap.',
   alternates: { canonical: 'https://energytradecentre.com/platform' },
 };
 
+// Live modules carry real capability copy. Roadmap modules are labelled honestly
+// and describe what they will do in 2026 — not what they do today.
 const modules = [
   {
     id: 'marketplace',
-    tag: 'DISCOVERY',
-    title: 'PPA Marketplace',
-    lead: 'The deepest liquidity pool for power purchase agreements.',
-    description: 'Browse 4,500+ live PPA offers across ERCOT, PJM, MISO, CAISO, Nordpool, EPEX, N2EX, and more. Every offer includes an ETC Confidence Score, counterparty credit rating, and real-time P50 pricing.',
+    tag: 'LIVE NOW',
+    status: 'live' as const,
+    title: 'PPA Marketplace & Brokerage',
+    lead: 'Live pricing, structuring and execution for PPAs across GB.',
+    description:
+      'Pay-as-produced, baseload and shaped products across offshore wind, onshore wind and solar PV. Indicative curves you can quote from, counterparty matching from the network, and founder-led structuring through to signed contract.',
     features: [
-      'Filter by technology, market, maturity, price range, and risk profile',
-      'ETC Confidence Score (0-100) on every offer — proprietary quality signal',
-      'Watchlists with automated price alerts and position tracking',
-      'P0/P25/P50/P75/P100 pricing with 8-quarter rolling history',
-      'RFP creation with automated response aggregation',
-      'Integrated due diligence documentation',
+      'Indicative PaP ranges by technology and tenor (3Y / 5Y / 10Y)',
+      'Counterparty matching across Big 6, European majors, independent traders, IPPs and corporate offtakers',
+      'Structuring across PaP, baseload, shaped, sleeved and virtual variants',
+      'Direct execution — no sub-brokerage, no hand-offs',
+      'Indicative pricing refreshed on a published cadence (H2 2025 live)',
     ],
-    metric: { value: '4,523', label: 'live offers' },
-  },
-  {
-    id: 'assets',
-    tag: 'EXCHANGE',
-    title: 'Asset Exchange',
-    lead: 'Trade renewable energy projects. Greenfield to operational.',
-    description: 'The only platform where you can buy, sell, and trade renewable projects bundled with PPA offtake agreements. Our Asset+PPA bundles consistently deliver 25-35% premium over asset-only transactions.',
-    features: [
-      '7-factor proprietary valuation model with Revenue Certainty Scores',
-      'Asset+PPA Bundling — unique ETC feature for maximum transaction value',
-      'Full pipeline tracking from LOI to financial close',
-      'Verified buyer & seller registry with institutional counterparties',
-      'Auction and bilateral deal structures',
-      'Every development stage: greenfield through secondary sale',
-    ],
-    metric: { value: '1,425', label: 'MW listed' },
-  },
-  {
-    id: 'bess',
-    tag: 'STORAGE',
-    title: 'BESS Exchange',
-    lead: 'The first institutional marketplace for battery storage.',
-    description: 'Trade storage capacity, match asset owners with optimisers, structure contracts, and benchmark performance. Purpose-built for the storage revolution, not retrofitted from a PPA tool.',
-    features: [
-      'Revenue Stack Optimisation: model DC, FFR, BM, arbitrage, and CM income streams together',
-      'Flexibility Index: live pricing across all five revenue streams with P10-P90 bands',
-      'Algorithmic matching of assets with optimisers and offtakers',
-      'Standardised contract templates: optimisation, tolling, revenue share, co-location',
-      'Independent performance benchmarking vs market average',
-      'Developer pipeline for pre-construction projects seeking partners',
-    ],
-    metric: { value: '300+', label: 'MWh registered' },
   },
   {
     id: 'analytics',
-    tag: 'ANALYTICS',
-    title: 'Analytics Engine',
-    lead: 'Institutional-grade modelling built for investment committees.',
-    description: 'Not a spreadsheet plugin. ETC\'s Analytics Engine is a fully integrated financial modelling suite — Monte Carlo simulation, IFRS 9 credit risk, portfolio cashflow analysis, and price benchmarking — powered by live market data.',
+    tag: 'LIVE NOW',
+    status: 'live' as const,
+    title: 'ETC Intel',
+    lead: 'Indicative curves, counterparty coverage and deal notes.',
+    description:
+      'Built for procurement, origination and investment teams that need to quote from a published reference, understand who is on the other side, and see how GB PPA structure is actually moving.',
     features: [
-      'PPA Deal Modeller with real-time NPV/IRR at P10/P50/P90 confidence bands',
-      'Monte Carlo simulation across 40+ price scenarios',
-      'Portfolio cashflow projection: actual vs forecast over multi-year horizons',
-      'IFRS 9 credit risk: 3-stage classification, expected loss, counterparty exposure',
-      'Price benchmarking: contracted rates vs current market P50',
-      'Customisable reports with data export for board presentations',
+      'Indicative GB PPA curves by technology and tenor',
+      'Counterparty coverage notes across utilities, majors, traders, IPPs and corporates',
+      'Deal structuring notes — PaP vs baseload vs shaped, sleeving, credit and shape premia',
+      'Cadence-based refresh — half-yearly indicative ranges, intra-period where the market moves',
     ],
-    metric: { value: '40+', label: 'price scenarios' },
   },
   {
-    id: 'cfe',
-    tag: 'CFE',
-    title: '24/7 CFE Matching',
-    lead: 'Beyond annual RECs. Hourly carbon-free energy verification.',
-    description: 'The ETC CFE engine matches your portfolio against real load profiles hour-by-hour. See your true carbon-free energy score, identify unmatched hours, quantify the cost to close gaps, and optimise your portfolio to reach 24/7 targets.',
+    id: 'assets',
+    tag: '2026 ROADMAP',
+    status: 'roadmap' as const,
+    title: 'Asset Exchange',
+    lead: 'Trade renewable projects — and Asset + PPA bundles — across the GB pipeline.',
+    description:
+      'In scope for 2026: a structured venue to move projects through development, construction and operating stages, with Asset + PPA bundling where it adds value. Not live today.',
     features: [
-      'Hourly matching of generation to consumption profiles',
-      'CFE Score calculation (0-100%) with granular breakdown by hour',
-      'Gap analysis: identify unmatched hours and cost-to-close',
-      'Portfolio optimisation recommendations across solar, wind, and BESS',
-      'Aligned with EnergyTag and 24/7 Carbon-Free Energy Compact standards',
-      '4 optimal portfolio configurations ranked by cost vs coverage',
+      'Project listings across development, NTP, construction and operational stages',
+      'Asset + PPA bundles where bundling improves execution',
+      'Auction and bilateral structures',
+      'Buyer-side diligence pack alignment across developers and IPPs',
     ],
-    metric: { value: '24/7', label: 'hourly resolution' },
+  },
+  {
+    id: 'bess',
+    tag: '2026 ROADMAP',
+    status: 'roadmap' as const,
+    title: 'BESS Exchange',
+    lead: 'Battery storage origination and optimisation marketplace.',
+    description:
+      'In scope for 2026: revenue-stack-aware origination — DC, FFR, BM, wholesale arbitrage, Capacity Market — with standardised contract templates for optimisation, tolling and revenue share. Not live today.',
+    features: [
+      'Revenue stack modelling across DC, FFR, BM, arbitrage and CM',
+      'Asset owner ↔ optimiser matching',
+      'Contract templates: optimisation, tolling, revenue share, co-location',
+      'Pre-construction developer pipeline for partnership sourcing',
+    ],
   },
   {
     id: 'grid',
-    tag: 'GRID',
+    tag: '2026 ROADMAP',
+    status: 'roadmap' as const,
     title: 'Grid Intelligence',
-    lead: 'Decisions informed by the grid, not just the market.',
-    description: 'Live generation mix, regional DNO capacity, constraint mapping, cannibalization analysis, and inter-regional power flows. The data layer that turns procurement decisions into infrastructure decisions.',
+    lead: 'Constraint, queue and regional capacity visibility for GB.',
+    description:
+      'In scope for 2026: a structured view of the TO and DNO layer that origination and investment teams actually act on — queue positions, constraint exposure and regional headroom. Not live today.',
     features: [
-      'Live generation mix with real-time renewable share and system frequency',
-      'Regional DNO capacity headroom and connection queue data',
-      'Cannibalization analysis: capture rate trends and revenue at risk',
-      'Revenue stack modelling for co-located solar+BESS and wind+BESS projects',
-      'Active constraint mapping with associated cost data and affected assets',
-      'Inter-regional power flows, interconnector utilisation, and congestion pricing',
+      'Connection queue visibility by region and DNO',
+      'Constraint and curtailment mapping',
+      'Regional capacity headroom',
+      'Co-location (solar+BESS, wind+BESS) structuring context',
     ],
-    metric: { value: '12+', label: 'markets covered' },
+  },
+  {
+    id: 'cfe',
+    tag: '2026 ROADMAP',
+    status: 'roadmap' as const,
+    title: '24/7 CFE Matching',
+    lead: 'Hourly carbon-free energy matching — beyond annual REGOs.',
+    description:
+      'In scope for 2026: match your portfolio against real load profiles hour by hour, quantify the gap, and price the cost to close it. Aligned with EnergyTag and 24/7 CFE Compact. Not live today.',
+    features: [
+      'Hourly generation ↔ load matching',
+      'CFE score with gap-hour breakdown',
+      'Gap-closing cost modelling across wind, solar and BESS',
+      'Standards-aligned reporting (EnergyTag / 24/7 CFE Compact)',
+    ],
   },
 ];
 
+// Replaces the fabricated "Lightning PPA 14d / 200+ deals / Deal Room 58d / Settlements 1.2d"
+// execution strip with how ETC actually works end-to-end today.
 const execution = [
-  { title: 'Lightning PPA', description: '200+ deals closed. 6 pre-built templates. Sub-25MW PPAs from discovery to signed contract in 14 days — vs. 6-12 months industry average.', metric: '14d avg.', id: 'lightning' },
-  { title: 'Deal Room', description: '7-stage pipeline from discovery to signing. Full document management, negotiation tracking, milestone alerts.', metric: '58d avg.' },
-  { title: 'Settlements', description: 'Automated payment tracking, reconciliation, and dispute management. Average settlement: 1.2 days.', metric: '1.2d avg.' },
-  { title: 'Compliance', description: 'FERC filings, REC reporting, regulatory tracking, audit trails. Complete documentation.', metric: 'Automated' },
+  {
+    title: 'Counterparty matching',
+    description: 'Match against the live counterparty network: Big 6, European majors, independent traders, IPPs and corporate offtakers.',
+  },
+  {
+    title: 'Structuring',
+    description: 'Pay-as-produced, baseload, shaped, sleeved and virtual PPA variants. Credit, shape and curtailment premia negotiated transparently.',
+  },
+  {
+    title: 'Execution',
+    description: 'Founder-led through term sheet to signed contract. Direct execution — no sub-brokerage, no hand-offs.',
+  },
+  {
+    title: 'Post-trade',
+    description: 'Counterparty documentation, REGO treatment and settlement hand-off tracked through close.',
+  },
 ];
 
 export default function PlatformPage() {
@@ -127,20 +138,20 @@ export default function PlatformPage() {
               The Platform
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.05] tracking-tight">
-              Your command centre<br />
-              for the <span className="etc-gradient">energy transition</span>
+              What&apos;s live now &mdash;<br />
+              and what&apos;s <span className="etc-gradient">next</span>
             </h1>
             <p className="mt-6 text-lg text-etc-400 leading-relaxed">
-              Six integrated modules. One platform. From PPA discovery and asset exchange
-              to BESS trading, financial modelling, and grid analytics — ETC replaces
-              spreadsheets, brokers, and fragmented tools with unified market infrastructure.
+              PPA Marketplace and ETC Intel are operational today across GB. Asset Exchange,
+              BESS Exchange, Grid Intelligence and 24/7 CFE Matching are on the 2026 roadmap.
+              Everything on this page is labelled honestly: LIVE or ROADMAP.
             </p>
             <div className="mt-8">
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
               >
-                Request access <ArrowRight className="w-4 h-4" />
+                Book a call <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
@@ -157,20 +168,20 @@ export default function PlatformPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
               <div>
-                <div className="text-[10px] font-semibold text-etc-600 uppercase tracking-widest mb-3 mono">
+                <div
+                  className={`text-[10px] font-semibold uppercase tracking-widest mb-3 mono ${
+                    mod.status === 'roadmap' ? 'text-amber' : 'text-signal'
+                  }`}
+                >
                   {mod.tag}
                 </div>
                 <h2 className="text-3xl sm:text-4xl font-bold text-white">{mod.title}</h2>
                 <p className="mt-2 text-lg text-etc-400 font-medium">{mod.lead}</p>
                 <p className="mt-4 text-[14px] text-etc-500 leading-relaxed">{mod.description}</p>
-                <div className="mt-8 card-elevated inline-flex items-center gap-3 px-5 py-3 rounded-lg">
-                  <span className="mono text-2xl font-bold text-signal">{mod.metric.value}</span>
-                  <span className="text-[12px] text-etc-500">{mod.metric.label}</span>
-                </div>
               </div>
               <div className="card p-8">
                 <h3 className="text-[11px] font-semibold text-etc-600 uppercase tracking-widest mb-6">
-                  Key Capabilities
+                  {mod.status === 'roadmap' ? 'Planned capabilities' : 'Capabilities live today'}
                 </h3>
                 <ul className="space-y-4">
                   {mod.features.map((f) => (
@@ -186,7 +197,7 @@ export default function PlatformPage() {
         </section>
       ))}
 
-      {/* Execution layer */}
+      {/* How execution actually works — honest replacement for the Lightning PPA strip */}
       <section className="surface-2 border-t border-subtle py-20 lg:py-28" id="execution">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16">
@@ -194,17 +205,17 @@ export default function PlatformPage() {
               EXECUTION
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-white">
-              Discovery is half the job.
+              How a PPA actually moves through ETC.
             </h2>
             <p className="mt-4 text-etc-400 max-w-2xl">
-              ETC manages the full lifecycle from term sheet through settlement and compliance.
-              Time-to-certainty is the metric that matters.
+              Matching, structuring, execution and post-trade &mdash; handled directly.
+              Founder-led, no sub-brokers, no hand-offs.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle">
             {execution.map((e) => (
               <div key={e.title} className="surface-1 p-7">
-                <div className="mono text-lg font-bold text-signal mb-3">{e.metric}</div>
+                <div className="w-8 h-px bg-signal mb-5" />
                 <h3 className="text-base font-semibold text-white mb-2">{e.title}</h3>
                 <p className="text-[12px] text-etc-500 leading-relaxed">{e.description}</p>
               </div>
@@ -216,17 +227,17 @@ export default function PlatformPage() {
       {/* CTA */}
       <section className="border-t border-subtle py-20 lg:py-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white">See the command centre</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white">See the platform in context</h2>
           <p className="mt-4 text-etc-400 max-w-xl mx-auto">
-            Book a personalised walkthrough and see why the most sophisticated energy
-            participants are building on ETC.
+            A 30-minute walkthrough of what&apos;s live, what&apos;s on the 2026 roadmap,
+            and how a deal moves from indicative quote to signed contract.
           </p>
           <div className="mt-8">
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
             >
-              Request access <ArrowRight className="w-4 h-4" />
+              Book a call <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

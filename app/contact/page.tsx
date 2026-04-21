@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
-import { ArrowRight, CheckCircle2, Mail, MapPin, Building2 } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Mail, MapPin } from 'lucide-react';
 
 const roles = [
   'Energy Buyer / Procurement',
@@ -24,11 +23,10 @@ export default function ContactPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 lg:pt-28 lg:pb-20">
           <div className="max-w-3xl">
             <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-[1.05] tracking-tight">
-              Get access to ETC
+              Book a call
             </h1>
             <p className="mt-6 text-lg text-etc-400 leading-relaxed">
-              Request a personalised walkthrough of the platform. We&apos;ll tailor the demo
-              to your workflow — whether that&apos;s procurement, origination, or portfolio management.
+              Tell us what you&apos;re trying to price, sell or underwrite. We&apos;ll come back with an indicative range, a read on the live counterparty network, and a time to talk — typically within 24 hours.
             </p>
           </div>
         </div>
@@ -45,7 +43,7 @@ export default function ContactPage() {
                   <CheckCircle2 className="w-12 h-12 text-signal mx-auto mb-6" />
                   <h2 className="text-2xl font-bold text-white mb-3">Request received</h2>
                   <p className="text-etc-400">
-                    A member of our team will be in touch within 24 hours to schedule your demo.
+                    We&apos;ll come back within 24 hours with an indicative view and a time to talk.
                   </p>
                 </div>
               ) : (
@@ -127,14 +125,14 @@ export default function ContactPage() {
 
                   <div>
                     <label htmlFor="message" className="block text-[11px] font-semibold text-etc-500 uppercase tracking-wider mb-2">
-                      Tell us about your needs
+                      What do you need?
                     </label>
                     <textarea
                       id="message"
                       name="message"
                       rows={4}
                       className="w-full px-4 py-3 surface-3 border border-subtle rounded-lg text-[14px] text-white placeholder-etc-600 focus:border-signal/40 focus:ring-1 focus:ring-signal/20 outline-none transition-colors resize-none"
-                      placeholder="What markets, volumes, or features are most relevant to you?"
+                      placeholder="Technology, tenor, shape, volume — or the question you want answered."
                     />
                   </div>
 
@@ -164,15 +162,8 @@ export default function ContactPage() {
                   <div className="flex items-start gap-4">
                     <MapPin className="w-4 h-4 text-signal mt-1" />
                     <div>
-                      <div className="text-[13px] font-medium text-white">Headquarters</div>
-                      <div className="text-[13px] text-etc-500">London, United Kingdom</div>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <Building2 className="w-4 h-4 text-signal mt-1" />
-                    <div>
-                      <div className="text-[13px] font-medium text-white">Offices</div>
-                      <div className="text-[13px] text-etc-500">Amsterdam &bull; Houston</div>
+                      <div className="text-[13px] font-medium text-white">Based</div>
+                      <div className="text-[13px] text-etc-500">London, UK &middot; focused in GB, active in Europe</div>
                     </div>
                   </div>
                 </div>
@@ -182,17 +173,15 @@ export default function ContactPage() {
                 <div className="w-6 h-px bg-signal mb-4" />
                 <h3 className="text-base font-semibold text-white mb-2">Typical response: under 24 hours</h3>
                 <p className="text-[13px] text-etc-500 leading-relaxed">
-                  For demo requests, we&apos;ll schedule a personalised walkthrough with a
-                  member of our team who understands your specific workflow and market.
+                  Founder-led. You&apos;ll speak to the person structuring the trade — not an SDR, not a pooled queue.
                 </p>
               </div>
 
               <div className="card-elevated p-8">
                 <div className="w-6 h-px bg-accent mb-4" />
-                <h3 className="text-base font-semibold text-white mb-2">Existing users</h3>
+                <h3 className="text-base font-semibold text-white mb-2">Already working with us?</h3>
                 <p className="text-[13px] text-etc-500 leading-relaxed">
-                  Already on the platform? Sign in to your command centre to access support,
-                  documentation, and your dedicated account team.
+                  Reach out directly to your point of contact, or email the inbox above and we will route it.
                 </p>
               </div>
             </div>

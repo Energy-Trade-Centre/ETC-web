@@ -4,26 +4,28 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
+// Nav descriptions map to the homepage: PPA Marketplace & ETC Intel are LIVE,
+// Asset Exchange / BESS Exchange / Grid Intelligence / 24/7 CFE are on the 2026 roadmap.
 const navigation = [
   {
     name: 'Platform',
     href: '/platform',
     children: [
-      { name: 'PPA Marketplace', href: '/platform#marketplace', description: '4,500+ live offers. 12 markets. Real-time pricing.' },
-      { name: 'Asset Exchange', href: '/platform#assets', description: 'Trade renewable projects. Asset+PPA bundles.' },
-      { name: 'BESS Exchange', href: '/platform#bess', description: 'Storage capacity. Flexibility Index. Matching.' },
-      { name: 'Analytics Engine', href: '/platform#analytics', description: 'Monte Carlo. IFRS 9. Portfolio modelling.' },
-      { name: 'Grid Intelligence', href: '/platform#grid', description: 'Live generation. Constraints. Cannibalization.' },
-      { name: '24/7 CFE', href: '/platform#cfe', description: 'Hourly matching. Carbon-free verification.' },
+      { name: 'PPA Marketplace', href: '/platform#marketplace', description: 'Live pricing, structuring and execution across GB.' },
+      { name: 'ETC Intel', href: '/intelligence', description: 'Indicative curves, counterparty coverage, deal structuring notes.' },
+      { name: 'Asset Exchange', href: '/platform#assets', description: '2026 roadmap — project and asset+PPA bundles.' },
+      { name: 'BESS Exchange', href: '/platform#bess', description: '2026 roadmap — battery origination and optimisation.' },
+      { name: 'Grid Intelligence', href: '/platform#grid', description: '2026 roadmap — constraint and queue visibility.' },
+      { name: '24/7 CFE Matching', href: '/platform#cfe', description: '2026 roadmap — hourly carbon-free energy matching.' },
     ],
   },
   {
     name: 'Solutions',
     href: '/solutions',
     children: [
-      { name: 'Procurement', href: '/solutions/buyers', description: 'For corporates & utilities buying clean energy' },
-      { name: 'Origination', href: '/solutions/sellers', description: 'For developers & asset owners seeking offtake' },
-      { name: 'Investment', href: '/solutions/investors', description: 'For infrastructure funds & portfolio managers' },
+      { name: 'Procurement', href: '/solutions/buyers', description: 'For utilities and corporate offtakers buying GB power.' },
+      { name: 'Origination', href: '/solutions/sellers', description: 'For IPPs and asset owners seeking offtake in GB.' },
+      { name: 'Investment', href: '/solutions/investors', description: 'For funds and investors sizing GB renewables exposure.' },
     ],
   },
   { name: 'Intelligence', href: '/intelligence' },
@@ -83,19 +85,13 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* CTA */}
+          {/* CTA — single Book a call (no 'Sign in' until a signed-in product exists) */}
           <div className="hidden lg:flex items-center gap-3">
-            <Link
-              href="/contact"
-              className="text-[13px] font-medium text-etc-400 hover:text-white px-3.5 py-1.5 transition-colors"
-            >
-              Sign in
-            </Link>
             <Link
               href="/contact"
               className="text-[13px] font-semibold text-etc-black bg-signal hover:bg-signal-dim px-4 py-2 rounded-lg transition-colors"
             >
-              Get access
+              Book a call
             </Link>
           </div>
 
@@ -140,17 +136,10 @@ export default function Navigation() {
             <div className="mt-4 px-4 flex flex-col gap-2">
               <Link
                 href="/contact"
-                className="text-center text-sm font-medium text-etc-300 border border-subtle px-4 py-2.5 rounded-lg"
-                onClick={() => setMobileOpen(false)}
-              >
-                Sign in
-              </Link>
-              <Link
-                href="/contact"
                 className="text-center text-sm font-semibold text-etc-black bg-signal px-4 py-2.5 rounded-lg"
                 onClick={() => setMobileOpen(false)}
               >
-                Get access
+                Book a call
               </Link>
             </div>
           </div>

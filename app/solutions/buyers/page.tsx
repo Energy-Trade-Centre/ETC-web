@@ -3,44 +3,70 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Procurement | For Corporate Buyers & Utilities',
+  title: 'Procurement | For utilities & corporate offtakers',
   description:
-    'Reduce PPA procurement risk with transparent pricing, Monte Carlo modelling, and access to 4,500+ offers. ETC gives your CFO certainty, not complexity.',
+    'Quote GB PPAs from published indicative PaP curves. Counterparty matching across utilities, European majors, independent traders and IPPs. Founder-led structuring and execution.',
   alternates: { canonical: 'https://energytradecentre.com/solutions/buyers' },
 };
 
 const pillars = [
   {
-    title: 'Market access, not broker access',
-    description: 'See 4,500+ offers across 12 markets. Not a curated shortlist from a single broker — the full market with transparent P50 pricing and ETC Confidence Scores.',
+    title: 'Published reference curves',
+    description:
+      'Indicative GB PaP ranges by technology and tenor, refreshed on the published cadence. Quote from a reference both sides can see, instead of chasing broker prints.',
   },
   {
-    title: 'CFO-ready risk modelling',
-    description: 'Every deal comes with Monte Carlo NPV bands, IFRS 9 credit classification, and counterparty exposure analysis. Present to your board with confidence, not caveats.',
+    title: 'Counterparty network, not broker access',
+    description:
+      'Match against the active network: Big 6 utilities, European energy majors, independent traders & originators, IPPs and corporate offtakers. Not a curated shortlist from one broker.',
   },
   {
-    title: '14-day execution via Lightning PPA',
-    description: 'Standardised terms on sub-25MW deals mean you can move from discovery to signed contract in under two weeks. No more 11-week procurement cycles.',
+    title: 'Structuring, not just matching',
+    description:
+      'PaP, baseload, shaped, sleeved and virtual PPA structures. Shape premium, credit premium, curtailment treatment and REGO handling negotiated transparently.',
   },
   {
-    title: '24/7 CFE verification',
-    description: 'Go beyond annual RECs. Track your true hourly carbon-free energy score, identify gap hours, and model the cost to reach your 24/7 targets.',
+    title: 'Founder-led execution',
+    description:
+      'One line of accountability from first conversation to signed contract. No sub-brokers, no hand-offs, no &quot;I need to check with the desk&quot;.',
   },
   {
-    title: 'Portfolio-level intelligence',
-    description: 'Monitor generation vs forecast, settlements, compliance deadlines, and RE100 progress across your entire PPA book from a single dashboard.',
+    title: 'GB-native, Europe-connected',
+    description:
+      'GB is the focus. European majors are on the network. We cover the market we know properly, and we are honest about where our coverage stops.',
   },
   {
-    title: 'Counterparty transparency',
-    description: 'Credit ratings, risk scores, deal history, and NDA tracking on every counterparty. Know who you\'re trading with before you start negotiating.',
+    title: 'Honest about the roadmap',
+    description:
+      'Asset Exchange, BESS Exchange, Grid Intelligence and 24/7 CFE Matching are on the 2026 roadmap. We will not sell you a product that does not exist yet.',
   },
 ];
 
 const workflow = [
-  { step: '01', title: 'Discover', description: 'Browse the marketplace or publish an RFP to 4,500+ sellers. Filter by technology, geography, risk, and price.' },
-  { step: '02', title: 'Model', description: 'Run Monte Carlo simulations, benchmark against market P50, and stress-test your downside. Build your investment case.' },
-  { step: '03', title: 'Execute', description: 'Negotiate in the Deal Room or close instantly via Lightning PPA. Average time from first offer to signing: 58 days.' },
-  { step: '04', title: 'Manage', description: 'Track portfolio performance, settlements, 24/7 CFE scores, and compliance — all in real time from your command centre.' },
+  {
+    step: '01',
+    title: 'Indicative quote',
+    description:
+      'Tell us technology, tenor and shape. We come back with an indicative PaP range from the published curves, plus any relevant structuring notes.',
+  },
+  {
+    step: '02',
+    title: 'Counterparty match',
+    description:
+      'We match against the active network &mdash; utilities, majors, independents, IPPs &mdash; and surface the counterparties actually pricing your shape.',
+  },
+  {
+    step: '03',
+    title: 'Structure',
+    description:
+      'PaP vs baseload vs shaped vs sleeved. Shape, credit and REGO premia negotiated directly. Term sheet in hand.',
+  },
+  {
+    step: '04',
+    title: 'Execute',
+    description:
+      'Founder-led through contract. Direct line to the person structuring your trade, from first call to signed PPA.',
+  },
 ];
 
 export default function BuyersPage() {
@@ -52,17 +78,17 @@ export default function BuyersPage() {
           <div className="max-w-3xl">
             <div className="text-[11px] font-semibold text-etc-600 uppercase tracking-widest mb-4 mono">Procurement</div>
             <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-[1.05] tracking-tight">
-              Buy certainty.<br />
-              <span className="text-etc-500">Not complexity.</span>
+              Quote from a<br />
+              <span className="text-etc-500">published curve.</span>
             </h1>
             <p className="mt-6 text-lg text-etc-400 leading-relaxed">
-              Your CFO doesn&apos;t want a PPA. They want a risk-adjusted position with
-              transparent downside. ETC gives your procurement team the liquidity,
-              analytics, and execution speed to deliver exactly that.
+              Your board doesn&apos;t want a broker print. They want a defensible number they
+              can quote against. ETC gives procurement and origination teams a published
+              GB reference, a real counterparty network and founder-led execution.
             </p>
             <div className="mt-8">
               <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors">
-                Get access <ArrowRight className="w-4 h-4" />
+                Book a call <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
@@ -99,11 +125,14 @@ export default function BuyersPage() {
 
       <section className="border-t border-subtle py-20 lg:py-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white">Start procuring on ETC</h2>
-          <p className="mt-4 text-etc-400">Join the corporate procurement teams that have moved beyond brokerage.</p>
+          <h2 className="text-3xl font-bold text-white">Let&apos;s talk.</h2>
+          <p className="mt-4 text-etc-400">
+            Tell us what you&apos;re pricing and we&apos;ll come back with an indicative range
+            and the counterparties actually transacting in that shape today.
+          </p>
           <div className="mt-8">
             <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors">
-              Request access <ArrowRight className="w-4 h-4" />
+              Book a call <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

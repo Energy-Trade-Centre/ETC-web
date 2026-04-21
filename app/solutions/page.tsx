@@ -5,31 +5,49 @@ import { ArrowRight } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Solutions | Procurement, Origination & Investment',
   description:
-    'ETC serves corporate buyers, renewable energy developers, and infrastructure investors with institutional-grade tools for PPA trading, asset exchange, and portfolio management.',
+    'ETC serves utilities, independent traders, IPPs, corporate offtakers and investors across GB. Published indicative curves, counterparty matching and founder-led structuring.',
   alternates: { canonical: 'https://energytradecentre.com/solutions' },
 };
 
 const solutions = [
   {
     tag: 'PROCUREMENT',
-    title: 'For corporate buyers & utilities',
-    description: 'Your CFO doesn\'t want a PPA. They want a risk-adjusted position with transparent downside. ETC gives procurement teams the liquidity, analytics, and execution speed to deliver certainty.',
+    title: 'For utilities & corporate offtakers',
+    description:
+      'Quote from published indicative GB PPA curves, structure against a real counterparty network (Big 6, European majors, independent traders, IPPs), and move from term sheet to signed contract with founder-led execution.',
     href: '/solutions/buyers',
-    points: ['4,500+ live PPA offers across 12 markets', 'Monte Carlo NPV modelling for board presentations', '24/7 CFE hourly matching and verification', 'Lightning PPA: 14-day close on standardised terms'],
+    points: [
+      'Published indicative GB PaP ranges by tech and tenor',
+      'Counterparty matching across the active network',
+      'Structuring: PaP, baseload, shaped, sleeved and virtual PPAs',
+      'Direct execution — no sub-brokerage, no hand-offs',
+    ],
   },
   {
     tag: 'ORIGINATION',
-    title: 'For developers & asset owners',
-    description: 'Stop relying on three brokers and a Rolodex. ETC gives your development team direct access to the widest institutional buyer network — with deal structures that maximise your transaction value.',
+    title: 'For IPPs & asset owners',
+    description:
+      'Reach the GB counterparty network without the broker-print chase. Indicative curves you can benchmark against, offtake matching against utilities and corporates, and founder-led structuring through to signed contract.',
     href: '/solutions/sellers',
-    points: ['Direct access to institutional buyer network', 'Asset+PPA bundling for 25-35% premium', 'Auction and bilateral deal structures', 'Global reach across 28 countries'],
+    points: [
+      'Counterparty matching against utilities, majors and corporates',
+      'Published reference curves to benchmark offers against',
+      'Structuring across PaP, baseload, shaped and sleeved products',
+      'Every development stage: pre-NTP, construction, operational',
+    ],
   },
   {
     tag: 'INVESTMENT',
-    title: 'For infrastructure funds & portfolio managers',
-    description: 'From deal sourcing to IFRS 9 compliance, ETC is the platform energy infrastructure investors actually need — built for investment committees, not retrofitted from a consumer tool.',
+    title: 'For infrastructure funds & asset managers',
+    description:
+      'A published GB reference for revenue assumptions, visibility into who is actively transacting on the other side, and a direct line to the structuring work underpinning each deal. Built to feed IC packs, not replace them.',
     href: '/solutions/investors',
-    points: ['Monte Carlo simulation across 40+ scenarios', 'IFRS 9 credit risk classification', '7-factor proprietary asset valuations', 'Portfolio performance benchmarking'],
+    points: [
+      'Published GB indicative PaP curves as a reference',
+      'Counterparty coverage notes across the active network',
+      'Structuring commentary on shape, credit and REGO treatment',
+      'Direct line to the founder running the deal',
+    ],
   },
 ];
 
@@ -45,8 +63,9 @@ export default function SolutionsPage() {
               <span className="text-etc-500">side of the trade.</span>
             </h1>
             <p className="mt-6 text-lg text-etc-400 leading-relaxed">
-              Whether you&apos;re buying certainty, originating offtake, or managing a portfolio —
-              ETC replaces fragmented tools with unified market infrastructure.
+              Whether you&apos;re buying, originating, or investing &mdash; ETC replaces broker
+              quotes and spreadsheets with published indicative curves, an active counterparty
+              network, and founder-led execution across GB.
             </p>
           </div>
         </div>
