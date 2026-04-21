@@ -7,7 +7,6 @@ const footerLinks = {
     { name: 'BESS Exchange', href: '/platform#bess' },
     { name: 'Analytics Engine', href: '/platform#analytics' },
     { name: 'Grid Intelligence', href: '/platform#grid' },
-    { name: 'Lightning PPA', href: '/platform#lightning' },
   ],
   Solutions: [
     { name: 'Procurement', href: '/solutions/buyers' },
@@ -72,11 +71,9 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Energy Trade Centre Ltd. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-[11px] text-etc-600">
-            <span>London</span>
+            <span>London, UK</span>
             <span className="text-etc-750">&bull;</span>
-            <span>Amsterdam</span>
-            <span className="text-etc-750">&bull;</span>
-            <span>Houston</span>
+            <span>Focused in GB &middot; active in Europe</span>
           </div>
         </div>
       </div>

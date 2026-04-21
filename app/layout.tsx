@@ -5,60 +5,50 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'ETC | The Operating System for Energy Trading',
+    default: 'ETC | Institutional PPA platform — GB',
     template: '%s | ETC',
   },
   description:
-    'ETC is the institutional-grade platform for PPA trading, renewable asset exchange, battery storage, and energy market intelligence. 4,500+ live offers. 12 markets. Full transparency.',
+    'ETC is the institutional platform for energy transactions. Pricing, structuring and execution for PPAs across GB — with asset, storage and grid modules on the 2026 roadmap. Focused in GB, active in Europe.',
   keywords: [
     'PPA marketplace',
     'power purchase agreement',
-    'renewable energy trading',
-    'energy asset exchange',
-    'battery storage marketplace',
-    'BESS trading',
+    'GB PPA',
+    'UK PPA',
     'corporate PPA',
     'renewable energy procurement',
-    'energy analytics',
-    'grid intelligence',
-    'carbon free energy',
-    '24/7 CFE matching',
-    'PPA pricing',
-    'renewable energy platform',
-    'energy market intelligence',
+    'offshore wind PPA',
+    'onshore wind PPA',
     'solar PPA',
-    'wind PPA',
+    'PPA pricing',
+    'PPA revenue estimator',
     'energy trade centre',
     'ETC platform',
-    'PPA revenue estimator',
-    'IFRS 9 energy',
-    'Monte Carlo PPA',
-    'lightning PPA',
-    'asset PPA bundle',
-    'BESS flexibility index',
+    'energy market intelligence',
+    'renewable energy trading',
   ],
   metadataBase: new URL('https://energytradecentre.com'),
   openGraph: {
     type: 'website',
     locale: 'en_GB',
     siteName: 'ETC',
-    title: 'ETC | The Operating System for Energy Trading',
+    title: 'ETC | Institutional PPA platform — GB',
     description:
-      'Institutional-grade platform for PPA trading, renewable asset exchange, and battery storage. 4,500+ live offers. 12 markets. Full price transparency.',
+      'The institutional platform for energy transactions. PPA pricing, structuring and execution across GB. Focused in GB, active in Europe.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'ETC - The Operating System for Energy Trading',
+        alt: 'ETC — the institutional platform for energy transactions',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ETC | The Operating System for Energy Trading',
+    title: 'ETC | Institutional PPA platform — GB',
     description:
-      'Institutional-grade platform for PPA trading, renewable asset exchange, and battery storage.',
+      'The institutional platform for energy transactions. PPA pricing, structuring and execution across GB.',
   },
   robots: {
     index: true,
@@ -96,7 +86,7 @@ export default function RootLayout({
               url: 'https://energytradecentre.com',
               logo: 'https://energytradecentre.com/favicon.svg',
               description:
-                'The institutional-grade platform for PPA trading, renewable asset exchange, battery storage, and energy market intelligence.',
+                'The institutional platform for energy transactions. PPA pricing, structuring and execution across GB — with asset, storage and grid intelligence modules on the 2026 roadmap.',
               address: {
                 '@type': 'PostalAddress',
                 addressLocality: 'London',
@@ -105,7 +95,7 @@ export default function RootLayout({
               contactPoint: {
                 '@type': 'ContactPoint',
                 contactType: 'sales',
-                email: 'info@energytradecentre.com',
+                email: 'jsouthall@atomenergygroup.com',
               },
             }),
           }}

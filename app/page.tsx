@@ -4,117 +4,140 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import PPAEstimator from '@/components/ppa-estimator';
 
 export const metadata: Metadata = {
-  title: 'ETC | The Operating System for Energy Trading',
+  title: 'ETC | Institutional PPA platform — GB',
   description:
-    'ETC is the institutional-grade platform for PPA trading, renewable asset exchange, battery storage, and energy market intelligence. 4,500+ live offers. 12 markets. Full transparency.',
+    'ETC is the institutional platform for energy transactions. Pricing, structuring and execution for PPAs across GB — with asset, storage and grid modules on the 2026 roadmap. Focused in GB, active in Europe.',
   alternates: { canonical: 'https://energytradecentre.com' },
 };
 
-const livePrices = [
-  { market: 'ERCOT', tech: 'Solar', price: 24.50, change: +2.3 },
-  { market: 'PJM', tech: 'Wind', price: 28.90, change: -1.1 },
-  { market: 'Nordpool', tech: 'Solar', price: 38.60, change: +3.1 },
-  { market: 'EPEX', tech: 'Wind', price: 36.80, change: +1.7 },
-  { market: 'N2EX', tech: 'Solar', price: 48.90, change: -2.0 },
-  { market: 'CAISO', tech: 'Wind', price: 32.50, change: -0.4 },
+// GB H2 2025 indicative PaP ranges — server-rendered, deck-verified.
+// Ticker replaces the old fabricated live-price feed.
+const indicativeRanges = [
+  { tech: 'Offshore Wind', tenor: '3Y', low: 75, high: 78 },
+  { tech: 'Offshore Wind', tenor: '5Y', low: 73, high: 76 },
+  { tech: 'Onshore Wind', tenor: '3Y', low: 55, high: 62 },
+  { tech: 'Onshore Wind', tenor: '5Y', low: 52, high: 58 },
+  { tech: 'Solar PV', tenor: '3Y', low: 48, high: 55 },
+  { tech: 'Solar PV', tenor: '5Y', low: 45, high: 52 },
 ];
 
-const metrics = [
-  { value: '4,523', label: 'Live PPA offers', sub: 'across 12 markets' },
-  { value: '1,425', label: 'MW in assets', sub: 'listed for exchange' },
-  { value: '14d', label: 'Lightning PPA', sub: 'avg. time to close' },
-  { value: '92', label: 'Confidence Score', sub: 'platform median' },
+// Honest stat strip — replaces the "4,523 live offers / 1,425 MW / 14d Lightning PPA / Confidence Score 92" fabrications.
+const scaleStats = [
+  { value: '1,500MW+', label: 'GB pipeline', sub: 'deals in-flight or under review' },
+  { value: 'Big 6', label: '+ European majors', sub: 'on the counterparty network' },
+  { value: '80%+', label: 'investment-grade', sub: 'offtaker credit quality' },
+  { value: 'Founder-led', label: 'execution', sub: 'not a broker front' },
 ];
 
 const capabilities = [
   {
-    title: 'PPA Marketplace',
-    description: 'Browse, price, and execute power purchase agreements from the deepest liquidity pool in the market. Risk-scored. Real-time.',
+    title: 'PPA Marketplace & Brokerage',
+    description:
+      'Live pricing, structuring and execution for corporate, utility and asset-backed PPAs across GB. Pay-as-produced, baseload, and shaped products.',
     href: '/platform#marketplace',
-    tag: 'DISCOVERY',
+    tag: 'LIVE NOW',
+    status: 'live' as const,
+  },
+  {
+    title: 'ETC Intel',
+    description:
+      'Indicative curves, counterparty coverage and deal structuring notes. Built for procurement, origination and investment teams.',
+    href: '/intelligence',
+    tag: 'LIVE NOW',
+    status: 'live' as const,
   },
   {
     title: 'Asset Exchange',
-    description: 'Trade renewable energy projects at every stage. Our Asset+PPA bundles deliver 25-35% premium over asset-only transactions.',
+    description:
+      'Trade renewable projects through development, construction and operating stages. Asset + PPA bundles where it adds value.',
     href: '/platform#assets',
-    tag: 'EXCHANGE',
+    tag: '2026 ROADMAP',
+    status: 'roadmap' as const,
   },
   {
     title: 'BESS Exchange',
-    description: 'The first integrated marketplace for battery storage — Flexibility Index pricing, revenue stack optimisation, and performance benchmarking.',
+    description:
+      'Battery storage origination and optimisation marketplace. Revenue-stack-aware pricing across DC, FFR, BM, arbitrage and CM.',
     href: '/platform#bess',
-    tag: 'STORAGE',
-  },
-  {
-    title: 'Analytics Engine',
-    description: 'Monte Carlo simulation, IFRS 9 credit risk, portfolio cashflow modelling. Built for investment committees, not spreadsheets.',
-    href: '/platform#analytics',
-    tag: 'ANALYTICS',
+    tag: '2026 ROADMAP',
+    status: 'roadmap' as const,
   },
   {
     title: 'Grid Intelligence',
-    description: 'Live generation mix, constraint mapping, cannibalization analysis, revenue stack modelling, and regional capacity data.',
+    description:
+      'Constraint mapping, connection queue visibility, and regional capacity data for origination and investment decisions.',
     href: '/platform#grid',
-    tag: 'GRID',
+    tag: '2026 ROADMAP',
+    status: 'roadmap' as const,
   },
   {
     title: '24/7 CFE Matching',
-    description: 'Hourly carbon-free energy verification against real load profiles. Go beyond annual RECs to true 24/7 coverage.',
+    description:
+      'Hourly carbon-free energy matching against real load profiles. Going beyond annual REGOs to true 24/7 coverage.',
     href: '/platform#cfe',
-    tag: 'CFE',
+    tag: '2026 ROADMAP',
+    status: 'roadmap' as const,
   },
 ];
 
-const proofPoints = [
-  { type: 'Data Centre Operators', detail: 'Hyperscale procurement teams using ETC for multi-market PPA sourcing' },
-  { type: 'Infrastructure Funds', detail: 'Top-tier energy funds managing deal pipelines and portfolio analytics on ETC' },
-  { type: 'Utility-Scale Developers', detail: 'Developers listing 500MW+ of projects across North America and Europe' },
-  { type: 'Corporate Sustainability', detail: 'FTSE 250 & Fortune 500 companies tracking 24/7 CFE goals on ETC' },
+// Counterparty network categories — replaces the fake partner-logos line
+// (Nordpool / EPEX SPOT / National Grid ESO / Elexon / S&P Global).
+const counterpartyNetwork = [
+  { type: 'Big 6 utilities', detail: 'GB supply and generation incumbents' },
+  { type: 'European energy majors', detail: 'Integrated utilities and oil & gas majors' },
+  { type: 'Independent traders & originators', detail: 'Merchant and route-to-market specialists' },
+  { type: 'IPPs & asset owners', detail: 'Developers and operating asset owners across GB' },
+  { type: 'Corporate offtakers', detail: 'Industrial, data centre, and FTSE/Fortune 500 buyers' },
 ];
 
-const advisors = [
+// Three-pillar value prop — deck slide 3 headline, deck slide 8 pillars.
+const pillars = [
   {
-    domain: 'PPA & Offtake Strategy',
-    initials: 'JC',
-    description: 'Former utility procurement lead. 15+ years structuring PPAs across UK, Nordics, and Iberian markets. Your direct line to deal execution.',
+    title: 'Full market visibility',
+    description:
+      'We see the whole GB PPA market — every major utility, every European energy major, every active independent trader. That breadth is the product.',
   },
   {
-    domain: 'Asset Transactions & M&A',
-    initials: 'KR',
-    description: 'Ex-investment banking, energy infrastructure. Led £2B+ of renewable asset transactions. Covers valuation, due diligence, and deal structuring.',
+    title: 'Published market prices',
+    description:
+      'Indicative curves you can quote from, not bid/ask theatre. Pay-as-produced ranges by technology and tenor, refreshed on the published cadence.',
   },
   {
-    domain: 'BESS & Storage Markets',
-    initials: 'SP',
-    description: 'Battery storage specialist. Former optimiser at a top-3 trading house. Covers revenue stacks, flexibility markets, and contract structuring.',
+    title: 'Faster execution',
+    description:
+      'Founder-led structuring, pre-qualified counterparties, and a platform bias to close. Speed comes from removing friction, not from cutting corners.',
   },
   {
-    domain: 'Grid & Regulatory',
-    initials: 'MW',
-    description: 'Power systems engineer turned market analyst. DNO connections, constraint modelling, and regulatory compliance across UK and European grids.',
+    title: 'GB-native, Europe-connected',
+    description:
+      'GB is our focus. European majors are on the network. No pretence of being everywhere at once.',
   },
+];
+
+const segments = [
+  { type: 'Utilities', detail: 'Retail supply, integrated generation, and structuring desks' },
+  { type: 'Independent traders & originators', detail: 'Merchant traders, route-to-market providers, aggregators' },
+  { type: 'IPPs & asset owners', detail: 'Developers and operating owners in wind, solar and BESS' },
+  { type: 'Corporate offtakers', detail: 'Industrial, data centre, and FTSE/Fortune 500 buyers' },
 ];
 
 export default function HomePage() {
   return (
     <>
-      {/* Live Price Ticker */}
+      {/* Indicative Ranges Ticker — GB H2 2025, server-rendered.
+          Replaces the old fake live-price feed. */}
       <div className="surface-2 border-b border-subtle overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-8 py-2 overflow-x-auto text-[11px]">
             <div className="flex items-center gap-2 shrink-0">
               <div className="w-1.5 h-1.5 rounded-full bg-signal signal-pulse" />
-              <span className="text-etc-600 uppercase tracking-wider font-medium">PPA P50</span>
-              <span className="text-etc-700">Updated 4m ago</span>
+              <span className="text-etc-600 uppercase tracking-wider font-medium">GB Indicative PPA Ranges · H2 2025 · PaP £/MWh</span>
             </div>
-            {livePrices.map((p) => (
-              <div key={`${p.market}-${p.tech}`} className="flex items-center gap-2 shrink-0">
-                <span className="text-etc-400 font-medium">{p.market}</span>
-                <span className="text-etc-500">{p.tech}</span>
-                <span className="mono text-white font-medium">${p.price.toFixed(2)}</span>
-                <span className={`mono font-medium ${p.change > 0 ? 'text-signal' : 'text-red'}`}>
-                  {p.change > 0 ? '+' : ''}{p.change.toFixed(1)}%
-                </span>
+            {indicativeRanges.map((r) => (
+              <div key={`${r.tech}-${r.tenor}`} className="flex items-center gap-2 shrink-0">
+                <span className="text-etc-400 font-medium">{r.tech}</span>
+                <span className="text-etc-500">{r.tenor}</span>
+                <span className="mono text-white font-medium">&pound;{r.low}&ndash;{r.high}</span>
               </div>
             ))}
           </div>
@@ -132,20 +155,20 @@ export default function HomePage() {
             <div className="flex items-center gap-2 mb-8">
               <div className="w-1.5 h-1.5 rounded-full bg-signal signal-pulse" />
               <span className="text-[11px] font-medium text-etc-500 uppercase tracking-wider">
-                Live across 12 markets
+                Focused in GB · Active in Europe
               </span>
             </div>
 
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05] tracking-tight">
-              The infrastructure<br />
-              for energy<br />
-              <span className="etc-gradient">liquidity</span>
+              The institutional<br />
+              platform for<br />
+              <span className="etc-gradient">energy transactions</span>
             </h1>
 
             <p className="mt-8 text-lg sm:text-xl text-etc-400 leading-relaxed max-w-2xl">
-              ETC is the institutional-grade platform where corporates, developers, and investors
-              trade PPAs, renewable assets, and storage capacity with full price transparency
-              and real-time market intelligence.
+              Pricing, structuring and execution for PPAs across GB &mdash; and the rails for assets,
+              storage and grid to follow. Built for utilities, independent traders, IPPs and
+              corporate offtakers.
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
@@ -153,7 +176,7 @@ export default function HomePage() {
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
               >
-                Request access
+                Book a call
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
@@ -165,9 +188,9 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Metrics strip */}
+          {/* Scale strip — deck-verified, replaces fabricated 4,523/1,425MW/14d/92 metrics */}
           <div className="mt-24 grid grid-cols-2 lg:grid-cols-4 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle">
-            {metrics.map((m) => (
+            {scaleStats.map((m) => (
               <div key={m.label} className="surface-2 p-6">
                 <div className="text-3xl sm:text-4xl font-bold text-white mono">{m.value}</div>
                 <div className="text-sm text-etc-300 mt-1 font-medium">{m.label}</div>
@@ -178,137 +201,27 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ETC Confidence Score - brand pillar section */}
-      <section className="surface-2 border-y border-subtle py-20 lg:py-28" id="confidence-score">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
-              <div className="text-[11px] font-medium text-signal uppercase tracking-wider mb-4 mono">
-                Proprietary Signal
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
-                The ETC Confidence Score
-              </h2>
-              <p className="mt-4 text-etc-400 leading-relaxed">
-                Every offer, every asset, every counterparty on ETC is scored 0-100 by our
-                proprietary quality signal. It synthesizes credit risk, project maturity,
-                pricing competitiveness, and counterparty track record into a single number
-                your team can act on.
-              </p>
-              <p className="mt-4 text-[13px] text-etc-500 leading-relaxed">
-                Deals with a Confidence Score above 85 close 3x faster. The platform
-                median sits at 92 — because we curate for quality, not quantity.
-              </p>
-            </div>
-            <div className="card p-8">
-              <div className="flex items-center justify-between mb-8">
-                <span className="text-[11px] font-semibold text-etc-600 uppercase tracking-widest mono">Score Breakdown</span>
-                <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-signal signal-pulse" />
-                  <span className="text-[11px] text-etc-600">Live</span>
-                </div>
-              </div>
-              <div className="text-center mb-8">
-                <div className="mono text-7xl font-bold text-signal">92</div>
-                <div className="text-[12px] text-etc-500 mt-2">Platform median Confidence Score</div>
-              </div>
-              <div className="space-y-4">
-                {[
-                  { label: 'Counterparty Credit', score: 94, color: 'bg-signal' },
-                  { label: 'Pricing Competitiveness', score: 91, color: 'bg-signal' },
-                  { label: 'Project Maturity', score: 89, color: 'bg-signal' },
-                  { label: 'Execution Probability', score: 93, color: 'bg-signal' },
-                ].map((factor) => (
-                  <div key={factor.label}>
-                    <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-[12px] text-etc-400">{factor.label}</span>
-                      <span className="mono text-[12px] text-white font-medium">{factor.score}</span>
-                    </div>
-                    <div className="h-1 bg-etc-750 rounded-full overflow-hidden">
-                      <div className={`h-full ${factor.color} rounded-full`} style={{ width: `${factor.score}%` }} />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* PPA Revenue Estimator - Give value first */}
+      {/* PPA Revenue Estimator — give value first */}
       <section className="py-20 lg:py-28" id="estimator">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
               <div className="text-[11px] font-medium text-signal uppercase tracking-wider mb-4 mono">
-                Indicative Pricing
+                Indicative Pricing · GB · H2 2025
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
                 What&apos;s your energy worth?
               </h2>
               <p className="mt-4 text-etc-400 leading-relaxed">
-                See indicative PPA revenue for your project based on live market data.
-                No forms. No sales calls. Just the numbers.
+                Published GB indicative PaP ranges by technology and tenor. Move the sliders,
+                see the number. No form. No sales call first.
               </p>
               <p className="mt-6 text-[13px] text-etc-600 leading-relaxed">
-                Full P0-P100 pricing, counterparty matching, and deal execution available
-                on the platform.
+                Quoted pricing, counterparty matching and execution handled directly &mdash;
+                book a call when you&apos;re ready to transact.
               </p>
             </div>
             <PPAEstimator />
-          </div>
-        </div>
-      </section>
-
-      {/* Lightning PPA - Standalone Feature Case Study */}
-      <section className="surface-2 border-y border-subtle py-20 lg:py-28" id="lightning-ppa">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
-            <div className="lg:col-span-3">
-              <div className="text-[11px] font-medium text-amber uppercase tracking-wider mb-4 mono">
-                The ETC Disruptor
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
-                Lightning PPA: 14 days<br />
-                <span className="text-etc-500">vs. 6-12 months industry average</span>
-              </h2>
-              <p className="mt-4 text-etc-400 leading-relaxed">
-                Standardised templates, pre-qualified counterparties, and automated term sheet
-                generation mean sub-25MW PPAs close in an average of 14 days on ETC. That&apos;s
-                not an aspirational target — it&apos;s the platform average across 200+ closed deals.
-              </p>
-              <div className="mt-8 grid grid-cols-2 gap-6">
-                {[
-                  { label: 'Industry average', value: '6-12 months', sub: 'discovery to signing' },
-                  { label: 'ETC Lightning PPA', value: '14 days', sub: 'same process, 95% faster' },
-                ].map((stat) => (
-                  <div key={stat.label} className="card-elevated p-5 rounded-lg">
-                    <div className="text-[11px] text-etc-500 mb-2">{stat.label}</div>
-                    <div className="mono text-2xl font-bold text-white">{stat.value}</div>
-                    <div className="text-[11px] text-etc-600 mt-1">{stat.sub}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="lg:col-span-2">
-              <div className="card p-6 space-y-4">
-                <h3 className="text-[11px] font-semibold text-etc-600 uppercase tracking-widest mono">How Lightning PPA Works</h3>
-                {[
-                  { step: '01', label: 'Select template', detail: 'Solar, wind, hybrid, or BESS. Pre-negotiated legal terms.' },
-                  { step: '02', label: 'Configure deal', detail: 'Set MW, tenor, price. Instant term sheet generation.' },
-                  { step: '03', label: 'Match & execute', detail: 'Pre-qualified counterparties. Digital signatures.' },
-                  { step: '04', label: 'Closed', detail: 'Average: 14 days. Record: 6 days.' },
-                ].map((s) => (
-                  <div key={s.step} className="flex gap-4 items-start">
-                    <span className="mono text-[12px] font-bold text-amber shrink-0 pt-0.5">{s.step}</span>
-                    <div>
-                      <div className="text-[13px] font-medium text-white">{s.label}</div>
-                      <div className="text-[12px] text-etc-500">{s.detail}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -318,11 +231,11 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-white">
-              Full-stack energy trading
+              What&apos;s live now &mdash; and what&apos;s next
             </h2>
             <p className="mt-4 text-etc-400 max-w-2xl">
-              Discovery to execution. Analytics to settlement. ETC isn&apos;t a marketplace — it&apos;s the
-              operating system the market runs on.
+              PPAs and ETC Intel are operational today. Asset Exchange, BESS Exchange,
+              Grid Intelligence and 24/7 CFE Matching are on the 2026 roadmap.
             </p>
           </div>
 
@@ -331,9 +244,15 @@ export default function HomePage() {
               <Link
                 key={cap.title}
                 href={cap.href}
-                className="group surface-1 p-8 hover:bg-etc-850 transition-colors"
+                className={`group surface-1 p-8 hover:bg-etc-850 transition-colors ${
+                  cap.status === 'roadmap' ? 'relative' : ''
+                }`}
               >
-                <div className="text-[10px] font-semibold text-etc-600 uppercase tracking-widest mb-4 mono">
+                <div
+                  className={`text-[10px] font-semibold uppercase tracking-widest mb-4 mono ${
+                    cap.status === 'roadmap' ? 'text-amber' : 'text-signal'
+                  }`}
+                >
                   {cap.tag}
                 </div>
                 <h3 className="text-lg font-semibold text-white group-hover:text-signal transition-colors">
@@ -341,7 +260,7 @@ export default function HomePage() {
                 </h3>
                 <p className="mt-3 text-[13px] text-etc-500 leading-relaxed">{cap.description}</p>
                 <div className="mt-5 inline-flex items-center text-[12px] font-medium text-etc-600 group-hover:text-signal gap-1 transition-colors">
-                  Explore <ArrowUpRight className="w-3 h-3" />
+                  {cap.status === 'roadmap' ? 'On the roadmap' : 'Explore'} <ArrowUpRight className="w-3 h-3" />
                 </div>
               </Link>
             ))}
@@ -349,31 +268,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* The ETC difference - positioning against competitors */}
+      {/* The ETC difference — deck slide 3 headline + slide 8 pillars. */}
       <section className="surface-2 border-y border-subtle py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-white">
-              Not a broker. Not a matchmaker.<br />
-              <span className="text-etc-500">The market itself.</span>
+              Not just a broker. Not just a middleman.<br />
+              <span className="text-etc-500">Infrastructure.</span>
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Liquidity, not listings',
-                description: 'Brokers show you their book. ETC shows you the market. 4,500+ live offers with transparent pricing, risk scores, and real-time P50 benchmarks.',
-              },
-              {
-                title: 'Certainty, not complexity',
-                description: 'Lightning PPA closes in 14 days. Monte Carlo models your downside. IFRS 9 classifies your risk. Every tool built to reduce time-to-certainty.',
-              },
-              {
-                title: 'Intelligence, not information',
-                description: 'Cannibalization analysis. Flexibility Index. Confidence Scores. ETC doesn\'t just aggregate data — it synthesizes the signal from the noise.',
-              },
-            ].map((item) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {pillars.map((item) => (
               <div key={item.title} className="card p-8">
                 <div className="w-8 h-px bg-signal mb-6" />
                 <h3 className="text-lg font-semibold text-white mb-3">{item.title}</h3>
@@ -384,112 +290,103 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Advisory Intelligence - the human layer */}
-      <section className="py-20 lg:py-28" id="advisory">
+      {/* Founder — single block replaces the 4 unverifiable advisors. */}
+      <section className="py-20 lg:py-28" id="founder">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-16">
+          <div className="mb-16 max-w-3xl">
             <div className="text-[11px] font-medium text-etc-600 uppercase tracking-wider mb-4 mono">
-              Advisory Intelligence
+              Founder-led
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-white">
-              The platform provides the data.<br />
-              <span className="text-etc-500">Our sector leads provide the strategy.</span>
+              Built and run by people who&apos;ve actually traded this market.
             </h2>
-            <p className="mt-4 text-etc-400 max-w-2xl">
-              Every ETC client has access to sector-specific advisors who know the markets,
-              the counterparties, and the deal structures. Technology handles scale. Humans
-              handle nuance.
-            </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle">
-            {advisors.map((a) => (
-              <div key={a.domain} className="surface-1 p-6">
-                <div className="w-10 h-10 rounded-lg bg-etc-750 flex items-center justify-center mb-4">
-                  <span className="text-[12px] font-bold text-etc-300 mono">{a.initials}</span>
-                </div>
-                <h3 className="text-[13px] font-semibold text-white mb-2">{a.domain}</h3>
-                <p className="text-[12px] text-etc-500 leading-relaxed">{a.description}</p>
+          <div className="card p-8 lg:p-12 max-w-4xl">
+            <div className="flex items-start gap-6">
+              <div className="w-14 h-14 rounded-lg bg-etc-750 flex items-center justify-center shrink-0">
+                <span className="text-[14px] font-bold text-etc-300 mono">DZ</span>
               </div>
-            ))}
+              <div>
+                <h3 className="text-xl font-semibold text-white">Daniel Zemmour</h3>
+                <div className="text-[13px] text-etc-500 mt-1">Founder &amp; CEO</div>
+                <p className="mt-6 text-etc-400 leading-relaxed">
+                  ETC exists because the market&apos;s wiring was built for a world of annual auctions
+                  and opaque broker quotes. That world is over. Buyers want published prices they can
+                  quote from. Sellers want counterparty visibility and fast structuring. The
+                  infrastructure to do that didn&apos;t exist &mdash; so we built it, starting in GB.
+                </p>
+                <ul className="mt-6 space-y-2 text-[13px] text-etc-500">
+                  <li>&bull; PPA origination and structuring across utility, corporate and asset-backed deals</li>
+                  <li>&bull; GB market coverage with European majors on the counterparty network</li>
+                  <li>&bull; Direct execution &mdash; no hand-offs, no sub-brokers</li>
+                  <li>&bull; Transparent indicative pricing refreshed on the published cadence</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Social Proof - institutional logos and industry types */}
+      {/* Counterparty network + segments — replaces fake partner logos. */}
       <section className="surface-2 border-y border-subtle py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16">
             <div className="text-[11px] font-medium text-etc-600 uppercase tracking-wider mb-4 mono">
-              Trusted by
+              Counterparty network
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-white">
-              The platform institutional<br />energy runs on
+              The counterparties institutional<br />energy already transacts with.
             </h2>
+            <p className="mt-4 text-etc-400 max-w-2xl">
+              80%+ investment-grade counterparty credit quality. Corporate offtakers
+              include FTSE 250 and Fortune 500 companies.
+            </p>
           </div>
 
-          {/* Partner / data logos */}
-          <div className="mb-12 flex flex-wrap items-center gap-x-10 gap-y-4">
-            {[
-              { name: 'Nordpool', role: 'Market data' },
-              { name: 'EPEX SPOT', role: 'Market data' },
-              { name: 'National Grid ESO', role: 'Grid data' },
-              { name: 'Elexon', role: 'Settlement data' },
-              { name: 'S&P Global', role: 'Credit ratings' },
-            ].map((partner) => (
-              <div key={partner.name} className="flex items-center gap-2">
-                <div className="w-1 h-3 rounded-sm bg-etc-700" />
-                <div>
-                  <span className="text-[13px] font-medium text-etc-300">{partner.name}</span>
-                  <span className="text-[11px] text-etc-600 ml-2">{partner.role}</span>
-                </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle mb-12">
+            {counterpartyNetwork.map((c) => (
+              <div key={c.type} className="surface-1 p-6">
+                <h3 className="text-[13px] font-semibold text-white mb-2">{c.type}</h3>
+                <p className="text-[12px] text-etc-500 leading-relaxed">{c.detail}</p>
               </div>
             ))}
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle">
-            {proofPoints.map((p) => (
+          <div className="mb-10">
+            <div className="text-[11px] font-medium text-etc-600 uppercase tracking-wider mb-4 mono">
+              Who we work with
+            </div>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle">
+            {segments.map((p) => (
               <div key={p.type} className="surface-1 p-8">
                 <h3 className="text-base font-semibold text-white mb-2">{p.type}</h3>
                 <p className="text-[13px] text-etc-500 leading-relaxed">{p.detail}</p>
               </div>
             ))}
           </div>
-
-          <div className="mt-8 flex flex-wrap gap-6 items-center">
-            {['12+ electricity markets', '28 countries', '50+ active counterparties', 'IFRS 9 compliant'].map((s) => (
-              <div key={s} className="flex items-center gap-2 text-[12px] text-etc-500">
-                <div className="w-1 h-1 rounded-full bg-signal" />
-                {s}
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Final CTA — deck slide 10. */}
       <section className="py-20 lg:py-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white">
-            The energy transition needs<br />better infrastructure.
+            Let&apos;s talk.
           </h2>
           <p className="mt-4 text-etc-400 max-w-xl mx-auto">
-            Request access to ETC and see why the most sophisticated energy
-            participants are moving their operations onto our platform.
+            If you&apos;re pricing, buying, originating or investing in GB energy transactions &mdash;
+            book a call. No deck-flipping. No pitch theatre. Just a conversation about what
+            you&apos;re working on and whether ETC is useful to you.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="mt-8 flex justify-center">
             <Link
               href="/contact"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
             >
-              Request access
+              Book a call
               <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              href="/platform"
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-medium text-etc-300 border border-subtle hover:border-etc-600 rounded-lg transition-colors"
-            >
-              Explore the platform
             </Link>
           </div>
         </div>
