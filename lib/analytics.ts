@@ -26,20 +26,31 @@ export function trackEvent(name: string, params: GAEventParams = {}) {
 }
 
 export const events = {
-  ctaClick: (label: string, location: string, href?: string) =>
-    trackEvent('cta_click', { cta_label: label, cta_location: location, cta_href: href }),
+  ctaClick: (label: string, location: string, href?: string) => {
+    trackEvent('cta_click', { cta_label: label, cta_location: location, cta_href: href });
+    trackEvent('select_content', {
+      content_type: 'cta',
+      item_id: label,
+      cta_location: location,
+      cta_href: href,
+    });
+  },
 
   navClick: (label: string, href: string) =>
     trackEvent('nav_click', { nav_label: label, nav_href: href }),
 
-  formSubmit: (formName: string, params: GAEventParams = {}) =>
-    trackEvent('form_submit', { form_name: formName, ...params }),
+  formSubmit: (formName: string, params: GAEventParams = {}) => {
+    trackEvent('form_submit', { form_name: formName, ...params });
+    trackEvent('generate_lead', { form_name: formName, ...params });
+  },
 
   fileDownload: (fileName: string, fileType: string) =>
     trackEvent('file_download', { file_name: fileName, file_extension: fileType }),
 
-  newsletterSignup: (location: string) =>
-    trackEvent('newsletter_signup', { signup_location: location }),
+  newsletterSignup: (location: string) => {
+    trackEvent('newsletter_signup', { signup_location: location });
+    trackEvent('sign_up', { method: 'newsletter', signup_location: location });
+  },
 
   estimatorInteraction: (field: string, value: string | number) =>
     trackEvent('estimator_interaction', { field, value: String(value) }),
