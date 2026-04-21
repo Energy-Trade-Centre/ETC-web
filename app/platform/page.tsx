@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import TrackedLink from '@/components/analytics/tracked-link';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -135,12 +135,14 @@ export default function PlatformPage() {
               spreadsheets, brokers, and fragmented tools with unified market infrastructure.
             </p>
             <div className="mt-8">
-              <Link
+              <TrackedLink
                 href="/contact"
+                trackLabel="Request access"
+                trackLocation="platform_hero"
                 className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
               >
                 Request access <ArrowRight className="w-4 h-4" />
-              </Link>
+              </TrackedLink>
             </div>
           </div>
         </div>
@@ -221,12 +223,14 @@ export default function PlatformPage() {
             participants are building on ETC.
           </p>
           <div className="mt-8">
-            <Link
+            <TrackedLink
               href="/contact"
+              trackLabel="Request access"
+              trackLocation="platform_footer_cta"
               className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
             >
               Request access <ArrowRight className="w-4 h-4" />
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </section>

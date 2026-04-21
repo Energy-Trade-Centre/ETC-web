@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import { events } from '@/lib/analytics';
+import TrackedLink from '@/components/analytics/tracked-link';
 
 const navigation = [
   {
@@ -59,6 +61,7 @@ export default function Navigation() {
               >
                 <Link
                   href={item.href}
+                  onClick={() => events.navClick(item.name, item.href)}
                   className="flex items-center gap-1 px-3.5 py-1.5 text-[13px] font-medium text-etc-400 hover:text-white rounded-md hover:bg-white/5 transition-colors"
                 >
                   {item.name}
@@ -71,6 +74,7 @@ export default function Navigation() {
                       <Link
                         key={child.name}
                         href={child.href}
+                        onClick={() => events.navClick(`${item.name} > ${child.name}`, child.href)}
                         className="block px-3.5 py-2.5 rounded-lg hover:bg-white/5 transition-colors"
                       >
                         <div className="text-[13px] font-medium text-white">{child.name}</div>
@@ -85,18 +89,22 @@ export default function Navigation() {
 
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            <Link
+            <TrackedLink
               href="/contact"
+              trackLabel="Sign in"
+              trackLocation="nav_desktop"
               className="text-[13px] font-medium text-etc-400 hover:text-white px-3.5 py-1.5 transition-colors"
             >
               Sign in
-            </Link>
-            <Link
+            </TrackedLink>
+            <TrackedLink
               href="/contact"
+              trackLabel="Get access"
+              trackLocation="nav_desktop"
               className="text-[13px] font-semibold text-etc-black bg-signal hover:bg-signal-dim px-4 py-2 rounded-lg transition-colors"
             >
               Get access
-            </Link>
+            </TrackedLink>
           </div>
 
           {/* Mobile Toggle */}
@@ -138,20 +146,24 @@ export default function Navigation() {
               </div>
             ))}
             <div className="mt-4 px-4 flex flex-col gap-2">
-              <Link
+              <TrackedLink
                 href="/contact"
+                trackLabel="Sign in"
+                trackLocation="nav_mobile"
                 className="text-center text-sm font-medium text-etc-300 border border-subtle px-4 py-2.5 rounded-lg"
                 onClick={() => setMobileOpen(false)}
               >
                 Sign in
-              </Link>
-              <Link
+              </TrackedLink>
+              <TrackedLink
                 href="/contact"
+                trackLabel="Get access"
+                trackLocation="nav_mobile"
                 className="text-center text-sm font-semibold text-etc-black bg-signal px-4 py-2.5 rounded-lg"
                 onClick={() => setMobileOpen(false)}
               >
                 Get access
-              </Link>
+              </TrackedLink>
             </div>
           </div>
         )}

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import TrackedLink from '@/components/analytics/tracked-link';
 
 export const metadata: Metadata = {
   title: 'About | Company',
@@ -174,9 +174,14 @@ export default function AboutPage() {
             to participate in the world&apos;s largest market transformation.
           </p>
           <div className="mt-8">
-            <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors">
+            <TrackedLink
+              href="/contact"
+              trackLabel="Get in touch"
+              trackLocation="about_cta"
+              className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
+            >
               Get in touch <ArrowRight className="w-4 h-4" />
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </section>

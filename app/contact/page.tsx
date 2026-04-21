@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { ArrowRight, CheckCircle2, Mail, MapPin, Building2 } from 'lucide-react';
+import { events } from '@/lib/analytics';
 
 const roles = [
   'Energy Buyer / Procurement',
@@ -52,6 +52,12 @@ export default function ContactPage() {
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
+                    const form = e.currentTarget;
+                    const data = new FormData(form);
+                    events.formSubmit('contact_demo_request', {
+                      role: String(data.get('role') ?? ''),
+                      has_message: Boolean(String(data.get('message') ?? '').trim()),
+                    });
                     setSubmitted(true);
                   }}
                   className="space-y-6"

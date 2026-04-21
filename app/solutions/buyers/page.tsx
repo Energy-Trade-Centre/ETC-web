@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import TrackedLink from '@/components/analytics/tracked-link';
 import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -61,9 +61,14 @@ export default function BuyersPage() {
               analytics, and execution speed to deliver exactly that.
             </p>
             <div className="mt-8">
-              <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors">
+              <TrackedLink
+                href="/contact"
+                trackLabel="Get access"
+                trackLocation="buyers_hero"
+                className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
+              >
                 Get access <ArrowRight className="w-4 h-4" />
-              </Link>
+              </TrackedLink>
             </div>
           </div>
         </div>
@@ -102,9 +107,14 @@ export default function BuyersPage() {
           <h2 className="text-3xl font-bold text-white">Start procuring on ETC</h2>
           <p className="mt-4 text-etc-400">Join the corporate procurement teams that have moved beyond brokerage.</p>
           <div className="mt-8">
-            <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors">
+            <TrackedLink
+              href="/contact"
+              trackLabel="Request access"
+              trackLocation="buyers_footer_cta"
+              className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
+            >
               Request access <ArrowRight className="w-4 h-4" />
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </section>

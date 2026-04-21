@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import PPAEstimator from '@/components/ppa-estimator';
+import TrackedLink from '@/components/analytics/tracked-link';
 
 export const metadata: Metadata = {
   title: 'ETC | The Operating System for Energy Trading',
@@ -143,19 +143,23 @@ export default function HomePage() {
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
-              <Link
+              <TrackedLink
                 href="/contact"
+                trackLabel="Request access"
+                trackLocation="home_hero"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
               >
                 Request access
                 <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
+              </TrackedLink>
+              <TrackedLink
                 href="/intelligence"
+                trackLabel="View market intelligence"
+                trackLocation="home_hero"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-medium text-etc-300 border border-subtle hover:border-etc-600 hover:bg-white/[0.03] rounded-lg transition-colors"
               >
                 View market intelligence
-              </Link>
+              </TrackedLink>
             </div>
           </div>
         </div>
@@ -200,9 +204,11 @@ export default function HomePage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle">
             {capabilities.map((cap) => (
-              <Link
+              <TrackedLink
                 key={cap.title}
                 href={cap.href}
+                trackLabel={cap.title}
+                trackLocation="home_capabilities"
                 className="group surface-1 p-8 hover:bg-etc-850 transition-colors"
               >
                 <div className="text-[10px] font-semibold text-etc-600 uppercase tracking-widest mb-4 mono">
@@ -215,7 +221,7 @@ export default function HomePage() {
                 <div className="mt-5 inline-flex items-center text-[12px] font-medium text-etc-600 group-hover:text-signal gap-1 transition-colors">
                   Explore <ArrowUpRight className="w-3 h-3" />
                 </div>
-              </Link>
+              </TrackedLink>
             ))}
           </div>
         </div>
@@ -350,19 +356,23 @@ export default function HomePage() {
             participants are moving their operations onto our platform.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
+            <TrackedLink
               href="/contact"
+              trackLabel="Request access"
+              trackLocation="home_footer_cta"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
             >
               Request access
               <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
+            </TrackedLink>
+            <TrackedLink
               href="/platform"
+              trackLabel="Explore the platform"
+              trackLocation="home_footer_cta"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-medium text-etc-300 border border-subtle hover:border-etc-600 rounded-lg transition-colors"
             >
               Explore the platform
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </section>

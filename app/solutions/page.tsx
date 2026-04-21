@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import TrackedLink from '@/components/analytics/tracked-link';
 import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -55,9 +55,11 @@ export default function SolutionsPage() {
       <section className="border-t border-subtle py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-px">
           {solutions.map((s) => (
-            <Link
+            <TrackedLink
               key={s.tag}
               href={s.href}
+              trackLabel={s.title}
+              trackLocation="solutions_index"
               className="group grid lg:grid-cols-2 gap-8 card p-8 lg:p-12 hover:bg-etc-850"
             >
               <div>
@@ -78,7 +80,7 @@ export default function SolutionsPage() {
                   ))}
                 </ul>
               </div>
-            </Link>
+            </TrackedLink>
           ))}
         </div>
       </section>
