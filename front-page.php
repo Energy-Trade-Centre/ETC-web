@@ -8,36 +8,38 @@
 get_header();
 ?>
 
-<!-- Live Price Ticker — powered by market APIs -->
+<!-- GB Indicative PPA Ranges — H2 2025 -->
 <div class="ticker">
 	<div class="container">
 		<div class="ticker-inner">
 			<div class="flex items-center gap-2 shrink-0">
 				<div class="ticker-dot signal-pulse"></div>
-				<span class="ticker-label">Day-Ahead Prices</span>
+				<span class="ticker-label">GB Indicative PPA Ranges &middot; H2 2025</span>
 				<span id="ticker-timestamp" style="color:var(--etc-700);font-size:11px"></span>
 			</div>
 			<div id="ticker-prices">
 				<?php
-				// Fallback static prices shown while JS loads live data
-				$fallback_prices = array(
-					array( 'market' => 'Nordpool', 'currency' => '€', 'label' => 'Nordic' ),
-					array( 'market' => 'EPEX', 'currency' => '€', 'label' => 'Germany' ),
-					array( 'market' => 'N2EX', 'currency' => '£', 'label' => 'GB' ),
-					array( 'market' => 'AEMO', 'currency' => 'A$', 'label' => 'Australia' ),
+				$indicative_ranges = array(
+					array( 'tech' => 'Offshore Wind',  'tenor' => 'PaP &middot; 3Y', 'range' => '&pound;75&ndash;78/MWh' ),
+					array( 'tech' => 'Offshore Wind',  'tenor' => 'PaP &middot; 5Y', 'range' => '&pound;73&ndash;76/MWh' ),
+					array( 'tech' => 'Onshore Wind',   'tenor' => 'PaP &middot; 3Y', 'range' => '&pound;55&ndash;62/MWh' ),
+					array( 'tech' => 'Onshore Wind',   'tenor' => 'PaP &middot; 5Y', 'range' => '&pound;52&ndash;58/MWh' ),
+					array( 'tech' => 'Solar PV',       'tenor' => 'PaP &middot; 3Y', 'range' => '&pound;48&ndash;55/MWh' ),
+					array( 'tech' => 'Solar PV',       'tenor' => 'PaP &middot; 5Y', 'range' => '&pound;45&ndash;52/MWh' ),
 				);
-				foreach ( $fallback_prices as $p ) :
+				foreach ( $indicative_ranges as $r ) :
 				?>
 				<div class="ticker-item">
-					<span style="color:var(--etc-400);font-weight:500"><?php echo esc_html( $p['market'] ); ?></span>
-					<span style="color:var(--etc-500)"><?php echo esc_html( $p['label'] ); ?></span>
-					<span class="mono" style="color:var(--etc-600);font-weight:500">&mdash;</span>
+					<span style="color:var(--etc-400);font-weight:500"><?php echo esc_html( $r['tech'] ); ?></span>
+					<span style="color:var(--etc-500)"><?php echo wp_kses( $r['tenor'], array() ); ?></span>
+					<span class="mono" style="color:var(--signal);font-weight:500"><?php echo wp_kses( $r['range'], array() ); ?></span>
 				</div>
 				<?php endforeach; ?>
 			</div>
 		</div>
 	</div>
 </div>
+<!-- Illustrative only — not a binding offer. Prices exclude REGOs unless stated. -->
 
 <!-- Hero -->
 <section class="hero hero-xl">
@@ -49,7 +51,7 @@ get_header();
 		<div class="hero-content" style="max-width:64rem">
 			<div class="live-indicator" style="margin-bottom:2rem">
 				<div class="live-dot signal-pulse"></div>
-				<span class="text-11 font-medium text-etc-500 uppercase tracking-wider">Live across 12 markets</span>
+				<span class="text-11 font-medium text-etc-500 uppercase tracking-wider">Focused in GB &middot; Active in Europe</span>
 			</div>
 
 			<h1>
@@ -59,14 +61,13 @@ get_header();
 			</h1>
 
 			<p class="hero-lead" style="max-width:42rem">
-				ETC is the institutional-grade platform where corporates, developers, and investors
-				trade PPAs, renewable assets, and storage capacity with full price transparency
-				and real-time market intelligence.
+				The institutional platform for energy transactions. Pricing, structuring and execution
+				for PPAs across GB &mdash; and the rails for assets, storage and grid to follow.
 			</p>
 
 			<div class="hero-actions">
 				<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn btn-primary">
-					Request access <?php echo etc_icon_arrow_right(); ?>
+					Book a call <?php echo etc_icon_arrow_right(); ?>
 				</a>
 				<a href="<?php echo esc_url( home_url( '/intelligence/' ) ); ?>" class="btn btn-secondary">
 					View market intelligence
@@ -82,15 +83,14 @@ get_header();
 	<div class="container">
 		<div class="grid-2-asym" style="align-items:start">
 			<div>
-				<div class="text-11 font-semibold text-signal uppercase tracking-wider mono mb-4">Indicative Pricing</div>
-				<h2 class="text-3xl font-bold" style="line-height:1.25">What&rsquo;s your energy worth?</h2>
+				<div class="text-11 font-semibold text-signal uppercase tracking-wider mono mb-4">Indicative Pricing &middot; GB &middot; H2 2025</div>
+				<h2 class="text-3xl font-bold" style="line-height:1.25">What&rsquo;s your PPA worth?</h2>
 				<p class="mt-4 text-etc-400 leading-relaxed">
-					See indicative PPA revenue for your project based on live market data.
-					No forms. No sales calls. Just the numbers.
+					GB-native indicative PaP ranges by technology and tenor. No forms.
+					No sales calls. Just the numbers.
 				</p>
 				<p class="mt-6 text-13 text-etc-600 leading-relaxed">
-					Full P0-P100 pricing, counterparty matching, and deal execution available
-					on the platform.
+					Counterparty-specific pricing, structuring, and execution available via a call.
 				</p>
 			</div>
 			<div class="card p-8" id="ppa-estimator">
@@ -106,28 +106,32 @@ get_header();
 		<div class="mb-16">
 			<h2 class="text-3xl font-bold">Full-stack energy trading</h2>
 			<p class="mt-4 text-etc-400" style="max-width:42rem">
-				Discovery to execution. Analytics to settlement. ETC isn&rsquo;t a marketplace &mdash; it&rsquo;s the
-				operating system the market runs on.
+				Live today on PPAs and market intelligence. On the 2026 roadmap for assets, storage,
+				grid and 24/7 CFE &mdash; the infrastructure the market needs next.
 			</p>
 		</div>
 
 		<div class="cap-grid">
 			<?php
 			$capabilities = array(
-				array( 'tag' => 'DISCOVERY', 'title' => 'PPA Marketplace', 'desc' => 'Browse, price, and execute power purchase agreements from the deepest liquidity pool in the market. Risk-scored. Real-time.', 'href' => '/platform/#marketplace' ),
-				array( 'tag' => 'EXCHANGE', 'title' => 'Asset Exchange', 'desc' => 'Trade renewable energy projects at every stage. Our Asset+PPA bundles deliver 25-35% premium over asset-only transactions.', 'href' => '/platform/#assets' ),
-				array( 'tag' => 'STORAGE', 'title' => 'BESS Exchange', 'desc' => 'The first integrated marketplace for battery storage — Flexibility Index pricing, revenue stack optimisation, and performance benchmarking.', 'href' => '/platform/#bess' ),
-				array( 'tag' => 'ANALYTICS', 'title' => 'Analytics Engine', 'desc' => 'Monte Carlo simulation, IFRS 9 credit risk, portfolio cashflow modelling. Built for investment committees, not spreadsheets.', 'href' => '/platform/#analytics' ),
-				array( 'tag' => 'GRID', 'title' => 'Grid Intelligence', 'desc' => 'Live generation mix, constraint mapping, cannibalization analysis, revenue stack modelling, and regional capacity data.', 'href' => '/platform/#grid' ),
-				array( 'tag' => 'CFE', 'title' => '24/7 CFE Matching', 'desc' => 'Hourly carbon-free energy verification against real load profiles. Go beyond annual RECs to true 24/7 coverage.', 'href' => '/platform/#cfe' ),
+				array( 'tag' => 'LIVE NOW', 'title' => 'PPA Marketplace & Brokerage', 'desc' => 'Source, match, structure, execute. The deepest GB pipeline in one place — with senior execution on every deal.', 'href' => '/platform/#marketplace', 'status' => 'live' ),
+				array( 'tag' => 'LIVE NOW', 'title' => 'ETC Intel', 'desc' => 'Free for clients. UK power & gas, Big 6 curves, baseload/peak spreads, EU hubs, grid constraints, storage, demand and weather — one feed.', 'href' => '/intelligence/', 'status' => 'live' ),
+				array( 'tag' => '2026 ROADMAP', 'title' => 'Asset Exchange', 'desc' => 'Renewable assets tradable across development stages. Early access on request.', 'href' => '/platform/#assets', 'status' => 'roadmap' ),
+				array( 'tag' => '2026 ROADMAP', 'title' => 'BESS Exchange', 'desc' => 'Storage-native marketplace — revenue stack, flexibility benchmarks, performance.', 'href' => '/platform/#bess', 'status' => 'roadmap' ),
+				array( 'tag' => '2026 ROADMAP', 'title' => 'Grid Intelligence', 'desc' => 'Constraint mapping, DNO connections, capacity and cannibalisation modelling.', 'href' => '/platform/#grid', 'status' => 'roadmap' ),
+				array( 'tag' => '2026 ROADMAP', 'title' => '24/7 CFE Matching', 'desc' => 'Hourly carbon-free energy verification against real load profiles. Go beyond annual RECs.', 'href' => '/platform/#cfe', 'status' => 'roadmap' ),
 			);
 			foreach ( $capabilities as $cap ) :
+				$is_roadmap = isset( $cap['status'] ) && $cap['status'] === 'roadmap';
 			?>
-			<a href="<?php echo esc_url( home_url( $cap['href'] ) ); ?>" class="cap-item">
-				<div class="cap-tag"><?php echo esc_html( $cap['tag'] ); ?></div>
-				<h3 class="cap-title"><?php echo esc_html( $cap['title'] ); ?></h3>
+			<a href="<?php echo esc_url( home_url( $cap['href'] ) ); ?>" class="cap-item<?php echo $is_roadmap ? ' cap-item--roadmap' : ''; ?>">
+				<div class="cap-tag<?php echo $is_roadmap ? ' cap-tag--roadmap' : ''; ?>"><?php echo esc_html( $cap['tag'] ); ?></div>
+				<h3 class="cap-title">
+					<?php echo esc_html( $cap['title'] ); ?>
+					<?php if ( $is_roadmap ) : ?><span class="cap-badge">2026</span><?php endif; ?>
+				</h3>
 				<p class="cap-desc"><?php echo esc_html( $cap['desc'] ); ?></p>
-				<div class="cap-link">Explore <?php echo etc_icon_arrow_up_right(); ?></div>
+				<div class="cap-link"><?php echo $is_roadmap ? 'Early access' : 'Explore'; ?> <?php echo etc_icon_arrow_up_right(); ?></div>
 			</a>
 			<?php endforeach; ?>
 		</div>
@@ -139,17 +143,18 @@ get_header();
 	<div class="container">
 		<div class="mb-16">
 			<h2 class="text-3xl font-bold">
-				Not a broker. Not a matchmaker.<br>
-				<span class="text-etc-500">The market itself.</span>
+				Not just a broker. Not just a middleman.<br>
+				<span class="text-etc-500">Infrastructure.</span>
 			</h2>
 		</div>
 
-		<div class="grid md-grid-3" style="gap:2rem">
+		<div class="grid md-grid-2" style="gap:2rem">
 			<?php
 			$diffs = array(
-				array( 'title' => 'Liquidity, not listings', 'desc' => 'Brokers show you their book. ETC shows you the market. Transparent pricing, risk scores, and real-time benchmarks across 12+ electricity markets.' ),
-				array( 'title' => 'Certainty, not complexity', 'desc' => 'Monte Carlo models your downside. IFRS 9 classifies your risk. Every tool built to reduce time-to-certainty.' ),
-				array( 'title' => 'Intelligence, not information', 'desc' => "Cannibalization analysis. Flexibility Index. Confidence Scores. ETC doesn't just aggregate data — it synthesizes the signal from the noise." ),
+				array( 'title' => 'Full market visibility', 'desc' => "The widest range of PPA opportunities in GB — projects you won't find through bilateral channels alone." ),
+				array( 'title' => 'Published market prices', 'desc' => 'Live indicative ranges. Benchmark curves by technology. No hidden fees, no opaque mark-ups.' ),
+				array( 'title' => 'Faster execution', 'desc' => 'Streamlined processes and digital tooling cut weeks off traditional PPA timelines.' ),
+				array( 'title' => 'GB-native, Europe-connected', 'desc' => 'Built from inside the GB PPA market. Counterparty networks across European utilities, traders and asset managers.' ),
 			);
 			foreach ( $diffs as $d ) :
 			?>
@@ -163,83 +168,85 @@ get_header();
 	</div>
 </section>
 
-<!-- Advisory Intelligence -->
+<!-- Leadership Perspective -->
 <section class="section" id="advisory">
 	<div class="container">
 		<div class="mb-16">
-			<div class="text-11 font-medium text-etc-600 uppercase tracking-wider mono mb-4">Advisory Intelligence</div>
+			<div class="text-11 font-medium text-etc-600 uppercase tracking-wider mono mb-4">Leadership Perspective</div>
 			<h2 class="text-3xl font-bold">
-				The platform provides the data.<br>
-				<span class="text-etc-500">Our sector leads provide the strategy.</span>
+				Not just brokerage. Not just advisory.<br>
+				<span class="text-etc-500">Infrastructure.</span>
 			</h2>
 			<p class="mt-4 text-etc-400" style="max-width:42rem">
-				Every ETC client has access to sector-specific advisors who know the markets,
-				the counterparties, and the deal structures. Technology handles scale. Humans
-				handle nuance.
+				Founder-led. Senior on every deal. No handoffs to junior layers, no referrals to
+				outsourced teams &mdash; decisions in hours, not weeks.
 			</p>
 		</div>
 
-		<div class="grid grid-4 grid-px grid-rounded grid-bg-subtle">
-			<?php
-			$advisors = array(
-				array( 'domain' => 'PPA & Offtake Strategy', 'initials' => 'JC', 'desc' => 'Former utility procurement lead. 15+ years structuring PPAs across UK, Nordics, and Iberian markets. Your direct line to deal execution.' ),
-				array( 'domain' => 'Asset Transactions & M&A', 'initials' => 'KR', 'desc' => 'Ex-investment banking, energy infrastructure. Led £2B+ of renewable asset transactions. Covers valuation, due diligence, and deal structuring.' ),
-				array( 'domain' => 'BESS & Storage Markets', 'initials' => 'SP', 'desc' => 'Battery storage specialist. Former optimiser at a top-3 trading house. Covers revenue stacks, flexibility markets, and contract structuring.' ),
-				array( 'domain' => 'Grid & Regulatory', 'initials' => 'MW', 'desc' => 'Power systems engineer turned market analyst. DNO connections, constraint modelling, and regulatory compliance across UK and European grids.' ),
-			);
-			foreach ( $advisors as $a ) :
-			?>
-			<div class="surface-1 p-6">
-				<div class="advisor-avatar"><span><?php echo esc_html( $a['initials'] ); ?></span></div>
-				<h3 class="text-13 font-semibold text-white mb-2"><?php echo esc_html( $a['domain'] ); ?></h3>
-				<p class="text-12 text-etc-500 leading-relaxed"><?php echo esc_html( $a['desc'] ); ?></p>
-			</div>
-			<?php endforeach; ?>
+		<div class="founder-card card p-8" style="max-width:48rem">
+			<div class="founder-name text-lg font-semibold text-white">Daniel Zemmour</div>
+			<div class="founder-title text-11 font-medium text-signal uppercase tracking-wider mono mt-1 mb-6">Founder &middot; Energy Trade Centre</div>
+			<blockquote class="text-base text-white leading-relaxed mb-6" style="font-style:italic;border-left:2px solid var(--signal);padding-left:1.25rem;margin:0 0 1.5rem">
+				&ldquo;In today&rsquo;s market, generators and asset owners need more than standard broker coverage.
+				They need a partner that understands asset-level complexity, responds quickly, and is
+				willing to structure differently when the situation demands it.&rdquo;
+			</blockquote>
+			<ul class="founder-bullets text-13 text-etc-400 leading-relaxed" style="margin:0;padding-left:1.25rem">
+				<li>Faster response to evolving counterparty demand</li>
+				<li>Creative structuring for complex assets and hybrid projects</li>
+				<li>Bespoke execution aligned to each asset&rsquo;s economics</li>
+				<li>Senior on every deal &mdash; decisions in hours, not weeks</li>
+			</ul>
 		</div>
 	</div>
 </section>
 
-<!-- Social Proof -->
+<!-- Counterparty Network -->
 <section class="section section--alt section--border-y">
 	<div class="container">
 		<div class="mb-16">
-			<div class="text-11 font-medium text-etc-600 uppercase tracking-wider mono mb-4">Data Partners</div>
+			<div class="text-11 font-medium text-etc-600 uppercase tracking-wider mono mb-4">Who you transact with</div>
 			<h2 class="text-3xl font-bold">
-				The platform institutional<br>energy runs on
+				Institutional counterparty network
 			</h2>
 		</div>
 
-		<!-- Partner logos -->
+		<!-- Counterparty categories -->
 		<div class="flex flex-wrap items-center" style="gap:2.5rem 2.5rem;margin-bottom:3rem">
 			<?php
-			$partners = array(
-				array( 'name' => 'Nordpool', 'role' => 'Market data' ),
-				array( 'name' => 'EPEX SPOT', 'role' => 'Market data' ),
-				array( 'name' => 'National Grid ESO', 'role' => 'Grid data' ),
-				array( 'name' => 'Elexon', 'role' => 'Settlement data' ),
-				array( 'name' => 'S&P Global', 'role' => 'Credit ratings' ),
+			$counterparties = array(
+				array( 'name' => 'Big 6 utilities', 'role' => 'Majority of GB network' ),
+				array( 'name' => 'European energy majors', 'role' => 'Multiple active' ),
+				array( 'name' => 'Independent traders & originators', 'role' => 'Leading books' ),
+				array( 'name' => 'IPPs', 'role' => 'Independent Power Producers' ),
+				array( 'name' => 'Corporate offtakers', 'role' => 'Data centres, industrials' ),
 			);
-			foreach ( $partners as $partner ) :
+			foreach ( $counterparties as $cp ) :
 			?>
 			<div class="partner-item">
 				<div class="partner-bar"></div>
 				<div>
-					<span class="partner-name"><?php echo esc_html( $partner['name'] ); ?></span>
-					<span class="partner-role"><?php echo esc_html( $partner['role'] ); ?></span>
+					<span class="partner-name"><?php echo esc_html( $cp['name'] ); ?></span>
+					<span class="partner-role"><?php echo esc_html( $cp['role'] ); ?></span>
 				</div>
 			</div>
 			<?php endforeach; ?>
 		</div>
 
+		<p class="text-13 text-etc-400 leading-relaxed" style="max-width:48rem;margin-bottom:3rem">
+			<strong class="text-signal">80%+</strong> of our offtaker network holds investment-grade credit ratings.
+			Backed by parent companies including <strong class="text-white">Fortune 500 companies</strong>.
+		</p>
+
 		<div class="grid grid-2 grid-px grid-rounded grid-bg-subtle">
 			<?php
-			$proof = array(
-				array( 'type' => 'Data Centre Operators', 'detail' => 'Hyperscale procurement teams using ETC for multi-market PPA sourcing' ),
-				array( 'type' => 'Infrastructure Funds', 'detail' => 'Top-tier energy funds managing deal pipelines and portfolio analytics on ETC' ),
-				array( 'type' => 'Utility-Scale Developers', 'detail' => 'Developers listing 500MW+ of projects across North America and Europe' ),
-				array( 'type' => 'Corporate Sustainability', 'detail' => 'FTSE 250 & Fortune 500 companies tracking 24/7 CFE goals on ETC' ),
+			$segments = array(
+				array( 'type' => 'Utilities', 'detail' => 'Big 6 and European majors looking to fill offtake books and route complex generation.' ),
+				array( 'type' => 'Independent traders & originators', 'detail' => 'Proprietary books sourcing GB pipeline at institutional scale.' ),
+				array( 'type' => 'IPPs & asset owners', 'detail' => 'Generators, aggregators and infrastructure funds monetising wind, solar, BESS and EfW output.' ),
+				array( 'type' => 'Corporate offtakers', 'detail' => 'Data centres, industrials and large energy buyers seeking bilateral PPA cover.' ),
 			);
-			foreach ( $proof as $p ) :
+			foreach ( $segments as $p ) :
 			?>
 			<div class="surface-1 p-8">
 				<h3 class="text-base font-semibold text-white mb-2"><?php echo esc_html( $p['type'] ); ?></h3>
@@ -250,7 +257,7 @@ get_header();
 
 		<div class="flex flex-wrap gap-6 items-center mt-8">
 			<?php
-			$stats = array( '12+ electricity markets', '28 countries', '50+ active counterparties', 'IFRS 9 compliant' );
+			$stats = array( '1,500MW+ GB pipeline', 'Big 6 + European majors', '80%+ investment-grade offtakers', 'Founder-led execution' );
 			foreach ( $stats as $stat ) :
 			?>
 			<div class="flex items-center gap-2 text-12 text-etc-500">
@@ -266,18 +273,15 @@ get_header();
 <section class="section">
 	<div class="container-md text-center">
 		<h2 class="text-3xl font-bold">
-			The energy transition needs<br>better infrastructure.
+			Let&rsquo;s talk.
 		</h2>
 		<p class="mt-4 text-etc-400" style="max-width:36rem;margin-left:auto;margin-right:auto">
-			Request access to ETC and see why the most sophisticated energy
-			participants are moving their operations onto our platform.
+			Whether you&rsquo;re looking for offtake, sourcing generation, or want to understand
+			what the GB PPA market can offer your book &mdash; we&rsquo;d welcome a conversation.
 		</p>
 		<div class="flex justify-center gap-4 mt-8" style="flex-wrap:wrap">
 			<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn btn-primary">
-				Request access <?php echo etc_icon_arrow_right(); ?>
-			</a>
-			<a href="<?php echo esc_url( home_url( '/platform/' ) ); ?>" class="btn btn-secondary">
-				Explore the platform
+				Book a call <?php echo etc_icon_arrow_right(); ?>
 			</a>
 		</div>
 	</div>

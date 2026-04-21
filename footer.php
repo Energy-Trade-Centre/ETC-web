@@ -76,7 +76,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div class="footer-offices">
 				<span>London, UK</span>
 				<span class="footer-offices-dot">&bull;</span>
-				<span>European &amp; Asia-Pacific offices opening 2026</span>
+				<span>Focused in GB &middot; active in Europe</span>
 			</div>
 		</div>
 	</div>

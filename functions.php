@@ -37,9 +37,9 @@ function etc_scripts() {
 
 	wp_enqueue_script( 'etc-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), ETC_VERSION, true );
 
-	// Live price ticker on homepage
+	// Homepage-only scripts. Ticker is server-rendered from deck-verified ranges,
+	// so no live-prices.js is needed.
 	if ( is_front_page() ) {
-		wp_enqueue_script( 'etc-live-prices', get_template_directory_uri() . '/assets/js/live-prices.js', array(), ETC_VERSION, true );
 		wp_enqueue_script( 'etc-ppa-estimator', get_template_directory_uri() . '/assets/js/ppa-estimator.js', array(), ETC_VERSION, true );
 	}
 }
@@ -75,7 +75,7 @@ function etc_schema_output() {
 		'alternateName' => 'ETC',
 		'url'         => home_url( '/' ),
 		'logo'        => get_template_directory_uri() . '/assets/images/favicon.svg',
-		'description' => 'The institutional-grade platform for PPA trading, renewable asset exchange, battery storage, and energy market intelligence.',
+		'description' => 'The institutional platform for energy transactions. PPA pricing, structuring and execution across GB — with asset, storage and grid intelligence modules on the 2026 roadmap.',
 		'address'     => array(
 			'@type'           => 'PostalAddress',
 			'addressLocality' => 'London',
@@ -108,8 +108,8 @@ function etc_meta_tags() {
 		return;
 	}
 
-	$description = 'ETC is the institutional-grade platform for PPA trading, renewable asset exchange, battery storage, and energy market intelligence. 12+ markets. Full transparency.';
-	$keywords = 'PPA marketplace, power purchase agreement, renewable energy trading, energy asset exchange, battery storage marketplace, BESS trading, corporate PPA, renewable energy procurement, energy analytics, grid intelligence, carbon free energy, 24/7 CFE matching, PPA pricing, renewable energy platform, energy market intelligence, solar PPA, wind PPA, energy trade centre, ETC platform, PPA revenue estimator';
+	$description = 'ETC is the institutional platform for energy transactions. Pricing, structuring and execution for PPAs across GB — with asset, storage and grid modules on the 2026 roadmap. Focused in GB, active in Europe.';
+	$keywords = 'PPA marketplace, power purchase agreement, GB PPA, UK PPA, corporate PPA, renewable energy procurement, offshore wind PPA, onshore wind PPA, solar PPA, PPA pricing, PPA revenue estimator, energy trade centre, ETC platform, energy market intelligence, renewable energy trading';
 
 	echo '<meta name="description" content="' . esc_attr( $description ) . '">' . "\n";
 	echo '<meta name="keywords" content="' . esc_attr( $keywords ) . '">' . "\n";
