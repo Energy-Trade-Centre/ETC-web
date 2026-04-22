@@ -13,11 +13,6 @@ declare global {
   }
 }
 
-export function pageview(url: string) {
-  if (!isAnalyticsEnabled || typeof window === 'undefined' || !window.gtag) return;
-  window.gtag('config', GA_MEASUREMENT_ID as string, { page_path: url });
-}
-
 export type GAEventParams = Record<string, string | number | boolean | undefined>;
 
 export function trackEvent(name: string, params: GAEventParams = {}) {

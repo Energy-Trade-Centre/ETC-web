@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import Navigation from '@/components/layout/navigation';
 import Footer from '@/components/layout/footer';
-import GoogleAnalytics from '@/components/analytics/google-analytics';
+import { GA_MEASUREMENT_ID, isAnalyticsEnabled } from '@/lib/analytics';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -124,10 +125,12 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
-        <GoogleAnalytics />
         <Navigation />
         <main className="pt-14">{children}</main>
         <Footer />
+        {isAnalyticsEnabled && GA_MEASUREMENT_ID && (
+          <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
+        )}
       </body>
     </html>
   );
