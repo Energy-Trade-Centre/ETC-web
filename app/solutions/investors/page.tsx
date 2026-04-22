@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import TrackedLink from '@/components/analytics/tracked-link';
 import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -54,9 +54,14 @@ export default function InvestorsPage() {
               need, not the one that was built for someone else and rebranded.
             </p>
             <div className="mt-8">
-              <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors">
+              <TrackedLink
+                href="/contact"
+                trackLabel="Request access"
+                trackLocation="investors_hero"
+                className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
+              >
                 Request access <ArrowRight className="w-4 h-4" />
-              </Link>
+              </TrackedLink>
             </div>
           </div>
         </div>
@@ -80,9 +85,14 @@ export default function InvestorsPage() {
           <h2 className="text-3xl font-bold text-white">See the platform in action</h2>
           <p className="mt-4 text-etc-400">Schedule a walkthrough tailored to your investment workflow.</p>
           <div className="mt-8">
-            <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors">
+            <TrackedLink
+              href="/contact"
+              trackLabel="Request access"
+              trackLocation="investors_footer_cta"
+              className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
+            >
               Request access <ArrowRight className="w-4 h-4" />
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </section>

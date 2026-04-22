@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { events } from '@/lib/analytics';
 
 const markets: Record<string, { solar: number; wind: number }> = {
   'ERCOT': { solar: 24.50, wind: 22.80 },
@@ -17,6 +18,20 @@ export default function PPAEstimator() {
   const [capacity, setCapacity] = useState(50);
   const [market, setMarket] = useState('ERCOT');
   const [tech, setTech] = useState<'solar' | 'wind'>('solar');
+
+  const interacted = useRef(false);
+  const capacityTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (!interacted.current) return;
+    if (capacityTimer.current) clearTimeout(capacityTimer.current);
+    capacityTimer.current = setTimeout(() => {
+      events.estimatorInteraction('capacity', capacity);
+    }, 750);
+    return () => {
+      if (capacityTimer.current) clearTimeout(capacityTimer.current);
+    };
+  }, [capacity]);
 
   const result = useMemo(() => {
     const basePrice = markets[market]?.[tech] ?? 30;
@@ -44,7 +59,11 @@ export default function PPAEstimator() {
             {Object.keys(markets).map((m) => (
               <button
                 key={m}
-                onClick={() => setMarket(m)}
+                onClick={() => {
+                  interacted.current = true;
+                  setMarket(m);
+                  events.estimatorInteraction('market', m);
+                }}
                 className={`text-[12px] font-medium py-2 rounded-md transition-colors ${
                   market === m
                     ? 'bg-signal/10 text-signal border border-signal/20'
@@ -66,7 +85,11 @@ export default function PPAEstimator() {
             {(['solar', 'wind'] as const).map((t) => (
               <button
                 key={t}
-                onClick={() => setTech(t)}
+                onClick={() => {
+                  interacted.current = true;
+                  setTech(t);
+                  events.estimatorInteraction('tech', t);
+                }}
                 className={`text-[13px] font-medium py-2.5 rounded-md capitalize transition-colors ${
                   tech === t
                     ? 'bg-signal/10 text-signal border border-signal/20'
@@ -93,7 +116,10 @@ export default function PPAEstimator() {
             max={500}
             step={5}
             value={capacity}
-            onChange={(e) => setCapacity(Number(e.target.value))}
+            onChange={(e) => {
+              interacted.current = true;
+              setCapacity(Number(e.target.value));
+            }}
             className="w-full h-1 bg-etc-700 rounded-full appearance-none cursor-pointer accent-signal"
           />
           <div className="flex justify-between text-[10px] text-etc-600 mt-1">

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import TrackedLink from '@/components/analytics/tracked-link';
 import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -54,9 +54,14 @@ export default function SellersPage() {
               with deal structures that maximise your transaction value.
             </p>
             <div className="mt-8">
-              <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors">
+              <TrackedLink
+                href="/contact"
+                trackLabel="List your projects"
+                trackLocation="sellers_hero"
+                className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
+              >
                 List your projects <ArrowRight className="w-4 h-4" />
-              </Link>
+              </TrackedLink>
             </div>
           </div>
         </div>
@@ -93,9 +98,14 @@ export default function SellersPage() {
           <h2 className="text-3xl font-bold text-white">Ready to reach more buyers?</h2>
           <p className="mt-4 text-etc-400">Join 1,300+ developers originating on ETC.</p>
           <div className="mt-8">
-            <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors">
+            <TrackedLink
+              href="/contact"
+              trackLabel="Get started"
+              trackLocation="sellers_footer_cta"
+              className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
+            >
               Get started <ArrowRight className="w-4 h-4" />
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </section>
