@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import TrackedCTA from '@/components/analytics/tracked-cta';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import PPAEstimator from '@/components/ppa-estimator';
 
@@ -172,13 +173,15 @@ export default function HomePage() {
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
-              <Link
+              <TrackedCTA
                 href="/contact"
+                ctaLabel="Book a call"
+                ctaLocation="homepage_hero"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
               >
                 Book a call
                 <ArrowRight className="w-4 h-4" />
-              </Link>
+              </TrackedCTA>
               <Link
                 href="/intelligence"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-medium text-etc-300 border border-subtle hover:border-etc-600 hover:bg-white/[0.03] rounded-lg transition-colors"
@@ -381,13 +384,15 @@ export default function HomePage() {
             you&apos;re working on and whether ETC is useful to you.
           </p>
           <div className="mt-8 flex justify-center">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
-            >
+            <TrackedCTA
+                href="/contact"
+                ctaLabel="Book a call"
+                ctaLocation="homepage_closing_cta"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
+              >
               Book a call
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </TrackedCTA>
           </div>
         </div>
       </section>

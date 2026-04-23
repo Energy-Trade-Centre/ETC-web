@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Navigation from '@/components/layout/navigation';
 import Footer from '@/components/layout/footer';
+import GoogleAnalytics from '@/components/analytics/google-analytics';
+import { GA_MEASUREMENT_ID } from '@/lib/analytics';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -116,6 +118,7 @@ export default function RootLayout({
         <Navigation />
         <main className="pt-14">{children}</main>
         <Footer />
+        {GA_MEASUREMENT_ID && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
       </body>
     </html>
   );

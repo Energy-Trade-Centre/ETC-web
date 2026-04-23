@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { events } from '@/lib/analytics';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
 // Nav descriptions map to the homepage: PPA Marketplace & ETC Intel are LIVE,
@@ -89,6 +90,7 @@ export default function Navigation() {
           <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/contact"
+              onClick={() => events.ctaClick('Book a call', 'nav_desktop', '/contact')}
               className="text-[13px] font-semibold text-etc-black bg-signal hover:bg-signal-dim px-4 py-2 rounded-lg transition-colors"
             >
               Book a call
@@ -137,7 +139,10 @@ export default function Navigation() {
               <Link
                 href="/contact"
                 className="text-center text-sm font-semibold text-etc-black bg-signal px-4 py-2.5 rounded-lg"
-                onClick={() => setMobileOpen(false)}
+                onClick={() => {
+                  events.ctaClick('Book a call', 'nav_mobile', '/contact');
+                  setMobileOpen(false);
+                }}
               >
                 Book a call
               </Link>

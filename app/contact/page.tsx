@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { ArrowRight, CheckCircle2, Mail, MapPin } from 'lucide-react';
+import { events } from '@/lib/analytics';
 
 const roles = [
   'Energy Buyer / Procurement',
@@ -50,6 +51,15 @@ export default function ContactPage() {
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
+                    const form = e.currentTarget;
+                    const data = new FormData(form);
+                    const role = (data.get('role') as string) || '';
+                    const company = (data.get('company') as string) || '';
+                    events.formSubmit('contact', {
+                      form_destination: '/contact',
+                      role,
+                      has_company: Boolean(company),
+                    });
                     setSubmitted(true);
                   }}
                   className="space-y-6"
