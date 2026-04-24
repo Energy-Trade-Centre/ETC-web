@@ -3,44 +3,55 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Company | Founder-led, GB-focused',
+  title: 'Company | ETC — institutional energy market infrastructure',
   description:
-    'ETC is a founder-led platform for institutional energy transactions, focused in GB and active in Europe. Built to replace broker quotes and spreadsheets with published indicative curves and direct execution.',
+    'ETC is a founder-led platform for institutional energy transactions. Market intelligence, transaction workflows, and direct execution across European energy markets — starting in GB.',
   alternates: { canonical: 'https://energytradecentre.com/about' },
 };
 
-// Honest four-pillar positioning — replaces the four fabricated
-// "Renewable Energy Advisory / Quantitative Analytics / Grid & Infrastructure / Platform Engineering"
-// domain cards with what we're actually structured to do.
+// Pillars describe how ETC operates, not the specific product shape of today.
+// Deliberately avoids the "published GB PaP curves" framing so the company
+// positioning doesn't collapse into one product line.
 const pillars = [
   {
     title: 'Founder-led execution',
     description:
-      'Every deal runs through the founder. No sub-brokers, no hand-offs. If you book a call, you speak to the person who will structure the trade.',
+      'Every transaction runs through the founder. No sub-brokers, no hand-offs. When you book a call, you speak directly to the person who will structure the trade.',
   },
   {
-    title: 'Published indicative curves',
+    title: 'Intelligence before transaction',
     description:
-      'We publish PaP ranges by technology and tenor on a cadence. Buyers and sellers quote from the same reference instead of chasing brokers for prints.',
+      'Pricing signals, offtaker demand, route-to-market and policy coverage sit under ETC Intel. Participants understand a market before they have to price into it.',
   },
   {
-    title: 'Counterparty network',
+    title: 'Active counterparty network',
     description:
-      'Big 6 utilities, European energy majors, independent traders & originators, IPPs & asset owners, and corporate offtakers &mdash; on the active network.',
+      'Renewable developers and asset owners, BESS operators, corporate and industrial buyers, utilities and suppliers, traders and advisors &mdash; on one active network.',
   },
   {
-    title: 'GB-native, Europe-connected',
+    title: 'Infrastructure, not brokerage',
     description:
-      'GB is the focus. European majors are on the counterparty network. We do not pretend to cover every market — we cover the one we know properly.',
+      'We build the layer the market has been missing: transparency, access and efficient execution. A platform that scales across products, not a desk that scales with headcount.',
   },
 ];
 
-// Replaces the "2022 … 2025 expanded to 12+ markets / 4,500+ live offers / 50+ counterparties"
-// fabricated milestone ladder. Honest about what exists today and what is on the roadmap.
+// Company trajectory — product-led, not "fake milestone ladder".
 const milestones = [
-  { year: 'Today', event: 'PPA Marketplace & Brokerage and ETC Intel operational across GB.' },
-  { year: '2026', event: 'Asset Exchange, BESS Exchange, Grid Intelligence and 24/7 CFE Matching on the roadmap.' },
-  { year: 'Ongoing', event: 'Indicative GB PPA curves refreshed on the published cadence.' },
+  {
+    year: 'Today',
+    event:
+      'ETC Intel and the PPA Platform are operational. Active across GB with European participants on the counterparty network.',
+  },
+  {
+    year: '2026',
+    event:
+      'Asset Exchange, BESS Exchange, Grid Intelligence and 24/7 CFE Matching on the roadmap &mdash; broadening ETC from PPA execution to a full market infrastructure layer.',
+  },
+  {
+    year: 'Ongoing',
+    event:
+      'Continuous coverage of European energy market signals &mdash; pricing, demand, route-to-market and regulatory developments.',
+  },
 ];
 
 export default function AboutPage() {
@@ -54,7 +65,7 @@ export default function AboutPage() {
             <div className="flex items-center gap-2 mb-6">
               <div className="w-1.5 h-1.5 rounded-full bg-signal signal-pulse" />
               <span className="text-[11px] font-medium text-etc-500 uppercase tracking-wider">
-                Focused in GB · Active in Europe
+                European energy markets &middot; starting in GB
               </span>
             </div>
             <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-[1.05] tracking-tight">
@@ -62,30 +73,30 @@ export default function AboutPage() {
               market <span className="etc-gradient">infrastructure</span>
             </h1>
             <p className="mt-6 text-lg text-etc-400 leading-relaxed">
-              ETC is the institutional platform for energy transactions. Focused in GB, active in
-              Europe, built to replace broker quotes and spreadsheets with published indicative
-              curves and direct execution.
+              ETC is the institutional platform for energy transactions. A data-driven layer
+              combining market intelligence, structuring and direct execution for renewable
+              energy participants across European markets.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Why we built this */}
+      {/* Why we built this — broader framing */}
       <section className="border-t border-subtle py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
             <div>
               <h2 className="text-2xl font-bold text-white mb-6">The problem</h2>
               <p className="text-[14px] text-etc-400 leading-relaxed mb-4">
-                GB PPA structure still runs on broker-quoted prints, email chains and
-                fragmented spreadsheets. Buyers have no transparent reference, sellers have
-                no efficient way to reach the full counterparty set, and every deal repeats
-                the same discovery work from scratch.
+                European energy markets run on fragmented signals: broker-quoted prints for
+                pricing, bilateral conversations for demand, informal channels for route-to-market,
+                and regulatory updates scattered across jurisdictions. Participants spend more time
+                assembling the context than acting on it.
               </p>
               <p className="text-[14px] text-etc-400 leading-relaxed mb-4">
-                That wiring was built for annual auctions and opaque broker quotes. For a
-                market that now needs PaP curves, shaped products, sleeved structures,
-                REGO handling and 24/7 CFE on the horizon, it is the wrong shape.
+                That wiring was built for annual auctions and opaque broker quotes. A market now
+                running on shaped PPAs, co-located BESS, route-to-market diversification, 24/7
+                CFE and evolving regulatory frameworks needs a different shape.
               </p>
               <p className="text-[14px] text-etc-400 leading-relaxed">
                 The market does not need another broker. It needs infrastructure.
@@ -94,27 +105,32 @@ export default function AboutPage() {
             <div>
               <h2 className="text-2xl font-bold text-white mb-6">Our answer</h2>
               <p className="text-[14px] text-etc-400 leading-relaxed mb-4">
-                A published set of indicative GB PPA curves that both sides can quote from.
-                An active counterparty network spanning the Big 6, European majors,
-                independent traders, IPPs and corporate offtakers. Founder-led structuring
-                through to signed contract.
+                An integrated platform for institutional energy transactions &mdash; combining
+                market intelligence (pricing, demand, route-to-market, regulatory) with
+                transactional workflows (matching, structuring, execution).
+              </p>
+              <p className="text-[14px] text-etc-400 leading-relaxed mb-4">
+                Participants can position and price with context, then act on it in the same
+                place. Built for developers and asset owners, BESS operators, corporate buyers,
+                utilities, traders and advisors.
               </p>
               <p className="text-[14px] text-etc-400 leading-relaxed">
-                Not a broker. Not a matchmaker. Infrastructure &mdash; starting in GB, with
-                asset, storage, grid and CFE modules on the 2026 roadmap.
+                A new layer of energy market infrastructure &mdash; focused on transparency,
+                access and efficiency. GB is where we start; the network is European and
+                growing.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* How we're structured — replaces the fake domain-team grid */}
+      {/* How we're set up */}
       <section className="surface-2 border-t border-subtle py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 max-w-2xl">
             <h2 className="text-2xl font-bold text-white">How we&apos;re set up</h2>
             <p className="mt-2 text-[13px] text-etc-500">
-              Not a team-page theatre. The four things that actually define how ETC operates.
+              Four principles define how ETC operates &mdash; independent of any single product.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle">
@@ -122,14 +138,17 @@ export default function AboutPage() {
               <div key={p.title} className="surface-1 p-8">
                 <div className="w-8 h-px bg-signal mb-6" />
                 <h3 className="text-base font-semibold text-white mb-3">{p.title}</h3>
-                <p className="text-[13px] text-etc-500 leading-relaxed">{p.description}</p>
+                <p
+                  className="text-[13px] text-etc-500 leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: p.description }}
+                />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Founder — carried over from homepage, shortened */}
+      {/* Founder */}
       <section className="border-t border-subtle py-20 lg:py-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
@@ -147,10 +166,10 @@ export default function AboutPage() {
                 <div className="text-[13px] text-etc-500 mt-1">Founder &amp; CEO</div>
                 <p className="mt-6 text-etc-400 leading-relaxed">
                   ETC exists because the market&apos;s wiring was built for a world of annual
-                  auctions and opaque broker quotes. That world is over. Buyers want published
-                  prices they can quote from. Sellers want counterparty visibility and fast
-                  structuring. The infrastructure to do that didn&apos;t exist &mdash; so we
-                  built it, starting in GB.
+                  auctions and opaque broker quotes. That world is over. Participants want
+                  intelligence they can act on, counterparty visibility, and fast structuring
+                  across the full energy transaction stack &mdash; not just PPAs. The
+                  infrastructure to do that didn&apos;t exist, so we&apos;re building it.
                 </p>
               </div>
             </div>
@@ -173,7 +192,7 @@ export default function AboutPage() {
           <div className="mt-12 card px-8 py-5 inline-block">
             <div className="text-[11px] font-medium text-etc-600 uppercase tracking-widest mb-1">Based</div>
             <div className="text-base font-semibold text-white">London, United Kingdom</div>
-            <div className="text-[12px] text-etc-500 mt-1">Focused in GB · active in Europe</div>
+            <div className="text-[12px] text-etc-500 mt-1">European energy markets &middot; starting in GB</div>
           </div>
         </div>
       </section>
@@ -183,8 +202,8 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white">Let&apos;s talk.</h2>
           <p className="mt-4 text-etc-400 max-w-xl mx-auto">
-            If you&apos;re pricing, buying, originating or investing in GB energy transactions
-            &mdash; book a call.
+            If you&apos;re pricing, originating, buying or investing in European energy
+            transactions &mdash; book a call.
           </p>
           <div className="mt-8">
             <Link
