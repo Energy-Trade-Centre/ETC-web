@@ -29,6 +29,7 @@ const navigation = [
       { name: 'Investment', href: '/solutions/investors', description: 'For funds and investors sizing GB renewables exposure.' },
     ],
   },
+  { name: 'PPA', href: '/ppa' },
   { name: 'ETC Intel', href: '/intelligence' },
   { name: 'Company', href: '/about' },
 ];
