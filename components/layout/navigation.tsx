@@ -5,15 +5,15 @@ import Link from 'next/link';
 import { events } from '@/lib/analytics';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
-// Nav descriptions map to the homepage: PPA Marketplace & ETC Intel are LIVE,
-// Asset Exchange / BESS Exchange / Grid Intelligence / 24/7 CFE are on the 2026 roadmap.
+// Nav IA aligns with the homepage reorder: PPA Platform and ETC Intel are the
+// two live product pages; roadmap modules anchor into /platform.
 const navigation = [
   {
     name: 'Platform',
     href: '/platform',
     children: [
-      { name: 'PPA Marketplace', href: '/platform#marketplace', description: 'Live pricing, structuring and execution across GB.' },
-      { name: 'ETC Intel', href: '/intelligence', description: 'Indicative curves, counterparty coverage, deal structuring notes.' },
+      { name: 'PPA Platform', href: '/ppa', description: 'Counterparty matching, structuring and direct execution across GB.' },
+      { name: 'ETC Intel', href: '/intelligence', description: 'Forward pricing, offtaker demand, route-to-market and policy coverage.' },
       { name: 'Asset Exchange', href: '/platform#assets', description: '2026 roadmap — project and asset+PPA bundles.' },
       { name: 'BESS Exchange', href: '/platform#bess', description: '2026 roadmap — battery origination and optimisation.' },
       { name: 'Grid Intelligence', href: '/platform#grid', description: '2026 roadmap — constraint and queue visibility.' },
@@ -29,7 +29,7 @@ const navigation = [
       { name: 'Investment', href: '/solutions/investors', description: 'For funds and investors sizing GB renewables exposure.' },
     ],
   },
-  { name: 'Intelligence', href: '/intelligence' },
+  { name: 'ETC Intel', href: '/intelligence' },
   { name: 'Company', href: '/about' },
 ];
 
@@ -74,6 +74,9 @@ export default function Navigation() {
                       <Link
                         key={child.name}
                         href={child.href}
+                        onClick={() =>
+                          events.navClick(child.name, child.href)
+                        }
                         className="block px-3.5 py-2.5 rounded-lg hover:bg-white/5 transition-colors"
                       >
                         <div className="text-[13px] font-medium text-white">{child.name}</div>
@@ -86,7 +89,7 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* CTA — single Book a call (no 'Sign in' until a signed-in product exists) */}
+          {/* CTA — single Book a call */}
           <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/contact"
@@ -126,7 +129,10 @@ export default function Navigation() {
                         key={child.name}
                         href={child.href}
                         className="block px-4 py-2 text-[13px] text-etc-500 hover:text-white"
-                        onClick={() => setMobileOpen(false)}
+                        onClick={() => {
+                          events.navClick(child.name, child.href);
+                          setMobileOpen(false);
+                        }}
                       >
                         {child.name}
                       </Link>

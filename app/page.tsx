@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import TrackedCTA from '@/components/analytics/tracked-cta';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import PPAEstimator from '@/components/ppa-estimator';
 
 export const metadata: Metadata = {
   title: 'ETC | Institutional PPA platform — GB',
@@ -11,38 +10,56 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://energytradecentre.com' },
 };
 
-// GB H2 2025 indicative PaP ranges — server-rendered, deck-verified.
-// Ticker replaces the old fabricated live-price feed.
-const indicativeRanges = [
-  { tech: 'Offshore Wind', tenor: '3Y', low: 75, high: 78 },
-  { tech: 'Offshore Wind', tenor: '5Y', low: 73, high: 76 },
-  { tech: 'Onshore Wind', tenor: '3Y', low: 55, high: 62 },
-  { tech: 'Onshore Wind', tenor: '5Y', low: 52, high: 58 },
-  { tech: 'Solar PV', tenor: '3Y', low: 48, high: 55 },
-  { tech: 'Solar PV', tenor: '5Y', low: 45, high: 52 },
-];
-
-// Honest stat strip — replaces the "4,523 live offers / 1,425 MW / 14d Lightning PPA / Confidence Score 92" fabrications.
-const scaleStats = [
-  { value: '1,500MW+', label: 'GB pipeline', sub: 'deals in-flight or under review' },
-  { value: 'Big 6', label: '+ European majors', sub: 'on the counterparty network' },
-  { value: '80%+', label: 'investment-grade', sub: 'offtaker credit quality' },
-  { value: 'Founder-led', label: 'execution', sub: 'not a broker front' },
-];
-
-const capabilities = [
+// Section 1 — Built for energy market participants.
+// Replaces the prior headline metrics / counterparty block (Slide 03 feedback: audience segmentation wins).
+const audiences = [
   {
-    title: 'PPA Marketplace & Brokerage',
+    label: 'Renewable energy developers and asset owners',
+    detail: 'Wind, solar and hybrid developers, and operating owners looking for offtake and visibility.',
+  },
+  {
+    label: 'BESS operators',
+    detail: 'Battery owners and optimisers sizing revenue stack exposure and offtake structure.',
+  },
+  {
+    label: 'Corporate and industrial energy buyers',
+    detail: 'FTSE 250, Fortune 500 and industrial buyers pricing long-dated GB power.',
+  },
+  {
+    label: 'Utilities and suppliers',
+    detail: 'Retail supply, integrated generation, and structuring desks across GB and Europe.',
+  },
+  {
+    label: 'Energy traders and advisors',
+    detail: 'Merchant traders, route-to-market providers, aggregators and deal advisors.',
+  },
+];
+
+// Section 1b — A new layer of energy market infrastructure.
+// Replaces the earlier "Not just a broker. Not just a middleman." negative framing (Slide 04 feedback).
+const infrastructurePoints = [
+  'Combines intelligence, strategy, and execution in one platform',
+  'Moves beyond single-transaction brokerage',
+  'Designed for a rapidly evolving energy landscape',
+  'Focused on transparency, access, and efficiency',
+];
+
+// Section 2 — Platforms & services + roadmap.
+// Homepage teaser grid. Live modules link directly to their product pages; roadmap modules anchor
+// into /platform for planned capability detail.
+const platforms = [
+  {
+    title: 'PPA Platform',
     description:
-      'Live pricing, structuring and execution for corporate, utility and asset-backed PPAs across GB. Pay-as-produced, baseload, and shaped products.',
-    href: '/platform#marketplace',
+      'Counterparty matching, structuring, and direct execution for corporate, utility and asset-backed PPAs across GB.',
+    href: '/ppa',
     tag: 'LIVE NOW',
     status: 'live' as const,
   },
   {
     title: 'ETC Intel',
     description:
-      'Indicative curves, counterparty coverage and deal structuring notes. Built for procurement, origination and investment teams.',
+      'Forward pricing signals, offtaker demand, route-to-market and policy & framework coverage — built for procurement, origination and investment teams.',
     href: '/intelligence',
     tag: 'LIVE NOW',
     status: 'live' as const,
@@ -50,7 +67,7 @@ const capabilities = [
   {
     title: 'Asset Exchange',
     description:
-      'Trade renewable projects through development, construction and operating stages. Asset + PPA bundles where it adds value.',
+      'Trade renewable projects through development, construction and operating stages. Asset + PPA bundles where bundling adds value.',
     href: '/platform#assets',
     tag: '2026 ROADMAP',
     status: 'roadmap' as const,
@@ -81,71 +98,10 @@ const capabilities = [
   },
 ];
 
-// Counterparty network categories — replaces the fake partner-logos line
-// (Nordpool / EPEX SPOT / National Grid ESO / Elexon / S&P Global).
-const counterpartyNetwork = [
-  { type: 'Big 6 utilities', detail: 'GB supply and generation incumbents' },
-  { type: 'European energy majors', detail: 'Integrated utilities and oil & gas majors' },
-  { type: 'Independent traders & originators', detail: 'Merchant and route-to-market specialists' },
-  { type: 'IPPs & asset owners', detail: 'Developers and operating asset owners across GB' },
-  { type: 'Corporate offtakers', detail: 'Industrial, data centre, and FTSE/Fortune 500 buyers' },
-];
-
-// Three-pillar value prop — deck slide 3 headline, deck slide 8 pillars.
-const pillars = [
-  {
-    title: 'Full market visibility',
-    description:
-      'We see the whole GB PPA market — every major utility, every European energy major, every active independent trader. That breadth is the product.',
-  },
-  {
-    title: 'Published market prices',
-    description:
-      'Indicative curves you can quote from, not bid/ask theatre. Pay-as-produced ranges by technology and tenor, refreshed on the published cadence.',
-  },
-  {
-    title: 'Faster execution',
-    description:
-      'Founder-led structuring, pre-qualified counterparties, and a platform bias to close. Speed comes from removing friction, not from cutting corners.',
-  },
-  {
-    title: 'GB-native, Europe-connected',
-    description:
-      'GB is our focus. European majors are on the network. No pretence of being everywhere at once.',
-  },
-];
-
-const segments = [
-  { type: 'Utilities', detail: 'Retail supply, integrated generation, and structuring desks' },
-  { type: 'Independent traders & originators', detail: 'Merchant traders, route-to-market providers, aggregators' },
-  { type: 'IPPs & asset owners', detail: 'Developers and operating owners in wind, solar and BESS' },
-  { type: 'Corporate offtakers', detail: 'Industrial, data centre, and FTSE/Fortune 500 buyers' },
-];
-
 export default function HomePage() {
   return (
     <>
-      {/* Indicative Ranges Ticker — GB H2 2025, server-rendered.
-          Replaces the old fake live-price feed. */}
-      <div className="surface-2 border-b border-subtle overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-8 py-2 overflow-x-auto text-[11px]">
-            <div className="flex items-center gap-2 shrink-0">
-              <div className="w-1.5 h-1.5 rounded-full bg-signal signal-pulse" />
-              <span className="text-etc-600 uppercase tracking-wider font-medium">GB Indicative PPA Ranges · H2 2025 · PaP £/MWh</span>
-            </div>
-            {indicativeRanges.map((r) => (
-              <div key={`${r.tech}-${r.tenor}`} className="flex items-center gap-2 shrink-0">
-                <span className="text-etc-400 font-medium">{r.tech}</span>
-                <span className="text-etc-500">{r.tenor}</span>
-                <span className="mono text-white font-medium">&pound;{r.low}&ndash;{r.high}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Hero */}
+      {/* Hero — kept as-is pending the user's revised hero structure */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 grid-bg" />
         <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-signal/[0.03] rounded-full blur-[200px]" />
@@ -167,103 +123,126 @@ export default function HomePage() {
             </h1>
 
             <p className="mt-8 text-lg sm:text-xl text-etc-400 leading-relaxed max-w-2xl">
-              Pricing, structuring and execution for PPAs across GB &mdash; and the rails for assets,
-              storage and grid to follow. Built for utilities, independent traders, IPPs and
-              corporate offtakers.
+              A data-driven approach to energy market access. ETC provides the intelligence and
+              execution layer for renewable energy transactions &mdash; combining market data,
+              pricing signals, and transaction workflows so participants can price, position,
+              and access energy markets beyond traditional PPAs.
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <TrackedCTA
-                href="/contact"
-                ctaLabel="Book a call"
+                href="/intelligence"
+                ctaLabel="Explore ETC Intel"
                 ctaLocation="homepage_hero"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
               >
-                Book a call
+                Explore ETC Intel
                 <ArrowRight className="w-4 h-4" />
               </TrackedCTA>
-              <Link
-                href="/intelligence"
+              <TrackedCTA
+                href="/contact"
+                ctaLabel="Request access"
+                ctaLocation="homepage_hero"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-medium text-etc-300 border border-subtle hover:border-etc-600 hover:bg-white/[0.03] rounded-lg transition-colors"
               >
-                View market intelligence
-              </Link>
+                Request access
+              </TrackedCTA>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Scale strip — deck-verified, replaces fabricated 4,523/1,425MW/14d/92 metrics */}
-          <div className="mt-24 grid grid-cols-2 lg:grid-cols-4 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle">
-            {scaleStats.map((m) => (
-              <div key={m.label} className="surface-2 p-6">
-                <div className="text-3xl sm:text-4xl font-bold text-white mono">{m.value}</div>
-                <div className="text-sm text-etc-300 mt-1 font-medium">{m.label}</div>
-                <div className="text-[11px] text-etc-600 mt-0.5">{m.sub}</div>
+      {/* Section 1 — Built for energy market participants (audience segmentation). */}
+      <section className="surface-2 border-y border-subtle py-20 lg:py-28" id="audience">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 max-w-3xl">
+            <div className="text-[11px] font-medium text-etc-600 uppercase tracking-wider mb-4 mono">
+              Who it&apos;s for
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white">
+              Built for energy market participants.
+            </h2>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle mb-10">
+            {audiences.map((a) => (
+              <div key={a.label} className="surface-1 p-6">
+                <h3 className="text-[13px] font-semibold text-white mb-2">{a.label}</h3>
+                <p className="text-[12px] text-etc-500 leading-relaxed">{a.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Platform coverage — UK current, network growing. */}
+          <div className="grid sm:grid-cols-2 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle max-w-2xl">
+            <div className="surface-1 p-6">
+              <div className="text-[10px] font-semibold text-signal uppercase tracking-widest mb-2 mono">UK</div>
+              <div className="text-[13px] text-etc-400">Current coverage</div>
+            </div>
+            <div className="surface-1 p-6">
+              <div className="text-[10px] font-semibold text-signal uppercase tracking-widest mb-2 mono">Growing</div>
+              <div className="text-[13px] text-etc-400">Participant network</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 1c — A new layer of energy market infrastructure. */}
+      <section className="py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
+              A new layer of energy market <span className="etc-gradient">infrastructure</span>.
+            </h2>
+          </div>
+
+          <div className="mt-12 grid md:grid-cols-2 gap-6 max-w-4xl">
+            {infrastructurePoints.map((p) => (
+              <div key={p} className="flex items-start gap-4 card p-6">
+                <div className="w-1.5 h-1.5 rounded-full bg-signal mt-2 shrink-0" />
+                <p className="text-[14px] text-etc-300 leading-relaxed">{p}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* PPA Revenue Estimator — give value first */}
-      <section className="py-20 lg:py-28" id="estimator">
+      {/* Section 2 — Platforms & services + roadmap. */}
+      <section className="surface-2 border-y border-subtle py-20 lg:py-28" id="platforms">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-            <div>
-              <div className="text-[11px] font-medium text-signal uppercase tracking-wider mb-4 mono">
-                Indicative Pricing · GB · H2 2025
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
-                What&apos;s your energy worth?
-              </h2>
-              <p className="mt-4 text-etc-400 leading-relaxed">
-                Published GB indicative PaP ranges by technology and tenor. Move the sliders,
-                see the number. No form. No sales call first.
-              </p>
-              <p className="mt-6 text-[13px] text-etc-600 leading-relaxed">
-                Quoted pricing, counterparty matching and execution handled directly &mdash;
-                book a call when you&apos;re ready to transact.
-              </p>
+          <div className="mb-16 max-w-3xl">
+            <div className="text-[11px] font-medium text-etc-600 uppercase tracking-wider mb-4 mono">
+              Platforms &amp; services
             </div>
-            <PPAEstimator />
-          </div>
-        </div>
-      </section>
-
-      {/* Capabilities */}
-      <section className="py-20 lg:py-28" id="capabilities">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-white">
-              What&apos;s live now &mdash; and what&apos;s next
+              What&apos;s live now &mdash; and what&apos;s next.
             </h2>
-            <p className="mt-4 text-etc-400 max-w-2xl">
-              PPAs and ETC Intel are operational today. Asset Exchange, BESS Exchange,
+            <p className="mt-4 text-etc-400">
+              The PPA Platform and ETC Intel are live today. Asset Exchange, BESS Exchange,
               Grid Intelligence and 24/7 CFE Matching are on the 2026 roadmap.
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle">
-            {capabilities.map((cap) => (
+            {platforms.map((p) => (
               <Link
-                key={cap.title}
-                href={cap.href}
-                className={`group surface-1 p-8 hover:bg-etc-850 transition-colors ${
-                  cap.status === 'roadmap' ? 'relative' : ''
-                }`}
+                key={p.title}
+                href={p.href}
+                className="group surface-1 p-8 hover:bg-etc-850 transition-colors"
               >
                 <div
                   className={`text-[10px] font-semibold uppercase tracking-widest mb-4 mono ${
-                    cap.status === 'roadmap' ? 'text-amber' : 'text-signal'
+                    p.status === 'roadmap' ? 'text-amber' : 'text-signal'
                   }`}
                 >
-                  {cap.tag}
+                  {p.tag}
                 </div>
                 <h3 className="text-lg font-semibold text-white group-hover:text-signal transition-colors">
-                  {cap.title}
+                  {p.title}
                 </h3>
-                <p className="mt-3 text-[13px] text-etc-500 leading-relaxed">{cap.description}</p>
+                <p className="mt-3 text-[13px] text-etc-500 leading-relaxed">{p.description}</p>
                 <div className="mt-5 inline-flex items-center text-[12px] font-medium text-etc-600 group-hover:text-signal gap-1 transition-colors">
-                  {cap.status === 'roadmap' ? 'On the roadmap' : 'Explore'} <ArrowUpRight className="w-3 h-3" />
+                  {p.status === 'roadmap' ? 'On the roadmap' : 'Explore'} <ArrowUpRight className="w-3 h-3" />
                 </div>
               </Link>
             ))}
@@ -271,29 +250,106 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* The ETC difference — deck slide 3 headline + slide 8 pillars. */}
-      <section className="surface-2 border-y border-subtle py-20 lg:py-28">
+      {/* Section 3 — ETC Intel teaser. */}
+      <section className="py-20 lg:py-28" id="intel-teaser">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">
-              Not just a broker. Not just a middleman.<br />
-              <span className="text-etc-500">Infrastructure.</span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {pillars.map((item) => (
-              <div key={item.title} className="card p-8">
-                <div className="w-8 h-px bg-signal mb-6" />
-                <h3 className="text-lg font-semibold text-white mb-3">{item.title}</h3>
-                <p className="text-[13px] text-etc-500 leading-relaxed">{item.description}</p>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div>
+              <div className="text-[11px] font-medium text-signal uppercase tracking-wider mb-4 mono">
+                ETC Intel &middot; Market intelligence
               </div>
-            ))}
+              <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
+                Real signals from real energy markets.
+              </h2>
+              <p className="mt-4 text-etc-400 leading-relaxed">
+                We track, structure and surface transaction-level data and market signals across
+                European energy markets &mdash; helping you understand pricing, demand and timing
+                before you enter a deal.
+              </p>
+              <div className="mt-8">
+                <TrackedCTA
+                  href="/intelligence"
+                  ctaLabel="Explore ETC Intel"
+                  ctaLocation="homepage_intel_teaser"
+                  className="inline-flex items-center gap-2 text-[13px] font-semibold text-signal hover:text-signal-dim transition-colors"
+                >
+                  Explore ETC Intel <ArrowRight className="w-4 h-4" />
+                </TrackedCTA>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle">
+              <div className="surface-1 p-6">
+                <div className="text-[10px] font-semibold text-etc-600 uppercase tracking-widest mb-2 mono">01 &middot; Pricing</div>
+                <h3 className="text-[13px] font-semibold text-white">Forward pricing &amp; trends</h3>
+              </div>
+              <div className="surface-1 p-6">
+                <div className="text-[10px] font-semibold text-etc-600 uppercase tracking-widest mb-2 mono">02 &middot; Demand</div>
+                <h3 className="text-[13px] font-semibold text-white">Offtaker demand</h3>
+              </div>
+              <div className="surface-1 p-6">
+                <div className="text-[10px] font-semibold text-etc-600 uppercase tracking-widest mb-2 mono">03 &middot; Route</div>
+                <h3 className="text-[13px] font-semibold text-white">Route-to-market</h3>
+              </div>
+              <div className="surface-1 p-6">
+                <div className="text-[10px] font-semibold text-etc-600 uppercase tracking-widest mb-2 mono">04 &middot; Regulatory</div>
+                <h3 className="text-[13px] font-semibold text-white">Policy &amp; frameworks</h3>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Founder — single block replaces the 4 unverifiable advisors. */}
+      {/* Section 4 — PPA Platform teaser. */}
+      <section className="surface-2 border-y border-subtle py-20 lg:py-28" id="ppa-teaser">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="order-2 lg:order-1">
+              <div className="grid grid-cols-1 gap-4 max-w-md">
+                <div className="card p-5">
+                  <div className="text-[10px] font-semibold text-etc-600 uppercase tracking-widest mb-2 mono">01</div>
+                  <h3 className="text-[13px] font-semibold text-white mb-1">Counterparty matching</h3>
+                  <p className="text-[12px] text-etc-500">Match against the active network.</p>
+                </div>
+                <div className="card p-5">
+                  <div className="text-[10px] font-semibold text-etc-600 uppercase tracking-widest mb-2 mono">02</div>
+                  <h3 className="text-[13px] font-semibold text-white mb-1">Structuring</h3>
+                  <p className="text-[12px] text-etc-500">Pay-as-produced, baseload, shaped, sleeved and virtual variants.</p>
+                </div>
+                <div className="card p-5">
+                  <div className="text-[10px] font-semibold text-etc-600 uppercase tracking-widest mb-2 mono">03</div>
+                  <h3 className="text-[13px] font-semibold text-white mb-1">Execution</h3>
+                  <p className="text-[12px] text-etc-500">Founder-led through term sheet to signed contract.</p>
+                </div>
+              </div>
+            </div>
+            <div className="order-1 lg:order-2">
+              <div className="text-[11px] font-medium text-signal uppercase tracking-wider mb-4 mono">
+                PPA Platform &middot; Transactions
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
+                From indicative quote to signed contract.
+              </h2>
+              <p className="mt-4 text-etc-400 leading-relaxed">
+                The transactional layer for PPAs across GB. Counterparty matching, structuring
+                and direct execution &mdash; with pricing-widget and live-offer workflows added
+                as the transactional stack matures.
+              </p>
+              <div className="mt-8">
+                <TrackedCTA
+                  href="/ppa"
+                  ctaLabel="Explore PPA Platform"
+                  ctaLocation="homepage_ppa_teaser"
+                  className="inline-flex items-center gap-2 text-[13px] font-semibold text-signal hover:text-signal-dim transition-colors"
+                >
+                  Explore the PPA Platform <ArrowRight className="w-4 h-4" />
+                </TrackedCTA>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 5 — Founder (unchanged, per feedback). */}
       <section className="py-20 lg:py-28" id="founder">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16 max-w-3xl">
@@ -331,49 +387,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Counterparty network + segments — replaces fake partner logos. */}
-      <section className="surface-2 border-y border-subtle py-20 lg:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-16">
-            <div className="text-[11px] font-medium text-etc-600 uppercase tracking-wider mb-4 mono">
-              Counterparty network
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">
-              The counterparties institutional<br />energy already transacts with.
-            </h2>
-            <p className="mt-4 text-etc-400 max-w-2xl">
-              80%+ investment-grade counterparty credit quality. Corporate offtakers
-              include FTSE 250 and Fortune 500 companies.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle mb-12">
-            {counterpartyNetwork.map((c) => (
-              <div key={c.type} className="surface-1 p-6">
-                <h3 className="text-[13px] font-semibold text-white mb-2">{c.type}</h3>
-                <p className="text-[12px] text-etc-500 leading-relaxed">{c.detail}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mb-10">
-            <div className="text-[11px] font-medium text-etc-600 uppercase tracking-wider mb-4 mono">
-              Who we work with
-            </div>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle">
-            {segments.map((p) => (
-              <div key={p.type} className="surface-1 p-8">
-                <h3 className="text-base font-semibold text-white mb-2">{p.type}</h3>
-                <p className="text-[13px] text-etc-500 leading-relaxed">{p.detail}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA — deck slide 10. */}
-      <section className="py-20 lg:py-28">
+      {/* Final CTA. */}
+      <section className="surface-2 border-t border-subtle py-20 lg:py-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white">
             Let&apos;s talk.
@@ -385,11 +400,11 @@ export default function HomePage() {
           </p>
           <div className="mt-8 flex justify-center">
             <TrackedCTA
-                href="/contact"
-                ctaLabel="Book a call"
-                ctaLocation="homepage_closing_cta"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
-              >
+              href="/contact"
+              ctaLabel="Book a call"
+              ctaLocation="homepage_closing_cta"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
+            >
               Book a call
               <ArrowRight className="w-4 h-4" />
             </TrackedCTA>
