@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ArrowRight, CheckCircle2, Mail, MapPin } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Mail, MapPin, Loader2 } from 'lucide-react';
 import { events } from '@/lib/analytics';
 
 const roles = [
@@ -13,8 +13,11 @@ const roles = [
   'Other',
 ];
 
+type Status = 'idle' | 'submitting' | 'success' | 'error';
+
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<Status>('idle');
+  const [errorMsg, setErrorMsg] = useState<string>('');
 
   return (
     <>
@@ -27,7 +30,7 @@ export default function ContactPage() {
               Book a call
             </h1>
             <p className="mt-6 text-lg text-etc-400 leading-relaxed">
-              Tell us what you&apos;re trying to price, sell or underwrite. We&apos;ll come back with an indicative range, a read on the live counterparty network, and a time to talk — typically within 24 hours.
+              Tell us what you&apos;re trying to price, sell or underwrite. We&apos;ll come back with an indicative range, a read on the live counterparty network, and a time to talk &mdash; typically within 24 hours.
             </p>
           </div>
         </div>
@@ -39,7 +42,7 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-5 gap-12 lg:gap-20">
             {/* Form */}
             <div className="lg:col-span-3">
-              {submitted ? (
+              {status === 'success' ? (
                 <div className="text-center py-16">
                   <CheckCircle2 className="w-12 h-12 text-signal mx-auto mb-6" />
                   <h2 className="text-2xl font-bold text-white mb-3">Request received</h2>
@@ -49,18 +52,44 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form
-                  onSubmit={(e) => {
+                  onSubmit={async (e) => {
                     e.preventDefault();
+                    if (status === 'submitting') return;
                     const form = e.currentTarget;
                     const data = new FormData(form);
-                    const role = (data.get('role') as string) || '';
-                    const company = (data.get('company') as string) || '';
-                    events.formSubmit('contact', {
-                      form_destination: '/contact',
-                      role,
-                      has_company: Boolean(company),
-                    });
-                    setSubmitted(true);
+                    const payload = {
+                      firstName: (data.get('firstName') as string) || '',
+                      lastName: (data.get('lastName') as string) || '',
+                      email: (data.get('email') as string) || '',
+                      company: (data.get('company') as string) || '',
+                      role: (data.get('role') as string) || '',
+                      message: (data.get('message') as string) || '',
+                      // Honeypot field — actual users never fill it.
+                      website: (data.get('website') as string) || '',
+                    };
+                    setStatus('submitting');
+                    setErrorMsg('');
+                    try {
+                      const resp = await fetch('/api/contact', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload),
+                      });
+                      const json = (await resp.json().catch(() => ({}))) as { ok?: boolean; error?: string };
+                      if (!resp.ok || !json.ok) {
+                        throw new Error(json.error || 'Send failed');
+                      }
+                      events.formSubmit('contact', {
+                        form_destination: '/contact',
+                        role: payload.role,
+                        has_company: Boolean(payload.company),
+                      });
+                      setStatus('success');
+                    } catch (err) {
+                      const msg = err instanceof Error ? err.message : 'Something went wrong';
+                      setErrorMsg(msg);
+                      setStatus('error');
+                    }
                   }}
                   className="space-y-6"
                 >
@@ -146,12 +175,36 @@ export default function ContactPage() {
                     />
                   </div>
 
+                  {/* Honeypot — invisible, name="website". Bots fill every field; humans never see this. */}
+                  <div className="hidden" aria-hidden="true">
+                    <label htmlFor="website">Website</label>
+                    <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+                  </div>
+
+                  {status === 'error' && (
+                    <div className="text-[13px] text-amber bg-amber/10 border border-amber/20 rounded-lg px-4 py-3">
+                      Couldn&apos;t send your message{errorMsg ? `: ${errorMsg}` : ''}. Please try again, or email{' '}
+                      <a href="mailto:daniel@energytradecentre.com" className="underline">daniel@energytradecentre.com</a>{' '}
+                      directly.
+                    </div>
+                  )}
+
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim rounded-lg transition-colors"
+                    disabled={status === 'submitting'}
+                    className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-etc-black bg-signal hover:bg-signal-dim disabled:opacity-60 disabled:cursor-not-allowed rounded-lg transition-colors"
                   >
-                    Submit request
-                    <ArrowRight className="w-4 h-4" />
+                    {status === 'submitting' ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Sending&hellip;
+                      </>
+                    ) : (
+                      <>
+                        Submit request
+                        <ArrowRight className="w-4 h-4" />
+                      </>
+                    )}
                   </button>
                 </form>
               )}
@@ -166,14 +219,14 @@ export default function ContactPage() {
                     <Mail className="w-4 h-4 text-signal mt-1" />
                     <div>
                       <div className="text-[13px] font-medium text-white">Email</div>
-                      <div className="text-[13px] text-etc-500">info@energytradecentre.com</div>
+                      <div className="text-[13px] text-etc-500">daniel@energytradecentre.com</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <MapPin className="w-4 h-4 text-signal mt-1" />
                     <div>
                       <div className="text-[13px] font-medium text-white">Based</div>
-                      <div className="text-[13px] text-etc-500">London, UK &middot; focused in GB, active in Europe</div>
+                      <div className="text-[13px] text-etc-500">London, UK &middot; European energy markets, starting in GB</div>
                     </div>
                   </div>
                 </div>
@@ -183,7 +236,7 @@ export default function ContactPage() {
                 <div className="w-6 h-px bg-signal mb-4" />
                 <h3 className="text-base font-semibold text-white mb-2">Typical response: under 24 hours</h3>
                 <p className="text-[13px] text-etc-500 leading-relaxed">
-                  Founder-led. You&apos;ll speak to the person structuring the trade — not an SDR, not a pooled queue.
+                  Founder-led. You&apos;ll speak to the person structuring the trade &mdash; not an SDR, not a pooled queue.
                 </p>
               </div>
 
