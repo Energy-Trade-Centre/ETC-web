@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 // Force the Node.js runtime — Resend SDK uses node-only APIs.
 export const runtime = 'nodejs';
 
-const TO = 'daniel@energytradecentre.com';
+const TO = 'daniel@atomenergygroup.com';  // TODO: switch to daniel@energytradecentre.com once that domain is verified in Resend
 const FROM = 'ETC website <onboarding@resend.dev>'; // swap to noreply@energytradecentre.com once domain is verified
 const RESEND_API = 'https://api.resend.com/emails';
 
