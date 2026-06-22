@@ -12,23 +12,6 @@ export const metadata: Metadata = {
   },
   description:
     'ETC is the institutional platform for energy transactions. Pricing, structuring and execution for PPAs across GB — with asset, storage and grid modules on the 2026 roadmap. Focused in GB, active in Europe.',
-  keywords: [
-    'PPA marketplace',
-    'power purchase agreement',
-    'GB PPA',
-    'UK PPA',
-    'corporate PPA',
-    'renewable energy procurement',
-    'offshore wind PPA',
-    'onshore wind PPA',
-    'solar PPA',
-    'PPA pricing',
-    'PPA revenue estimator',
-    'energy trade centre',
-    'ETC platform',
-    'energy market intelligence',
-    'renewable energy trading',
-  ],
   metadataBase: new URL('https://energytradecentre.com'),
   openGraph: {
     type: 'website',
@@ -74,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-GB">
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <script
