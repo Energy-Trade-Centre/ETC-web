@@ -95,7 +95,7 @@ export default function IntelligencePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 max-w-3xl">
             <div className="text-[10px] font-semibold text-etc-600 uppercase tracking-widest mb-3 mono">
-              ETC INTEL &middot; PROPOSED PAGE
+              ETC INTEL &middot; SIGNAL BLOCKS
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white">
               Four signal blocks.
