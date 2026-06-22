@@ -3,9 +3,9 @@ import TrackedCTA from '@/components/analytics/tracked-cta';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'PPA Platform | ETC — GB',
+  title: 'PPA Platform — GB',
   description:
-    'ETC&#39;s PPA Platform: counterparty matching, structuring and direct execution for corporate, utility and asset-backed PPAs across GB. Founder-led, no sub-brokers, no hand-offs.',
+    'ETC’s PPA Platform: counterparty matching, structuring and direct execution for corporate, utility and asset-backed PPAs across GB. Founder-led, no sub-brokers, no hand-offs.',
   alternates: { canonical: 'https://energytradecentre.com/ppa' },
 };
 
