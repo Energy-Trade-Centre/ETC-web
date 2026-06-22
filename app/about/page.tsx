@@ -45,12 +45,12 @@ const milestones = [
   {
     year: '2026',
     event:
-      'Asset Exchange, BESS Exchange, Grid Intelligence and 24/7 CFE Matching on the roadmap &mdash; broadening ETC from PPA execution to a full market infrastructure layer.',
+      'Asset Exchange, BESS Exchange, Grid Intelligence and 24/7 CFE Matching on the roadmap — broadening ETC from PPA execution to a full market infrastructure layer.',
   },
   {
     year: 'Ongoing',
     event:
-      'Continuous coverage of European energy market signals &mdash; pricing, demand, route-to-market and regulatory developments.',
+      'Continuous coverage of European energy market signals — pricing, demand, route-to-market and regulatory developments.',
   },
 ];
 

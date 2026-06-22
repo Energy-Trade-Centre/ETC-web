@@ -28,7 +28,7 @@ const pillars = [
   {
     title: 'Founder-led execution',
     description:
-      'One line of accountability from first conversation to signed contract. No sub-brokers, no hand-offs, no &quot;I need to check with the desk&quot;.',
+      'One line of accountability from first conversation to signed contract. No sub-brokers, no hand-offs, no “I need to check with the desk”.',
   },
   {
     title: 'GB-native, Europe-connected',
@@ -53,7 +53,7 @@ const workflow = [
     step: '02',
     title: 'Counterparty match',
     description:
-      'We match against the active network &mdash; utilities, majors, independents, IPPs &mdash; and surface the counterparties actually pricing your shape.',
+      'We match against the active network — utilities, majors, independents, IPPs — and surface the counterparties actually pricing your shape.',
   },
   {
     step: '03',

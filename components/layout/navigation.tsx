@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { events } from '@/lib/analytics';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -37,6 +37,14 @@ const navigation = [
 export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const openMenu = (name: string) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpenDropdown(name);
+  };
+  const scheduleClose = () => {
+    closeTimer.current = setTimeout(() => setOpenDropdown(null), 150);
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-etc-black/80 backdrop-blur-xl border-b border-subtle">
@@ -58,8 +66,8 @@ export default function Navigation() {
               <div
                 key={item.name}
                 className="relative"
-                onMouseEnter={() => item.children && setOpenDropdown(item.name)}
-                onMouseLeave={() => setOpenDropdown(null)}
+                onMouseEnter={() => item.children && openMenu(item.name)}
+                onMouseLeave={() => scheduleClose()}
               >
                 <Link
                   href={item.href}
@@ -70,7 +78,7 @@ export default function Navigation() {
                 </Link>
 
                 {item.children && openDropdown === item.name && (
-                  <div className="absolute top-full left-0 mt-2 w-72 surface-2 rounded-xl border border-subtle p-1.5 shadow-2xl">
+                  <div className="absolute top-full left-0 pt-2 w-72 surface-2 rounded-xl border border-subtle p-1.5 shadow-2xl">
                     {item.children.map((child) => (
                       <Link
                         key={child.name}
