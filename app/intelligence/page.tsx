@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import TrackedCTA from '@/components/analytics/tracked-cta';
 import { ArrowRight } from 'lucide-react';
 

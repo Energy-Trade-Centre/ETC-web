@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'For IPPs & asset owners | ETC',
   description:
     'A direct route to GB offtake counterparties. Published PaP reference curves, a live buyer network, and founder-led structuring — without the broker markup or auction drag.',
+  alternates: { canonical: 'https://energytradecentre.com/solutions/sellers' },
 };
 
 const pillars = [
