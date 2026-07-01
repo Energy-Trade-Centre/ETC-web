@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import JsonLd from '@/components/seo/json-ld';
+import { breadcrumbList, service } from '@/lib/seo';
 import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -72,6 +74,22 @@ const workflow = [
 export default function BuyersPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbList([
+          { name: 'Home', path: '/' },
+          { name: 'Solutions', path: '/solutions' },
+          { name: 'Procurement', path: '/solutions/buyers' },
+        ])}
+      />
+      <JsonLd
+        data={service({
+          name: 'PPA procurement for utilities & corporate offtakers',
+          serviceType: 'Power purchase agreement procurement',
+          description:
+            'Quote GB PPAs from published indicative PaP curves, with counterparty matching across utilities, European majors, independent traders and IPPs, and founder-led structuring and execution.',
+          path: '/solutions/buyers',
+        })}
+      />
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 grid-bg" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 lg:pt-32 lg:pb-24">

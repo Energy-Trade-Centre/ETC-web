@@ -43,6 +43,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://energytradecentre.com',
   },
+  // Google Search Console ownership verification. Set the env var in Vercel;
+  // when unset, the tag is simply omitted.
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
 };
 
 export default function RootLayout({
@@ -71,6 +76,15 @@ export default function RootLayout({
                 addressLocality: 'London',
                 addressCountry: 'GB',
               },
+              // Entity signals — the market ETC serves and the topics it covers.
+              areaServed: 'GB',
+              knowsAbout: [
+                'Power purchase agreements',
+                'Renewable energy',
+                'Battery energy storage systems',
+                'GB electricity market',
+                'Energy market intelligence',
+              ],
               contactPoint: {
                 '@type': 'ContactPoint',
                 contactType: 'sales',
