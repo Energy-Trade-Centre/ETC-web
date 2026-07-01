@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import TrackedCTA from '@/components/analytics/tracked-cta';
 import JsonLd from '@/components/seo/json-ld';
 import { faqPage } from '@/lib/seo';
@@ -209,7 +210,12 @@ export default function PPAPage() {
               PPA structures, explained.
             </h2>
             <p className="mt-4 text-etc-400">
-              The structures we price and execute, in plain terms.
+              The structures we price and execute, in plain terms. Full definitions live in
+              the{' '}
+              <Link href="/intelligence/glossary" className="text-signal hover:text-signal-dim transition-colors">
+                energy markets glossary
+              </Link>
+              .
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle">

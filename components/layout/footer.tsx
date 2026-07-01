@@ -20,6 +20,7 @@ const footerLinks = {
     { name: 'Overview', href: '/intelligence' },
     { name: 'Signal blocks', href: '/intelligence#signals' },
     { name: 'How it works', href: '/intelligence#how' },
+    { name: 'Glossary', href: '/intelligence/glossary' },
   ],
   Company: [
     { name: 'About', href: '/about' },
