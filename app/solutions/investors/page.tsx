@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ArrowRight, Check, TrendingUp } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'For investors & lenders | ETC',
+  title: 'Investment | For investors & lenders',
   description:
     'Independent PPA reference pricing for GB renewables. Use ETC curves and counterparty intelligence to underwrite, mark and stress-test offtake exposure.',
   alternates: { canonical: 'https://energytradecentre.com/solutions/investors' },
