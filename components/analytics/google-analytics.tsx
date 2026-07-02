@@ -21,7 +21,18 @@ function PageViewTracker({ gaId }: Props) {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
+    if (typeof window === 'undefined') return;
+    // This effect can run before the inline gtag bootstrap executes (both are
+    // afterInteractive). Create the same stub so the initial page_view queues
+    // into dataLayer instead of being dropped — gtag.js replays it on load.
+    window.dataLayer = window.dataLayer || [];
+    if (typeof window.gtag !== 'function') {
+      window.gtag = function gtag() {
+        // gtag.js requires the Arguments object itself, not a spread array.
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer!.push(arguments);
+      };
+    }
     const search = searchParams?.toString();
     const path = pathname + (search ? `?${search}` : '');
     window.gtag('config', gaId, {
@@ -49,7 +60,10 @@ export default function GoogleAnalytics({ gaId }: Props) {
           function gtag(){dataLayer.push(arguments);}
           window.gtag = gtag;
           gtag('js', new Date());
-          gtag('config', '${gaId}', { send_page_view: true });
+          // send_page_view: false — PageViewTracker fires the page_view on
+          // mount and on every route change; sending one here too would
+          // double-count the landing page of every session.
+          gtag('config', '${gaId}', { send_page_view: false });
         `}
       </Script>
       <Suspense fallback={null}>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Company | ETC — institutional energy market infrastructure',
+  title: 'Company — institutional energy market infrastructure',
   description:
     'ETC is a founder-led platform for institutional energy transactions. Market intelligence, transaction workflows, and direct execution across European energy markets — starting in GB.',
   alternates: { canonical: 'https://energytradecentre.com/about' },

@@ -1,11 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import JsonLd from '@/components/seo/json-ld';
+import { breadcrumbList, service } from '@/lib/seo';
 import { ArrowRight, Check, TrendingUp } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'For investors & lenders | ETC',
+  title: 'Investment | For investors & lenders',
   description:
     'Independent PPA reference pricing for GB renewables. Use ETC curves and counterparty intelligence to underwrite, mark and stress-test offtake exposure.',
+  alternates: { canonical: 'https://energytradecentre.com/solutions/investors' },
 };
 
 const pillars = [
@@ -60,7 +63,25 @@ const useCases = [
 
 export default function InvestorsPage() {
   return (
-    <main className="min-h-screen bg-[#0A0E12] text-white">
+    // div, not <main> — the root layout already renders the page inside <main>,
+    // and nested main elements are invalid HTML.
+    <div className="min-h-screen bg-[#0A0E12] text-white">
+      <JsonLd
+        data={breadcrumbList([
+          { name: 'Home', path: '/' },
+          { name: 'Solutions', path: '/solutions' },
+          { name: 'Investment', path: '/solutions/investors' },
+        ])}
+      />
+      <JsonLd
+        data={service({
+          name: 'PPA reference pricing for investors & lenders',
+          serviceType: 'Energy market intelligence and PPA reference pricing',
+          description:
+            'Independent PPA reference pricing for GB renewables — indicative curves and counterparty intelligence to underwrite, mark and stress-test offtake exposure.',
+          path: '/solutions/investors',
+        })}
+      />
       <section className="relative overflow-hidden border-b border-white/5 pt-32 pb-20">
         <div className="absolute inset-0 bg-gradient-to-br from-[#F7B32B]/5 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-5xl px-6">
@@ -148,6 +169,6 @@ export default function InvestorsPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

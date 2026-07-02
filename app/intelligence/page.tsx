@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import TrackedCTA from '@/components/analytics/tracked-cta';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, BookOpen } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'ETC Intel | Real signals from real energy markets',
@@ -145,8 +145,36 @@ export default function IntelligencePage() {
         </div>
       </section>
 
+      {/* Glossary teaser */}
+      <section className="surface-2 border-t border-subtle py-14" id="glossary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link
+            href="/intelligence/glossary"
+            className="group card p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6 hover:bg-etc-850"
+          >
+            <div className="flex items-start gap-5">
+              <div className="w-10 h-10 rounded-lg bg-etc-750 flex items-center justify-center shrink-0">
+                <BookOpen className="w-4.5 h-4.5 text-signal" />
+              </div>
+              <div>
+                <h2 className="text-lg font-semibold text-white group-hover:text-signal transition-colors">
+                  Energy markets glossary
+                </h2>
+                <p className="mt-1.5 text-[13px] text-etc-500 leading-relaxed max-w-xl">
+                  PPA structures, certificates and support schemes, storage revenue models and
+                  GB market operations &mdash; defined in plain language.
+                </p>
+              </div>
+            </div>
+            <div className="inline-flex items-center gap-1.5 text-[13px] font-medium text-etc-500 group-hover:text-signal transition-colors shrink-0">
+              Browse the glossary <ArrowRight className="w-4 h-4" />
+            </div>
+          </Link>
+        </div>
+      </section>
+
       {/* CTA */}
-      <section className="surface-2 border-t border-subtle py-20 lg:py-28">
+      <section className="border-t border-subtle py-20 lg:py-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white">Want the full context?</h2>
           <p className="mt-4 text-etc-400">

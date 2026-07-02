@@ -206,6 +206,14 @@ export default function ContactPage() {
                       </>
                     )}
                   </button>
+
+                  <p className="text-[11px] text-etc-600 leading-relaxed">
+                    We use your details only to respond to this enquiry. See our{' '}
+                    <a href="/privacy" className="text-etc-500 underline hover:text-signal transition-colors">
+                      privacy policy
+                    </a>
+                    .
+                  </p>
                 </form>
               )}
             </div>

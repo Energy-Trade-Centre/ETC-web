@@ -1,12 +1,15 @@
 import Link from 'next/link';
 
+// Labels and destinations are kept consistent with the navigation and page
+// content — every link resolves to a real page or an anchor that exists.
 const footerLinks = {
   Platform: [
-    { name: 'PPA Marketplace', href: '/platform#marketplace' },
+    { name: 'PPA Platform', href: '/ppa' },
+    { name: 'ETC Intel', href: '/intelligence' },
     { name: 'Asset Exchange', href: '/platform#assets' },
     { name: 'BESS Exchange', href: '/platform#bess' },
-    { name: 'Analytics Engine', href: '/platform#analytics' },
     { name: 'Grid Intelligence', href: '/platform#grid' },
+    { name: '24/7 CFE Matching', href: '/platform#cfe' },
   ],
   Solutions: [
     { name: 'Procurement', href: '/solutions/buyers' },
@@ -14,14 +17,14 @@ const footerLinks = {
     { name: 'Investment', href: '/solutions/investors' },
   ],
   Intelligence: [
-    { name: 'Market Data', href: '/intelligence' },
-    { name: 'Research', href: '/intelligence#research' },
-    { name: 'Pricing Trends', href: '/intelligence#pricing' },
+    { name: 'Overview', href: '/intelligence' },
+    { name: 'Signal blocks', href: '/intelligence#signals' },
+    { name: 'How it works', href: '/intelligence#how' },
+    { name: 'Glossary', href: '/intelligence/glossary' },
   ],
   Company: [
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
-    { name: 'Transition Services', href: '/contact' },
     { name: 'Privacy', href: '/privacy' },
     { name: 'Terms', href: '/terms' },
   ],
@@ -43,7 +46,7 @@ export default function Footer() {
               <span className="text-sm font-bold text-white tracking-tight">ETC</span>
             </Link>
             <p className="text-xs text-etc-500 leading-relaxed">
-              The operating system for<br />the energy transition.
+              The institutional platform for<br />energy transactions.
             </p>
           </div>
 

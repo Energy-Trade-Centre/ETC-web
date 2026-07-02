@@ -1,11 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import JsonLd from '@/components/seo/json-ld';
+import { breadcrumbList, service } from '@/lib/seo';
 import { ArrowRight, Check, Zap } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'For IPPs & asset owners | ETC',
+  title: 'Origination | For IPPs & asset owners',
   description:
     'A direct route to GB offtake counterparties. Published PaP reference curves, a live buyer network, and founder-led structuring — without the broker markup or auction drag.',
+  alternates: { canonical: 'https://energytradecentre.com/solutions/sellers' },
 };
 
 const pillars = [
@@ -60,7 +63,25 @@ const workflow = [
 
 export default function SellersPage() {
   return (
-    <main className="min-h-screen bg-[#0A0E12] text-white">
+    // div, not <main> — the root layout already renders the page inside <main>,
+    // and nested main elements are invalid HTML.
+    <div className="min-h-screen bg-[#0A0E12] text-white">
+      <JsonLd
+        data={breadcrumbList([
+          { name: 'Home', path: '/' },
+          { name: 'Solutions', path: '/solutions' },
+          { name: 'Origination', path: '/solutions/sellers' },
+        ])}
+      />
+      <JsonLd
+        data={service({
+          name: 'PPA origination for IPPs & asset owners',
+          serviceType: 'Power purchase agreement origination',
+          description:
+            'A direct route to GB offtake counterparties: published PaP reference curves, a live buyer network across utilities, majors and corporates, and founder-led structuring through to signed contract.',
+          path: '/solutions/sellers',
+        })}
+      />
       <section className="relative overflow-hidden border-b border-white/5 pt-32 pb-20">
         <div className="absolute inset-0 bg-gradient-to-br from-[#F7B32B]/5 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-5xl px-6">
@@ -148,6 +169,6 @@ export default function SellersPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
