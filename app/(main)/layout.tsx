@@ -3,7 +3,7 @@ import Navigation from '@/components/layout/navigation';
 import Footer from '@/components/layout/footer';
 import GoogleAnalytics from '@/components/analytics/google-analytics';
 import { GA_MEASUREMENT_ID } from '@/lib/analytics';
-import './globals.css';
+import '../globals.css';
 
 export const metadata: Metadata = {
   title: {

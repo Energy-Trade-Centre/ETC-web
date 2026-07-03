@@ -7,7 +7,15 @@ export const metadata: Metadata = {
   title: 'ETC | Institutional PPA platform — GB',
   description:
     'ETC is the institutional platform for energy transactions. Pricing, structuring and execution for PPAs across GB — with asset, storage and grid modules on the 2026 roadmap. Focused in GB, active in Europe.',
-  alternates: { canonical: 'https://energytradecentre.com' },
+  alternates: {
+    canonical: 'https://energytradecentre.com',
+    // hreflang pair with the Japanese site (jp subdomain).
+    languages: {
+      'en-GB': 'https://energytradecentre.com',
+      ja: 'https://jp.energytradecentre.com',
+      'x-default': 'https://energytradecentre.com',
+    },
+  },
 };
 
 // Section 1 — Built for energy market participants.
