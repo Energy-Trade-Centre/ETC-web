@@ -18,8 +18,8 @@ const footerLinks = {
   ],
   Intelligence: [
     { name: 'Overview', href: '/intelligence' },
-    { name: 'Signal blocks', href: '/intelligence#signals' },
-    { name: 'How it works', href: '/intelligence#how' },
+    { name: 'GB PPA Index', href: '/ppa-prices' },
+    { name: 'Guides', href: '/intelligence/guides' },
     { name: 'Glossary', href: '/intelligence/glossary' },
   ],
   Company: [

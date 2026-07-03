@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import TrackedCTA from '@/components/analytics/tracked-cta';
-import { ArrowRight, BookOpen } from 'lucide-react';
+import { ArrowRight, BookOpen, FileText, TrendingUp } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'ETC Intel | Real signals from real energy markets',
@@ -145,31 +145,53 @@ export default function IntelligencePage() {
         </div>
       </section>
 
-      {/* Glossary teaser */}
-      <section className="surface-2 border-t border-subtle py-14" id="glossary">
+      {/* Open resources — index, guides, glossary */}
+      <section className="surface-2 border-t border-subtle py-14" id="resources">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/intelligence/glossary"
-            className="group card p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6 hover:bg-etc-850"
-          >
-            <div className="flex items-start gap-5">
-              <div className="w-10 h-10 rounded-lg bg-etc-750 flex items-center justify-center shrink-0">
-                <BookOpen className="w-4.5 h-4.5 text-signal" />
-              </div>
-              <div>
-                <h2 className="text-lg font-semibold text-white group-hover:text-signal transition-colors">
-                  Energy markets glossary
-                </h2>
-                <p className="mt-1.5 text-[13px] text-etc-500 leading-relaxed max-w-xl">
-                  PPA structures, certificates and support schemes, storage revenue models and
-                  GB market operations &mdash; defined in plain language.
-                </p>
-              </div>
-            </div>
-            <div className="inline-flex items-center gap-1.5 text-[13px] font-medium text-etc-500 group-hover:text-signal transition-colors shrink-0">
-              Browse the glossary <ArrowRight className="w-4 h-4" />
-            </div>
-          </Link>
+          <h2 className="text-[11px] font-semibold text-etc-600 uppercase tracking-widest mb-6 mono">
+            Open resources
+          </h2>
+          <div className="grid md:grid-cols-3 gap-px bg-subtle rounded-xl overflow-hidden border border-subtle">
+            {[
+              {
+                icon: TrendingUp,
+                title: 'GB PPA Index',
+                description:
+                  'Published indicative GB PaP ranges by technology and tenor — the reference both sides quote from.',
+                href: '/ppa-prices',
+                cta: 'See the index',
+              },
+              {
+                icon: FileText,
+                title: 'Guides',
+                description:
+                  'How corporate PPAs work, and how generators take power to market in GB — step by step.',
+                href: '/intelligence/guides',
+                cta: 'Read the guides',
+              },
+              {
+                icon: BookOpen,
+                title: 'Glossary',
+                description:
+                  'PPA structures, certificates, storage revenue models and GB market operations, in plain language.',
+                href: '/intelligence/glossary',
+                cta: 'Browse the glossary',
+              },
+            ].map((r) => (
+              <Link key={r.href} href={r.href} className="group surface-1 p-8 hover:bg-etc-850 transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-etc-750 flex items-center justify-center mb-5">
+                  <r.icon className="w-4.5 h-4.5 text-signal" />
+                </div>
+                <h3 className="text-lg font-semibold text-white group-hover:text-signal transition-colors">
+                  {r.title}
+                </h3>
+                <p className="mt-2 text-[13px] text-etc-500 leading-relaxed">{r.description}</p>
+                <div className="mt-5 inline-flex items-center gap-1.5 text-[12px] font-medium text-etc-600 group-hover:text-signal transition-colors">
+                  {r.cta} <ArrowRight className="w-3.5 h-3.5" />
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -176,11 +176,12 @@ export default function JapanPage() {
               マーケットデータ 01 &middot; PPA
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white">
-              英国PPA 参考価格レンジ
+              ETC GB PPA Index &mdash; 英国PPA参考価格レンジ
             </h2>
             <p className="mt-4 text-[14px] text-etc-400 leading-relaxed max-w-2xl">
               英国（GB）市場における技術別・年限別のPay-as-Produced（発電量連動型）PPA参考レンジです。
-              日本語で参照できる英国PPAの価格情報として、定期的に更新していきます。
+              ETCが公表するベンチマーク「ETC GB PPA Index」（{PRICE_DATA_AS_OF}版）に基づき、
+              日本語で参照できる英国PPAの価格情報として定期的に更新していきます。
             </p>
 
             <div className="mt-8 card overflow-hidden">

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const pillars = [
   {
     title: 'Published PaP reference curves',
-    body: 'Offshore, onshore and solar benchmarks for 3, 5 and 10 year tenors — refreshed quarterly. You walk into every negotiation with a defensible anchor, not a blank sheet.',
+    body: 'Offshore, onshore and solar benchmarks for 3, 5 and 10 year tenors — refreshed on the published cadence. You walk into every negotiation with a defensible anchor, not a blank sheet.',
   },
   {
     title: 'Live buyer network',

@@ -173,8 +173,12 @@ export default function PPAPage() {
               </h2>
               <p className="mt-4 text-etc-400 leading-relaxed">
                 Focused in GB. Covers the full lifecycle from matching to signed contract.
-                Live pricing and open-offer workflows will be added as the transactional stack
-                matures &mdash; we don&apos;t publish stale numbers.
+                Indicative reference ranges are published on the{' '}
+                <Link href="/ppa-prices" className="text-signal hover:underline">
+                  ETC GB PPA Index
+                </Link>
+                ; live pricing and open-offer workflows will be added as the transactional
+                stack matures.
               </p>
             </div>
             <div className="card p-8">

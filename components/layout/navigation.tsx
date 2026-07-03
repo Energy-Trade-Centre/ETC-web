@@ -13,6 +13,7 @@ const navigation = [
     href: '/platform',
     children: [
       { name: 'PPA Platform', href: '/ppa', description: 'Counterparty matching, structuring and direct execution across GB.' },
+      { name: 'GB PPA Index', href: '/ppa-prices', description: 'Published indicative GB PaP ranges by technology and tenor.' },
       { name: 'ETC Intel', href: '/intelligence', description: 'Forward pricing, offtaker demand, route-to-market and policy coverage.' },
       { name: 'Asset Exchange', href: '/platform#assets', description: '2026 roadmap — project and asset+PPA bundles.' },
       { name: 'BESS Exchange', href: '/platform#bess', description: '2026 roadmap — battery origination and optimisation.' },
