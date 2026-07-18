@@ -6,9 +6,9 @@ import { faqPage } from '@/lib/seo';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'PPA Platform — GB',
+  title: 'PPA Marketplace & Brokerage — Great Britain',
   description:
-    'ETC’s PPA Platform: counterparty matching, structuring and direct execution for corporate, utility and asset-backed PPAs across GB. Founder-led, no sub-brokers, no hand-offs.',
+    'A GB PPA marketplace for renewable energy buyers and sellers. Compare pricing, find counterparties, structure agreements and execute directly with ETC.',
   alternates: { canonical: 'https://energytradecentre.com/ppa' },
 };
 
@@ -97,8 +97,8 @@ export default function PPAPage() {
               PPA Platform &middot; Transactions
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.05] tracking-tight">
-              From indicative quote<br />
-              to <span className="etc-gradient">signed contract</span>.
+              The GB PPA marketplace:<br />
+              quote to <span className="etc-gradient">signed contract</span>.
             </h1>
             <p className="mt-6 text-lg text-etc-400 leading-relaxed">
               The transactional layer for PPAs across GB. Counterparty matching, structuring and

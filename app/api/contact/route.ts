@@ -41,7 +41,7 @@ export async function POST(req: Request) {
 
   // Honeypot — bots tend to fill every field. Pretend success and drop.
   if (body.website && body.website.trim().length > 0) {
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, accepted: false });
   }
 
   const firstName = (body.firstName || '').trim();
@@ -127,5 +127,5 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: 'Send error' }, { status: 502 });
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, accepted: true });
 }
