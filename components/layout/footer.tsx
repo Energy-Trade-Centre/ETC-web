@@ -12,8 +12,8 @@ const footerLinks = {
     { name: '24/7 CFE Matching', href: '/platform#cfe' },
   ],
   Solutions: [
-    { name: 'Procurement', href: '/solutions/buyers' },
-    { name: 'Origination', href: '/solutions/sellers' },
+    { name: 'Energy procurement', href: '/solutions/buyers' },
+    { name: 'Renewable energy trading', href: '/solutions/sellers' },
     { name: 'Investment', href: '/solutions/investors' },
   ],
   Intelligence: [

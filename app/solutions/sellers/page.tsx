@@ -5,9 +5,9 @@ import { breadcrumbList, service } from '@/lib/seo';
 import { ArrowRight, Check, Zap } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Origination | For IPPs & asset owners',
+  title: 'Renewable Energy Trading & PPA Origination',
   description:
-    'A direct route to GB offtake counterparties. Published PaP reference curves, a live buyer network, and founder-led structuring — without the broker markup or auction drag.',
+    'Renewable energy trading and PPA origination for GB generators. Access reference pricing, live offtakers, tailored structures and direct execution.',
   alternates: { canonical: 'https://energytradecentre.com/solutions/sellers' },
 };
 
@@ -89,7 +89,7 @@ export default function SellersPage() {
             <Zap className="h-3 w-3" /> For IPPs &amp; asset owners
           </div>
           <h1 className="mt-6 text-4xl font-light leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-            A <span className="text-[#F7B32B]">direct route</span> to GB offtake — without the broker drag.
+            <span className="text-[#F7B32B]">Renewable energy trading</span>, from project to GB offtake.
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/70">
             ETC is a GB-focused PPA marketplace for independent power producers, developers and asset owners. We publish the reference curves, run the counterparty network, and structure the trade. You get to the price that clears.

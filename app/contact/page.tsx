@@ -75,15 +75,21 @@ export default function ContactPage() {
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload),
                       });
-                      const json = (await resp.json().catch(() => ({}))) as { ok?: boolean; error?: string };
+                      const json = (await resp.json().catch(() => ({}))) as {
+                        ok?: boolean;
+                        accepted?: boolean;
+                        error?: string;
+                      };
                       if (!resp.ok || !json.ok) {
                         throw new Error(json.error || 'Send failed');
                       }
-                      events.formSubmit('contact', {
-                        form_destination: '/contact',
-                        role: payload.role,
-                        has_company: Boolean(payload.company),
-                      });
+                      if (json.accepted !== false) {
+                        events.formSubmit('contact', {
+                          form_destination: '/contact',
+                          role: payload.role,
+                          has_company: Boolean(payload.company),
+                        });
+                      }
                       setStatus('success');
                     } catch (err) {
                       const msg = err instanceof Error ? err.message : 'Something went wrong';

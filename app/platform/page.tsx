@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Platform | PPA, Asset, BESS, Grid and CFE',
+  title: 'Energy Trading Platform for PPAs & Market Intelligence',
   description:
-    'The ETC platform across GB — PPA Marketplace and ETC Intel live today; Asset Exchange, BESS Exchange, Grid Intelligence and 24/7 CFE Matching on the 2026 roadmap.',
+    'Explore ETC’s energy trading platform: a live GB PPA marketplace and market intelligence, with asset, BESS, grid and 24/7 CFE modules on the roadmap.',
   alternates: { canonical: 'https://energytradecentre.com/platform' },
 };
 

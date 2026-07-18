@@ -24,8 +24,8 @@ const navigation = [
     name: 'Solutions',
     href: '/solutions',
     children: [
-      { name: 'Procurement', href: '/solutions/buyers', description: 'For utilities and corporate offtakers buying GB power.' },
-      { name: 'Origination', href: '/solutions/sellers', description: 'For IPPs and asset owners seeking offtake in GB.' },
+      { name: 'Energy procurement', href: '/solutions/buyers', description: 'For utilities and corporate offtakers buying GB power.' },
+      { name: 'Renewable energy trading', href: '/solutions/sellers', description: 'For IPPs and asset owners seeking offtake in GB.' },
       { name: 'Investment', href: '/solutions/investors', description: 'For funds and investors sizing GB renewables exposure.' },
     ],
   },

@@ -6,24 +6,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const glossaryEntries: MetadataRoute.Sitemap = glossary.map((t) => ({
     url: `${baseUrl}/intelligence/glossary/${t.slug}`,
-    lastModified: new Date(),
     changeFrequency: 'monthly',
     priority: 0.5,
   }));
 
   return [
-    { url: baseUrl, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
-    { url: `${baseUrl}/platform`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
-    { url: `${baseUrl}/solutions`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${baseUrl}/solutions/buyers`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${baseUrl}/solutions/sellers`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${baseUrl}/solutions/investors`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${baseUrl}/intelligence`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
-    { url: `${baseUrl}/about`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${baseUrl}/contact`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${baseUrl}/intelligence/glossary`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: baseUrl, changeFrequency: 'weekly', priority: 1 },
+    { url: `${baseUrl}/ppa`, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/platform`, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/solutions`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/solutions/buyers`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/solutions/sellers`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/solutions/investors`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/intelligence`, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/about`, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${baseUrl}/contact`, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/intelligence/glossary`, changeFrequency: 'monthly', priority: 0.7 },
     ...glossaryEntries,
-    { url: `${baseUrl}/privacy`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
-    { url: `${baseUrl}/terms`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${baseUrl}/privacy`, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${baseUrl}/terms`, changeFrequency: 'yearly', priority: 0.3 },
   ];
 }

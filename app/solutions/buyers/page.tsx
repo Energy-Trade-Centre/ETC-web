@@ -5,9 +5,9 @@ import { breadcrumbList, service } from '@/lib/seo';
 import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Procurement | For utilities & corporate offtakers',
+  title: 'Energy Procurement Services for GB Businesses',
   description:
-    'Quote GB PPAs from published indicative PaP curves. Counterparty matching across utilities, European majors, independent traders and IPPs. Founder-led structuring and execution.',
+    'Energy procurement services for corporate buyers and utilities: GB PPA pricing, counterparty matching, agreement structuring and founder-led execution.',
   alternates: { canonical: 'https://energytradecentre.com/solutions/buyers' },
 };
 
@@ -83,8 +83,8 @@ export default function BuyersPage() {
       />
       <JsonLd
         data={service({
-          name: 'PPA procurement for utilities & corporate offtakers',
-          serviceType: 'Power purchase agreement procurement',
+          name: 'Energy procurement services for utilities and corporate buyers',
+          serviceType: 'Energy procurement and power purchase agreements',
           description:
             'Quote GB PPAs from published indicative PaP curves, with counterparty matching across utilities, European majors, independent traders and IPPs, and founder-led structuring and execution.',
           path: '/solutions/buyers',
@@ -96,8 +96,8 @@ export default function BuyersPage() {
           <div className="max-w-3xl">
             <div className="text-[11px] font-semibold text-etc-600 uppercase tracking-widest mb-4 mono">Procurement</div>
             <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-[1.05] tracking-tight">
-              Quote from a<br />
-              <span className="text-etc-500">published curve.</span>
+              Energy procurement services<br />
+              <span className="text-etc-500">built on live PPA pricing.</span>
             </h1>
             <p className="mt-6 text-lg text-etc-400 leading-relaxed">
               Your board doesn&apos;t want a broker print. They want a defensible number they

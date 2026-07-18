@@ -4,9 +4,9 @@ import TrackedCTA from '@/components/analytics/tracked-cta';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'ETC | Institutional PPA platform — GB',
+  title: { absolute: 'Energy Trading Platform & PPA Marketplace | ETC' },
   description:
-    'ETC is the institutional platform for energy transactions. Pricing, structuring and execution for PPAs across GB — with asset, storage and grid modules on the 2026 roadmap. Focused in GB, active in Europe.',
+    'Energy trading platform for GB power purchase agreements. Access PPA pricing, counterparty matching, structuring, market intelligence and founder-led execution.',
   alternates: { canonical: 'https://energytradecentre.com' },
 };
 
@@ -117,9 +117,9 @@ export default function HomePage() {
             </div>
 
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05] tracking-tight">
-              The institutional<br />
+              The energy trading<br />
               platform for<br />
-              <span className="etc-gradient">energy transactions</span>
+              <span className="etc-gradient">PPA transactions</span>
             </h1>
 
             <p className="mt-8 text-lg sm:text-xl text-etc-400 leading-relaxed max-w-2xl">
