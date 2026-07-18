@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { ArrowRight, CheckCircle2, Mail, MapPin, Loader2 } from 'lucide-react';
 import { events } from '@/lib/analytics';
 
@@ -15,9 +16,24 @@ const roles = [
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
-export default function ContactPage() {
+function ContactPageContent() {
   const [status, setStatus] = useState<Status>('idle');
   const [errorMsg, setErrorMsg] = useState<string>('');
+  const searchParams = useSearchParams();
+  const isEstimatorLead = searchParams.get('source') === 'ppa-estimator';
+  const estimatorMessage = isEstimatorLead
+    ? [
+        'I would like ETC to review this PPA opportunity:',
+        `Technology: ${searchParams.get('technology') || 'Not specified'}`,
+        `Capacity: ${searchParams.get('capacity') || 'Not specified'}`,
+        `Contract term: ${searchParams.get('tenor') || 'Not specified'}`,
+        `Reference price used: ${searchParams.get('referencePrice') || 'Not specified'}`,
+        `Estimated annual generation: ${searchParams.get('annualGeneration') || 'Not specified'}`,
+        `Indicative contract value: ${searchParams.get('contractValue') || 'Not specified'}`,
+        '',
+        'Please provide a live pricing, counterparty and structure view.',
+      ].join('\n')
+    : '';
 
   return (
     <>
@@ -159,6 +175,7 @@ export default function ContactPage() {
                     <select
                       id="role"
                       name="role"
+                      defaultValue={isEstimatorLead ? 'Developer / Asset Owner' : ''}
                       className="w-full px-4 py-3 surface-3 border border-subtle rounded-lg text-[14px] text-etc-300 focus:border-signal/40 focus:ring-1 focus:ring-signal/20 outline-none transition-colors bg-transparent"
                     >
                       <option value="" className="bg-etc-900">Select your role</option>
@@ -175,7 +192,8 @@ export default function ContactPage() {
                     <textarea
                       id="message"
                       name="message"
-                      rows={4}
+                      rows={isEstimatorLead ? 10 : 4}
+                      defaultValue={estimatorMessage}
                       className="w-full px-4 py-3 surface-3 border border-subtle rounded-lg text-[14px] text-white placeholder-etc-600 focus:border-signal/40 focus:ring-1 focus:ring-signal/20 outline-none transition-colors resize-none"
                       placeholder="Technology, tenor, shape, volume — or the question you want answered."
                     />
@@ -266,5 +284,13 @@ export default function ContactPage() {
         </div>
       </section>
     </>
+  );
+}
+
+export default function ContactPage() {
+  return (
+    <Suspense fallback={null}>
+      <ContactPageContent />
+    </Suspense>
   );
 }
