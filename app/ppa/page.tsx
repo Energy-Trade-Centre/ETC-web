@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import TrackedCTA from '@/components/analytics/tracked-cta';
+import PPAEstimator from '@/components/ppa-estimator';
 import JsonLd from '@/components/seo/json-ld';
 import { faqPage } from '@/lib/seo';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
@@ -160,8 +161,36 @@ export default function PPAPage() {
         </div>
       </section>
 
+      {/* Lead-generating planning tool */}
+      <section className="py-20 lg:py-28" id="estimator">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="max-w-xl">
+              <div className="text-[10px] font-semibold text-signal uppercase tracking-widest mb-3 mono">PPA VALUE ESTIMATOR</div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white">Size the opportunity before we price the structure.</h2>
+              <p className="mt-5 text-etc-400 leading-relaxed">
+                Model the generation, volume and gross contract value behind a prospective PPA. Use your own reference price, then send the assumptions to ETC for a live counterparty and structuring view.
+              </p>
+              <ul className="mt-8 space-y-4">
+                {[
+                  'No email gate before you see the result',
+                  'Assumptions transfer directly into your enquiry',
+                  'ETC follows up with an executable market view',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-[13px] text-etc-300">
+                    <CheckCircle2 className="w-4 h-4 text-signal mt-0.5 shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <PPAEstimator />
+          </div>
+        </div>
+      </section>
+
       {/* Capabilities live today */}
-      <section className="py-20 lg:py-28" id="capabilities">
+      <section className="surface-2 border-y border-subtle py-20 lg:py-28" id="capabilities">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             <div>

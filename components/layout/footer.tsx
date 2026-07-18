@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import BrandLogo from '@/components/brand/brand-logo';
 
 // Labels and destinations are kept consistent with the navigation and page
 // content — every link resolves to a real page or an anchor that exists.
@@ -37,13 +38,8 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5 mb-4">
-              <div className="flex items-center gap-0.5">
-                <div className="w-1.5 h-4 bg-signal rounded-sm" />
-                <div className="w-1.5 h-4 bg-signal/60 rounded-sm" />
-                <div className="w-1.5 h-4 bg-signal/30 rounded-sm" />
-              </div>
-              <span className="text-sm font-bold text-white tracking-tight">ETC</span>
+            <Link href="/" className="inline-flex mb-4" aria-label="Energy Trade Centre home">
+              <BrandLogo compact />
             </Link>
             <p className="text-xs text-etc-500 leading-relaxed">
               The institutional platform for<br />energy transactions.

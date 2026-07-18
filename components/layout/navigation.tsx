@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { events } from '@/lib/analytics';
+import BrandLogo from '@/components/brand/brand-logo';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
 // Nav IA aligns with the homepage reorder: PPA Platform and ETC Intel are the
@@ -50,14 +51,8 @@ export default function Navigation() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-etc-black/80 backdrop-blur-xl border-b border-subtle">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14">
-          {/* Logo - ETC as primary brand */}
-          <Link href="/" className="flex items-center gap-3">
-            <div className="flex items-center gap-0.5">
-              <div className="w-2 h-5 bg-signal rounded-sm" />
-              <div className="w-2 h-5 bg-signal/60 rounded-sm" />
-              <div className="w-2 h-5 bg-signal/30 rounded-sm" />
-            </div>
-            <span className="text-base font-bold text-white tracking-tight">ETC</span>
+          <Link href="/" aria-label="Energy Trade Centre home">
+            <BrandLogo priority />
           </Link>
 
           {/* Desktop Navigation */}

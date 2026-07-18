@@ -68,7 +68,12 @@ export default function RootLayout({
               name: 'Energy Trade Centre',
               alternateName: 'ETC',
               url: 'https://energytradecentre.com',
-              logo: 'https://energytradecentre.com/favicon.svg',
+              logo: {
+                '@type': 'ImageObject',
+                url: 'https://energytradecentre.com/brand/etc-mark.svg',
+                width: 200,
+                height: 162,
+              },
               description:
                 'The institutional platform for energy transactions. PPA pricing, structuring and execution across GB — with asset, storage and grid intelligence modules on the 2026 roadmap.',
               address: {

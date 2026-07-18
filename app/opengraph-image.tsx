@@ -24,11 +24,11 @@ export default function OpengraphImage() {
       >
         {/* Brand mark */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
-          <div style={{ display: 'flex', gap: '5px' }}>
-            <div style={{ width: '20px', height: '52px', background: '#00E676', borderRadius: '4px' }} />
-            <div style={{ width: '20px', height: '52px', background: 'rgba(0,230,118,0.6)', borderRadius: '4px' }} />
-            <div style={{ width: '20px', height: '52px', background: 'rgba(0,230,118,0.3)', borderRadius: '4px' }} />
-          </div>
+          <svg width="70" height="57" viewBox="0 0 200 162" aria-hidden="true">
+            <path d="M21 62C27 29 54 10 90 10h91c8 0 14 6 14 14s-6 14-14 14H90c-19 0-34 8-40 24H21Z" fill="#00E676" />
+            <rect x="73" y="66" width="111" height="27" rx="14" fill="#00E676" />
+            <path d="M21 98h29c6 17 22 26 43 26h88c8 0 14 6 14 14s-6 14-14 14H93c-38 0-66-20-72-54Z" fill="#00E676" />
+          </svg>
           <div style={{ fontSize: '44px', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-1px' }}>
             ETC
           </div>
